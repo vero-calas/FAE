@@ -65,6 +65,9 @@
                  <div style="float: right">
                  <span class="md-title">E-EMATUR</span>
                  </div>
+
+
+
                  <div class="md-toolbar-section-end">
                      <md-button @click="showDialogLogin = true">
                          Login
@@ -114,7 +117,7 @@
  <style lang="scss" scoped>
 
      .md-app {
-         max-height: 10000px;
+         max-height: 100000px;
          border: 1px solid rgba(#000, .12);
      }
 
@@ -129,12 +132,14 @@
      }
 
      .md-content{
-         height: 1100px;
+         height: 11000px;
      }
 
      .md-dialog{
          width: 508px;
      }
+
+
 
 
  </style>
