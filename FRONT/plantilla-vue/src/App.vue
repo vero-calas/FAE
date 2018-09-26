@@ -100,7 +100,7 @@
                      <home-component></home-component>
                  </div>
                  <div v-if="this.eleccion == 2">
-                     <form-component></form-component>
+                     <form-component v-bind:datos="preguntas"></form-component>
                  </div>
                  <div v-if="this.eleccion == 3">
                      <admin-component></admin-component>
@@ -182,7 +182,8 @@
                  email: null,
                 password: null,
                 isInvalidEmail:false,
-                isInvalidPass:false
+                isInvalidPass:false,
+             preguntas:null
 
          }),
          validations:{
@@ -197,6 +198,13 @@
 
          created() {
 
+             this.$http.get('http://localhost:8092/categories/all')
+                 .then(response=>{
+                     this.preguntas=response.data;
+                     console.log('data obtenido es:',this.preguntas);
+                     this.eleccion=1;
+                     }
+                 )
          },
 
          methods: {
