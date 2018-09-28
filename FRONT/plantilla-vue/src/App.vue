@@ -168,6 +168,7 @@
 
          name: 'Overlap',
          data: () => ({
+             error:false,
              showDialogLogin: false,
              showDialogRegister: false,
              menuVisible: false,
@@ -198,13 +199,14 @@
 
          created() {
 
-             this.$http.get('http://localhost:8092/categories/all')
-                 .then(response=>{
-                     this.preguntas=response.data;
-                     console.log('data obtenido es:',this.preguntas);
-                     this.eleccion=1;
-                     }
-                 )
+             this.$http.get('http://localhost:8092/categories/all').then(response => {
+                 this.preguntas = response.data;
+                 console.log('data obtenido es:', this.preguntas);
+                 this.eleccion = 1;
+             }, (response) => {
+                 this.error = true;
+             });
+
          },
 
          methods: {

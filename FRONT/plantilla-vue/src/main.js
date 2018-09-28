@@ -13,7 +13,7 @@ Vue.use(VueCarousel);
 import App from './App.vue';
 import trofeos from './trofeos.vue';
 import firebase from 'firebase';
-
+Vue.http.options.emulateJSON = true
 var config = {
     apiKey: "AIzaSyAL0ZO7C_dy6slW-pB5CwdrBDkedoS56jA",
     authDomain: "ematur-acea1.firebaseapp.com",
