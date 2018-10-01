@@ -1,6 +1,10 @@
  <template>
  <div class="page-container">
+     <div  v-if="load<100" style="position:absolute;top:25%;left:42%">
 
+         <img width="250px" src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png" alt="People">
+         <md-progress-bar   md-mode="determinate" :md-value="load"></md-progress-bar>
+     </div>
      <!-- Dialog para Login -->
      <div>
          <md-dialog :md-active.sync="showDialogLogin">
@@ -103,7 +107,7 @@
                      <form-component v-bind:datos="preguntas"></form-component>
                  </div>
                  <div v-if="this.eleccion == 3">
-                     <admin-component v-bind:datos="regiones"></admin-component>
+                     <admin-component v-bind:datos="[regiones, usuarios]"></admin-component>
                  </div>
                  <div v-if="this.eleccion == 4">
                      <empresa-component></empresa-component>
@@ -168,6 +172,7 @@
 
          name: 'Overlap',
          data: () => ({
+             load: 0,
              error:false,
              showDialogLogin: false,
              showDialogRegister: false,
@@ -183,7 +188,8 @@
 
 
              preguntas:null,
-             regiones: null
+             regiones: null,
+             usuarios: null
 
          }),
          validations:{
@@ -202,6 +208,7 @@
                  this.preguntas = response.data;
                  console.log('data de preguntas obtenido es:', this.preguntas);
                  this.eleccion = 1;
+                 this.load += 33
              }, (response) => {
                  this.error = true;
              });
@@ -210,9 +217,20 @@
                  this.regiones = response.data;
                  console.log('data de regiones obtenido es:', this.regiones);
                  this.eleccion = 1;
+                 this.load += 33
              }, (response) => {
                  this.error = true;
              });
+
+             this.$http.get('http://localhost:8092/usuarios/all').then(response => {
+                 this.usuarios = response.data;
+                 console.log('data de regiones obtenido es:', this.usuarios);
+                 this.eleccion = 1;
+                 this.load += 34
+             }, (response) => {
+                 this.error = true;
+             });
+
 
 
          },

@@ -117,9 +117,9 @@
                                 <div class="md-title">Detalle Encuestas</div>
                             </md-card-header>
                             <md-card-media>
-                                <md-table style="width:100%;height: 55%">
+                                <md-table style="width:100%;height: 50%">
                                     <select  v-model="value"  name="" id="select">
-                                        <option v-if="i!==12" :key="i" :value="i" v-for="(elemento, i) in this.datos">
+                                        <option v-if="i!==12" :key="i" :value="i" v-for="(elemento, i) in this.dataRegiones">
                                             {{elemento.nombre}}</option>
                                     </select>
 
@@ -129,12 +129,11 @@
                                         <md-table-head md-numeric >Desaprobación</md-table-head>
                                         <md-table-head md-numeric>x̄</md-table-head>
                                     </md-table-row>
-                                    <md-table-row v-if="j!==12" :key="j" v-for="(categoria, j) in this.datos[this.value].estadisticas">
+                                    <md-table-row v-if="j!==12" :key="j" v-for="(categoria, j) in this.dataRegiones[this.value].estadisticas">
                                         <div v-for="(each, k) in categoria.categorias">
                                         <md-table-cell >{{categoria.categorias[k]}}</md-table-cell>
                                         <md-table-cell>{{categoria.resultados[k]}}</md-table-cell>
                                             <md-table-cell>{{categoria.mes}}, {{categoria.anio}}</md-table-cell>
-                                            <md-table-cell>--%</md-table-cell>
                                             </div>
 
 
@@ -143,22 +142,6 @@
                                 </md-table>
                             </md-card-media>
 
-
-                            <md-card-expand>
-                                <md-card-expand-content>
-                                    <md-card-content>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                                    </md-card-content>
-                                </md-card-expand-content>
-                                <md-card-actions md-alignment="space-between">
-                                    <md-card-expand-trigger>
-                                        <md-button class="md-icon-button">
-                                            <md-icon>keyboard_arrow_down</md-icon>
-                                        </md-button>
-                                    </md-card-expand-trigger>
-                                </md-card-actions>
-
-                            </md-card-expand>
                         </md-card>
 
                     </div>
@@ -168,6 +151,61 @@
               </md-tab>
 
             <md-tab id="tab-posts" md-label="Estadísticas por Empresa" to="/components/tabs/posts">
+            <div>
+                <md-card>
+
+                    <md-card-header>
+                        <div class="md-title"> Usuarios del sistema: </div>
+                    </md-card-header>
+
+                    <md-card-media>
+                        <md-table style="width: 100%; height: 50%">
+
+                            <md-table-row>
+                                <md-table-head>N°</md-table-head>
+                                <md-table-head md-numeric >Nombre</md-table-head>
+                                <md-table-head md-numeric >Correo</md-table-head>
+                                <md-table-head md-numeric>Activo</md-table-head>
+                                <md-table-head md-numeric>Rol</md-table-head>
+                            </md-table-row>
+                            <md-table-row v-for="(usuario, z) in this.dataUsuarios">
+                                    <md-table-cell >{{z}}</md-table-cell>
+                                    <md-table-cell>{{usuario.nombre}}</md-table-cell>
+                                    <md-table-cell>{{usuario.correo}}</md-table-cell>
+                                    <md-table-cell>{{usuario.activo}}</md-table-cell>
+                                    <md-table-cell>{{usuario.rol}}</md-table-cell>
+
+                            </md-table-row>
+
+                        </md-table>
+                    </md-card-media>
+
+                </md-card>
+
+                <md-card style="height: 100%; width: 50%; float: right;">
+                    <md-card-header>
+                        <div class="md-title"> Busca un usuario específico: </div>
+                    </md-card-header>
+
+                    <md-card-media>
+                        <label>Buscar por el nombre:</label>
+                        <br>
+                        <md-field>
+                            <label>Escriba el nombre del usuario</label>
+                            <md-textarea v-model="buscarNom"></md-textarea>
+                        </md-field>
+                        <md-button v-on:click="buscarPorNombre" class="md-raised">Buscar</md-button>
+                        <br><hr>
+                        <label>Buscar por el correo:</label>
+                        <md-field>
+                            <label>Escriba el correo del usuario</label>
+                            <md-textarea v-model="buscarCorr"></md-textarea>
+                        </md-field>
+                        <md-button v-on:click="buscarPorCorreo" class="md-raised">Buscar</md-button>
+                    </md-card-media>
+                </md-card>
+
+            </div>
              </md-tab>
 
             <md-tab id="tab-favorites" md-label="Administración" to="/components/tabs/favorites">
@@ -318,9 +356,18 @@
         },
 
         data: () => ({
+            /*  data en forma de lista del v-bind  */
+            dataRegiones: null,
+            dataUsuarios: null,
+
+          /* variables html */
             json: null,
             eleccion: "",
             value: 0,
+            buscarCorr: null,
+            buscarNom: null,
+
+
 
             /*variables para el gráfico de regiones*/
             barData: null,
@@ -336,7 +383,9 @@
 
 
         mounted() {
-            this.eleccion = this.datos[0];
+            this.dataRegiones = this.datos[0]
+            this.dataUsuarios = this.datos[1]
+            this.eleccion = this.dataRegiones[0];
             console.log("grafico creado", this.preguntass, this.escalas);
             console.log("la data que llega es:", this.datos)
         },
@@ -366,6 +415,14 @@
 
 
                 console.log("jsooooooooooooon", this.json)
+            },
+
+            buscarPorNombre(){
+
+            },
+
+            buscarPorCorreo(){
+              
             }
         }
     };
