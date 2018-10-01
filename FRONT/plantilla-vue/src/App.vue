@@ -103,7 +103,7 @@
                      <form-component v-bind:datos="preguntas"></form-component>
                  </div>
                  <div v-if="this.eleccion == 3">
-                     <admin-component></admin-component>
+                     <admin-component v-bind:datos="regiones"></admin-component>
                  </div>
                  <div v-if="this.eleccion == 4">
                      <empresa-component></empresa-component>
@@ -173,18 +173,17 @@
              showDialogRegister: false,
              menuVisible: false,
                  eleccion: 0,
-                 clubs:null,
-                 mapas: null,
-                 comunas: null,
              nombre: null,
              phone: null,
              region: null,
-                 burbujas: null,
                  email: null,
                 password: null,
                 isInvalidEmail:false,
                 isInvalidPass:false,
-             preguntas:null
+
+
+             preguntas:null,
+             regiones: null
 
          }),
          validations:{
@@ -201,11 +200,20 @@
 
              this.$http.get('http://localhost:8092/categories/all').then(response => {
                  this.preguntas = response.data;
-                 console.log('data obtenido es:', this.preguntas);
+                 console.log('data de preguntas obtenido es:', this.preguntas);
                  this.eleccion = 1;
              }, (response) => {
                  this.error = true;
              });
+
+             this.$http.get('http://localhost:8092/regiones/all').then(response => {
+                 this.regiones = response.data;
+                 console.log('data de regiones obtenido es:', this.regiones);
+                 this.eleccion = 1;
+             }, (response) => {
+                 this.error = true;
+             });
+
 
          },
 

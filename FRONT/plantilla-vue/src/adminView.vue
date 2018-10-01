@@ -3,77 +3,10 @@
 
         <md-tabs md-sync-route class="md-transparent" md-alignment="fixed">
             <md-tab id="tab-home" md-label="Resumen" to="/components/tabs/home">
-                <div>
-                    <md-card style="width:98%">
-                        <div class="demo-badge">
-                            <div>
-                                <md-badge md-content="1" md-dense>
 
-                                    <md-menu md-align-trigger>
-                                        <md-button class="md-icon-button" md-menu-trigger>
-                                            <md-icon>notifications</md-icon>
-                                        </md-button>
+            </md-tab>
 
-                                        <md-menu-content>
-                                            <md-menu-item>Notificacion 1</md-menu-item>
-                                            <md-menu-item>Notificacion 2</md-menu-item>
-                                            <md-menu-item>Notificacion 3</md-menu-item>
-                                        </md-menu-content>
-                                    </md-menu>
-
-                                </md-badge>
-
-                                <md-badge class="md-primary" md-content="12" md-dense>
-
-                                    <md-menu md-align-trigger>
-                                        <md-button class="md-icon-button" md-menu-trigger>
-                                            <md-icon>home</md-icon>
-                                        </md-button>
-                                        <md-menu-content>
-                                            <md-menu-item>Notificacion 1</md-menu-item>
-                                            <md-menu-item>Notificacion 2</md-menu-item>
-                                            <md-menu-item>Notificacion 3</md-menu-item>
-                                        </md-menu-content>
-                                    </md-menu>
-                                </md-badge>
-
-                                <br> <H1> Para enviar diagnóstico despliegue esta ventana </H1>
-                            </div>
-                        </div>
-
-
-                        <md-card-expand>
-                            <md-card-expand-content>
-
-                                <md-card-content>
-                                    <label>Elija la empresa que desea buscar:</label>
-                                    <md-autocomplete v-model="selectedEmpresas" :md-options="empresas">
-                                        <label>Empresas</label>
-                                    </md-autocomplete>
-                                    <label>Ingrese archivo de diagnóstico: </label>
-                                    <md-field>
-                                        <label>Archivo subido:</label>
-                                        <md-file v-model="placeholder" placeholder="Haga clic y seleccione el archivo que desea enviar" />
-                                    </md-field>
-                                    <!--  Botón que envía el archivo -->
-                                    <md-button class="md-raised">Enviar</md-button>
-                                </md-card-content>
-
-                            </md-card-expand-content>
-
-                            <md-card-actions md-alignment="space-between">
-                                <md-card-expand-trigger>
-                                    <md-button class="md-icon-button">
-                                        <md-icon>keyboard_arrow_down</md-icon>
-                                    </md-button>
-                                </md-card-expand-trigger>
-                            </md-card-actions>
-
-                        </md-card-expand>
-
-                    </md-card>
-
-                </div>
+            <md-tab id="tab-pages" md-label="Estadísticas por Región" to="/components/tabs/pages">
                 <div>
                     <!-- Región del Gráfico -->
                     <div style="width:50% ; float: left">
@@ -177,11 +110,18 @@
                     <!-- Tabla -->
                     <div style="width:50%; float:right">
                         <md-card>
+
+
+
                             <md-card-header>
                                 <div class="md-title">Detalle Encuestas</div>
                             </md-card-header>
                             <md-card-media>
                                 <md-table style="width:100%;height: 55%">
+                                    <select  v-model="value"  name="" id="select">
+                                        <option v-if="i!==12" :key="i" :value="i" v-for="(elemento, i) in this.datos">
+                                            {{elemento.nombre}}</option>
+                                    </select>
 
                                     <md-table-row>
                                         <md-table-head>Categoría</md-table-head>
@@ -189,84 +129,14 @@
                                         <md-table-head md-numeric >Desaprobación</md-table-head>
                                         <md-table-head md-numeric>x̄</md-table-head>
                                     </md-table-row>
+                                    <md-table-row v-if="j!==12" :key="j" v-for="(categoria, j) in this.datos[this.value].estadisticas">
+                                        <div v-for="(each, k) in categoria.categorias">
+                                        <md-table-cell >{{categoria.categorias[k]}}</md-table-cell>
+                                        <md-table-cell>{{categoria.resultados[k]}}</md-table-cell>
+                                            <md-table-cell>{{categoria.mes}}, {{categoria.anio}}</md-table-cell>
+                                            <md-table-cell>--%</md-table-cell>
+                                            </div>
 
-                                    <md-table-row>
-                                        <md-table-cell>Familiaridad</md-table-cell>
-                                        <md-table-cell>73% (1900)</md-table-cell>
-                                        <md-table-cell>27% (100)</md-table-cell>
-                                        <md-table-cell>45%</md-table-cell>
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell >Reputación</md-table-cell>
-                                        <md-table-cell>68% (1832)</md-table-cell>
-                                        <md-table-cell>32% (168)</md-table-cell>
-                                        <md-table-cell>54%</md-table-cell>
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell>Satisfacción</md-table-cell>
-                                        <md-table-cell>32% (168)</md-table-cell>
-                                        <md-table-cell>68% (1832)</md-table-cell>
-                                        <md-table-cell>12%</md-table-cell>
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell>Evaluación Afectiva</md-table-cell>
-                                        <md-table-cell>68% (1832)</md-table-cell>
-                                        <md-table-cell>32% (168)</md-table-cell>
-                                        <md-table-cell>54%</md-table-cell>
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell >Evaluación Cognitiva</md-table-cell>
-                                        <md-table-cell>73% (1900)</md-table-cell>
-                                        <md-table-cell>27% (100)</md-table-cell>
-                                        <md-table-cell>45%</md-table-cell>
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell>Beneficio Simbólico</md-table-cell>
-                                        <md-table-cell>32% (168)</md-table-cell>
-                                        <md-table-cell>68% (1832)</md-table-cell>
-                                        <md-table-cell>12%</md-table-cell>
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell >Beneficio Funcional</md-table-cell>
-                                        <md-table-cell>42% (256)</md-table-cell>
-                                        <md-table-cell>58% (1744)</md-table-cell>
-                                        <md-table-cell>12%</md-table-cell>
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell >Beneficio Hedónico</md-table-cell>
-                                        <md-table-cell>32% (168)</md-table-cell>
-                                        <md-table-cell>68% (1832)</md-table-cell>
-                                        <md-table-cell>12%</md-table-cell>
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell>Confianza en Personas</md-table-cell>
-                                        <md-table-cell>73% (1900)</md-table-cell>
-                                        <md-table-cell>27% (100)</md-table-cell>
-                                        <md-table-cell>45%</md-table-cell>
-
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell >Confianza en Inst. Públicas</md-table-cell>
-                                        <md-table-cell>42% (256)</md-table-cell>
-                                        <md-table-cell>58% (1744)</md-table-cell>
-                                        <md-table-cell>12%</md-table-cell>
-
-                                    </md-table-row>
-
-                                    <md-table-row>
-                                        <md-table-cell>Confianza en Inst. Privadas</md-table-cell>
-                                        <md-table-cell>68% (1832)</md-table-cell>
-                                        <md-table-cell>32% (168)</md-table-cell>
-                                        <md-table-cell>54%</md-table-cell>
 
                                     </md-table-row>
 
@@ -294,17 +164,11 @@
                     </div>
 
                 </div>
-            </md-tab>
 
-            <md-tab id="tab-pages" md-label="Estadísticas por Región" to="/components/tabs/pages">
-                Pages tab
-                <p>Unde provident nemo reiciendis officia, possimus repellendus. Facere dignissimos dicta quis rem. Aliquam aspernatur dolor atque nisi id deserunt laudantium quam repellat.</p>
-            </md-tab>
+              </md-tab>
 
             <md-tab id="tab-posts" md-label="Estadísticas por Empresa" to="/components/tabs/posts">
-                Posts tab
-                <p>Qui, voluptas repellat impedit ducimus earum at ad architecto consectetur perferendis aspernatur iste amet ex tempora animi, illum tenetur quae assumenda iusto.</p>
-            </md-tab>
+             </md-tab>
 
             <md-tab id="tab-favorites" md-label="Administración" to="/components/tabs/favorites">
                 <div>
@@ -366,10 +230,78 @@
 
 
             <md-tab id="tab-estudio" md-label="Enviar estudio" to="/components/tabs/estudio">
+
+                <md-card style="width:98%">
+                    <div class="demo-badge">
+                        <div>
+                            <md-badge md-content="1" md-dense>
+
+                                <md-menu md-align-trigger>
+                                    <md-button class="md-icon-button" md-menu-trigger>
+                                        <md-icon>notifications</md-icon>
+                                    </md-button>
+
+                                    <md-menu-content>
+                                        <md-menu-item>Notificacion 1</md-menu-item>
+                                        <md-menu-item>Notificacion 2</md-menu-item>
+                                        <md-menu-item>Notificacion 3</md-menu-item>
+                                    </md-menu-content>
+                                </md-menu>
+
+                            </md-badge>
+
+                            <md-badge class="md-primary" md-content="12" md-dense>
+
+                                <md-menu md-align-trigger>
+                                    <md-button class="md-icon-button" md-menu-trigger>
+                                        <md-icon>home</md-icon>
+                                    </md-button>
+                                    <md-menu-content>
+                                        <md-menu-item>Notificacion 1</md-menu-item>
+                                        <md-menu-item>Notificacion 2</md-menu-item>
+                                        <md-menu-item>Notificacion 3</md-menu-item>
+                                    </md-menu-content>
+                                </md-menu>
+                            </md-badge>
+
+                            <br> <H1> Para enviar diagnóstico despliegue esta ventana </H1>
+                        </div>
+                    </div>
+
+
+                    <md-card-expand>
+                        <md-card-expand-content>
+
+                            <md-card-content>
+                                <label>Elija la empresa que desea buscar:</label>
+                                <md-autocomplete v-model="selectedEmpresas" :md-options="empresas">
+                                    <label>Empresas</label>
+                                </md-autocomplete>
+                                <label>Ingrese archivo de diagnóstico: </label>
+                                <md-field>
+                                    <label>Archivo subido:</label>
+                                    <md-file v-model="placeholder" placeholder="Haga clic y seleccione el archivo que desea enviar" />
+                                </md-field>
+                                <!--  Botón que envía el archivo -->
+                                <md-button class="md-raised">Enviar</md-button>
+                            </md-card-content>
+
+                        </md-card-expand-content>
+
+                        <md-card-actions md-alignment="space-between">
+                            <md-card-expand-trigger>
+                                <md-button class="md-icon-button">
+                                    <md-icon>keyboard_arrow_down</md-icon>
+                                </md-button>
+                            </md-card-expand-trigger>
+                        </md-card-actions>
+
+                    </md-card-expand>
+
+                </md-card>
+
             </md-tab>
         </md-tabs>
-
-
 
 
 
@@ -379,6 +311,7 @@
 <script>
     import VueChart from "vue-chart-js";
     export default {
+        props:['datos'],
         name: "adminView",
         components: {
             VueChart
@@ -386,6 +319,11 @@
 
         data: () => ({
             json: null,
+            eleccion: "",
+            value: 0,
+
+            /*variables para el gráfico de regiones*/
+            barData: null,
 
 
             /* variables para armar json */
@@ -398,8 +336,9 @@
 
 
         mounted() {
-
+            this.eleccion = this.datos[0];
             console.log("grafico creado", this.preguntass, this.escalas);
+            console.log("la data que llega es:", this.datos)
         },
 
         methods: {
@@ -415,7 +354,7 @@
                       escala: this.escalas
                   }
                       preguntass.push(variable)
-                  console.log("quiero a;adir", preguntass)
+                  console.log("quiero añadir", preguntass)
               }
 
                 this.json = {
