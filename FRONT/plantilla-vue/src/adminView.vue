@@ -24,14 +24,13 @@
                                 <div class="md-title">Aprobación en distintos ámbitos</div>
                             </md-card-header>
                             <md-card-media>
-                                <vue-chart  v-if="this.chartData !== null" type="bar" :data="this.chartData"></vue-chart>
+                               <div v-if="this.showd">
+                                <vue-chart  v-if="this.barData !== null" type="horizontalBar" :data="this.barData"></vue-chart>
                                 <div v-else>
                                     <div class=" lds-css ng-scope">
-                                        <div  class="lds-bars">
-                                            <div></div><div></div><div></div><div></div> <div></div>
-                                        </div>
                                     </div>
                                 </div>
+                               </div>
                             </md-card-media>
                             <md-card-expand>
                                 <md-card-expand-content>
@@ -50,18 +49,7 @@
                             </md-card-expand>
                         </md-card>
 
-                        <div style=" width: 100%;float: left">
-                            <!-- Gráfico Género -->
-                            <vue-chart v-if="this.chartData != null" type="polarArea" :data="this.chartData"></vue-chart>
-                            <div v-else>
-                                <div class=" lds-css ng-scope">
-                                    <div style="width:100%;height:100%" class="lds-bars">
-                                        <div></div><div></div><div></div><div></div> <div></div>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
                         <br><br><br>
                         <div style="float: left; width: 50%">
                             <!-- Datos generales -->
@@ -118,7 +106,7 @@
                             </md-card-header>
                             <md-card-media>
                                 <md-table style="width:100%;height: 50%">
-                                    <select  v-model="value"  name="" id="select">
+                                    <select @change="modificarGrafico" v-model="value"  name="" id="select">
                                         <option v-if="i!==12" :key="i" :value="i" v-for="(elemento, i) in this.dataRegiones">
                                             {{elemento.nombre}}</option>
                                     </select>
@@ -126,19 +114,19 @@
                                     <md-table-row>
                                         <md-table-head>Categoría</md-table-head>
                                         <md-table-head md-numeric >Aprobación</md-table-head>
-                                        <md-table-head md-numeric >Desaprobación</md-table-head>
-                                        <md-table-head md-numeric>x̄</md-table-head>
+
                                     </md-table-row>
-                                    <md-table-row v-if="j!==12" :key="j" v-for="(categoria, j) in this.dataRegiones[this.value].estadisticas">
+
+                                    <md-table-row  v-for="(categoria, j) in this.dataRegiones[this.value].estadisticas">
                                         <div v-for="(each, k) in categoria.categorias">
                                         <md-table-cell >{{categoria.categorias[k]}}</md-table-cell>
-                                        <md-table-cell>{{categoria.resultados[k]}}</md-table-cell>
-                                            <md-table-cell>{{categoria.mes}}, {{categoria.anio}}</md-table-cell>
-                                            </div>
-
-
+                                            <md-table-cell md-numeric>{{categoria.resultados[k]}}</md-table-cell>
+                                        </div>
                                     </md-table-row>
+                                     <!--   <md-table-cell>{{categoria.resultados[k]}}</md-table-cell>
+                                            <md-table-cell>{{categoria.mes}}, {{categoria.anio}}</md-table-cell>
 
+-->
                                 </md-table>
                             </md-card-media>
 
@@ -194,7 +182,10 @@
                             <label>Escriba el nombre del usuario</label>
                             <md-textarea v-model="buscarNom"></md-textarea>
                         </md-field>
-                        <md-button v-on:click="buscarPorNombre" class="md-raised">Buscar</md-button>
+                        <md-button v-on:click="buscarPorNombre(buscarNom)" class="md-raised">Buscar</md-button>
+bla
+                        {{mostrarNom}}
+                        {{this.mostrarNom}}
                         <br><hr>
                         <label>Buscar por el correo:</label>
                         <md-field>
@@ -202,6 +193,11 @@
                             <md-textarea v-model="buscarCorr"></md-textarea>
                         </md-field>
                         <md-button v-on:click="buscarPorCorreo" class="md-raised">Buscar</md-button>
+bla
+
+                        {{this.mostrarCorr}}
+
+
                     </md-card-media>
                 </md-card>
 
@@ -210,9 +206,13 @@
 
             <md-tab id="tab-favorites" md-label="Administración" to="/components/tabs/favorites">
                 <div>
-                <label>Añadir categoría:</label>
-                    <br><br><br>
+                    <md-card style="width: 100%; height: 100%; float: none">
+                        <md-card-header>
+                            <div class="md-title"> Añadir categoría: </div>
+                        </md-card-header>
+                    <br>
                     <hr>
+                        <md-card-media>
                     <label>Nombre:</label>
                     <md-field>
                         <label>Ingrese el nombre de la categoría</label>
@@ -262,7 +262,8 @@
                 </div>
 
                     <md-button v-on:click="crearJSON" class="md-raised">Aceptar</md-button>
-
+                        </md-card-media>
+                    </md-card>
                 </div>
             </md-tab>
 
@@ -309,7 +310,7 @@
 
                     <md-card-expand>
                         <md-card-expand-content>
-
+<!--
                             <md-card-content>
                                 <label>Elija la empresa que desea buscar:</label>
                                 <md-autocomplete v-model="selectedEmpresas" :md-options="empresas">
@@ -320,10 +321,9 @@
                                     <label>Archivo subido:</label>
                                     <md-file v-model="placeholder" placeholder="Haga clic y seleccione el archivo que desea enviar" />
                                 </md-field>
-                                <!--  Botón que envía el archivo -->
                                 <md-button class="md-raised">Enviar</md-button>
                             </md-card-content>
-
+-->
                         </md-card-expand-content>
 
                         <md-card-actions md-alignment="space-between">
@@ -363,15 +363,16 @@
           /* variables html */
             json: null,
             eleccion: "",
-            value: 0,
-            buscarCorr: null,
-            buscarNom: null,
+            buscarCorr: "",
+            buscarNom: "",
+            mostrarCorr: [],
+            mostrarNom: null,
 
 
 
             /*variables para el gráfico de regiones*/
             barData: null,
-
+            showd: null,
 
             /* variables para armar json */
             nombreCategoria: null,
@@ -381,16 +382,72 @@
             preguntaCate: null
         }),
 
+created(){
+    this.showd=true;
+    console.log("estoy creando");
+    this.value=0;
+    this.barData=this.crearGrafico();
+    console.log("grafico creado", this.barData);
+},
+
 
         mounted() {
-            this.dataRegiones = this.datos[0]
-            this.dataUsuarios = this.datos[1]
+            console.log("la data que llega es:", this.datos);
+            this.dataRegiones = this.datos[0];
+            this.dataUsuarios = this.datos[1];
             this.eleccion = this.dataRegiones[0];
             console.log("grafico creado", this.preguntass, this.escalas);
             console.log("la data que llega es:", this.datos)
         },
 
         methods: {
+
+            modificarGrafico(){
+                //console.log("*********"+this.datos);
+                this.showd=false;
+                this.barData= this.crearGrafico();
+                console.log("la data es: ", this.barData.datasets[0].data);
+                this.showd=false;
+                this.$nextTick(() => {
+                    this.showd = true
+                    console.log('re-render start')
+                    this.$nextTick(() => {
+                        console.log('re-render end')
+                    })
+                })
+            },
+
+
+            crearGrafico()
+            {
+                console.log("VAlor para graficqar: ", this.value)
+                let barData = {
+                    labels: [],
+                    datasets: [
+                        {
+                            data: [],
+                            label: ["Puntuación alcanzada"],
+                            backgroundColor: ['#FF7043', '#FFA726', '#FFCA28', '#FFEE58', '#D4E157', '#9CCC65 ',
+                                '#26A69A', '#26C6DA', '#29B6F6', '#42A5F5', '#5C6BC0', '#3F51B5',
+                                '#7E57C2', '#AB47BC', '#EC407A', '#EF9A9A', '#D1C4E9  '],
+                        },
+
+                    ]
+                };
+                /* Largo  */
+                var tam = this.dataRegiones[this.value].estadisticas[0].categorias.length;
+                //console.log("el tamaño de la listade categorias es: ", tam);
+                var concatenar = "-";
+                for (let i = 0; i < tam; i++) {
+                    //console.log("las categorias son :", this.dataRegiones[this.value].estadisticas[0].categorias[i]);
+                    barData.labels.push(this.dataRegiones[this.value].estadisticas[0].categorias[i]);
+                   // console.log("lso resultados son: ", this.dataRegiones[this.value].estadisticas[0].resultados[i]);
+                    barData.datasets[0].data.push(this.dataRegiones[this.value].estadisticas[0].resultados[i])
+
+                }
+                return barData
+
+            },
 
           crearJSON() {
               let preguntass = []
@@ -417,14 +474,14 @@
                 console.log("jsooooooooooooon", this.json)
             },
 
-            buscarPorNombre(){
+            buscarPorNombre(value){
 
             },
 
             buscarPorCorreo(){
-              
+
+            },
             }
-        }
     };
 
 
@@ -473,7 +530,7 @@
     .imagePos{
         display: inline-flex;
         justify-content: right;
-        align-items: right;
+    /*    align-items: right; */
         float: right;
     }
 

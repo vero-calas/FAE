@@ -189,7 +189,8 @@
 
              preguntas:null,
              regiones: null,
-             usuarios: null
+             usuarios: null,
+             usuariosE: null
 
          }),
          validations:{
@@ -231,6 +232,13 @@
                  this.error = true;
              });
 
+             this.$http.get('http://localhost:8092/usuarios/name/d').then(response => {
+                 this.usuariosE = response.data;
+                 console.log('data de usuario d obtenido es:', this.usuariosE);
+                 this.eleccion = 1;
+             }, (response) => {
+                 this.error = true;
+             });
 
 
          },
