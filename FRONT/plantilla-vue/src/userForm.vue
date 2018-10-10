@@ -27,11 +27,10 @@
                     <div v-model="array2" v-if="j!==15" :key="j" :value="j" v-for="(preguntas,j) in categoria.preguntas">
                         <label> {{ preguntas.pregunta }} </label>
                         <div>
-                            <md-radio v-model="satisPersonas" v-if="k!==8" :key="k" :value="k" v-for="(escala,k) in preguntas.escala">{{preguntas.escala[k]}}</md-radio>
-
+                            <md-radio v-model="form.respuesta[j]" v-if="k!==8" :key="k" :value="k" v-for="(escala,k) in preguntas.escala">{{preguntas.escala[k]}}</md-radio>
                         </div>
                     </div>
-
+{{form}}
                 </md-step>
 {{satisPersonas}}dsgfsdg
 
@@ -48,7 +47,9 @@
         name: 'userForm',
         data: () => ({
 
-            satisPersonas: [],
+            form:{
+                respuesta:[]
+            },
             array:[],
             array2:null
         })

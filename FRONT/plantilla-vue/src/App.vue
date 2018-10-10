@@ -110,7 +110,7 @@
                      <admin-component v-bind:datos="[regiones, usuarios]"></admin-component>
                  </div>
                  <div v-if="this.eleccion == 4">
-                     <empresa-component></empresa-component>
+                     <empresa-component v-bind:datos="regiones"></empresa-component>
                  </div>
              </div>
          </md-app-content>

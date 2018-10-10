@@ -3,6 +3,24 @@
 
         <md-tabs md-sync-route class="md-transparent" md-alignment="fixed">
             <md-tab id="tab-home" md-label="Resumen" to="/components/tabs/home">
+<md-card style="width: 50%; height: 100%">
+    <md-card-header>
+        Gráfico con las cantidades máximas por Región
+    </md-card-header>
+                <div>
+
+                    <vue-chart  v-if="this.generalData !== null" type="horizontalBar" :data="this.generalData"></vue-chart>
+                    <div v-else>
+                        <div class=" lds-css ng-scope">
+                            <div style="width:100%;height:100%" class="lds-bars">
+                                <div></div><div></div><div></div><div></div> <div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+</md-card>
+
 
             </md-tab>
 
@@ -182,7 +200,7 @@
                             <label>Escriba el nombre del usuario</label>
                             <md-textarea v-model="buscarNom"></md-textarea>
                         </md-field>
-                        <md-button v-on:click="buscarPorNombre(buscarNom)" class="md-raised">Buscar</md-button>
+                     <!--   <md-button v-on:click="buscarPorNombre(buscarNom)" class="md-raised">Buscar</md-button> -->
 bla
                         {{mostrarNom}}
                         {{this.mostrarNom}}
@@ -192,7 +210,7 @@ bla
                             <label>Escriba el correo del usuario</label>
                             <md-textarea v-model="buscarCorr"></md-textarea>
                         </md-field>
-                        <md-button v-on:click="buscarPorCorreo" class="md-raised">Buscar</md-button>
+                   <!--     <md-button v-on:click="buscarPorCorreo" class="md-raised">Buscar</md-button> -->
 bla
 
                         {{this.mostrarCorr}}
@@ -349,7 +367,7 @@ bla
 <script>
     import VueChart from "vue-chart-js";
     export default {
-        props:['datos'],
+        props: ['datos'],
         name: "adminView",
         components: {
             VueChart
@@ -360,7 +378,7 @@ bla
             dataRegiones: null,
             dataUsuarios: null,
 
-          /* variables html */
+            /* variables html */
             json: null,
             eleccion: "",
             buscarCorr: "",
@@ -369,10 +387,13 @@ bla
             mostrarNom: null,
 
 
-
             /*variables para el gráfico de regiones*/
             barData: null,
             showd: null,
+
+            /*variables para el gráfico de regiones*/
+            generalData: null,
+            showd2: null,
 
             /* variables para armar json */
             nombreCategoria: null,
@@ -382,13 +403,17 @@ bla
             preguntaCate: null
         }),
 
-created(){
-    this.showd=true;
-    console.log("estoy creando");
-    this.value=0;
-    this.barData=this.crearGrafico();
-    console.log("grafico creado", this.barData);
-},
+        created() {
+            this.showd = true;
+            console.log("estoy creando");
+            this.value = 0;
+            this.dataRegiones = this.datos[0];
+            this.dataUsuarios = this.datos[1];
+            this.crearGeneral();
+            console.log("grafico de resumen creado", this.generalData)
+            this.barData = this.crearGrafico();
+            console.log("grafico creado", this.barData);
+        },
 
 
         mounted() {
@@ -402,12 +427,12 @@ created(){
 
         methods: {
 
-            modificarGrafico(){
+            modificarGrafico() {
                 //console.log("*********"+this.datos);
-                this.showd=false;
-                this.barData= this.crearGrafico();
+                this.showd = false;
+                this.barData = this.crearGrafico();
                 console.log("la data es: ", this.barData.datasets[0].data);
-                this.showd=false;
+                this.showd = false;
                 this.$nextTick(() => {
                     this.showd = true
                     console.log('re-render start')
@@ -418,8 +443,7 @@ created(){
             },
 
 
-            crearGrafico()
-            {
+            crearGrafico() {
                 console.log("VAlor para graficqar: ", this.value)
                 let barData = {
                     labels: [],
@@ -441,7 +465,7 @@ created(){
                 for (let i = 0; i < tam; i++) {
                     //console.log("las categorias son :", this.dataRegiones[this.value].estadisticas[0].categorias[i]);
                     barData.labels.push(this.dataRegiones[this.value].estadisticas[0].categorias[i]);
-                   // console.log("lso resultados son: ", this.dataRegiones[this.value].estadisticas[0].resultados[i]);
+                    // console.log("lso resultados son: ", this.dataRegiones[this.value].estadisticas[0].resultados[i]);
                     barData.datasets[0].data.push(this.dataRegiones[this.value].estadisticas[0].resultados[i])
 
                 }
@@ -449,19 +473,61 @@ created(){
 
             },
 
-          crearJSON() {
-              let preguntass = []
-              console.log("cantidad de preguntas", this.cantPreguntas)
-              for (let i=0; i<this.cantPreguntas; i++){
-                  var variable = {
-                      idpregunta: i,
-                      pregunta: this.preguntaCate,
-                      opciones: null,
-                      escala: this.escalas
-                  }
-                      preguntass.push(variable)
-                  console.log("quiero añadir", preguntass)
-              }
+            crearGeneral() {
+                console.log("estoy aqui miau")
+                this.generalData = {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: "Comentarios positivos",
+                            backgroundColor: "#fba823",
+                            data: null
+                        },
+
+                    ]
+                };
+
+
+                /* Largo  */
+                console.log("estoy aqui miau 2", this.dataRegiones)
+                var tam = this.dataRegiones[0].estadisticas[0].categorias.length;
+                console.log("estoy aqui miau 3")
+                let resGeneral = this.dataRegiones[0].estadisticas[0].resultados
+                console.log("resGeneral:", resGeneral)
+                for (let k = 1; k < this.dataRegiones.length; k++) {
+                    console.log("k valeeeeeeeeeeee,", k)
+                    for (let i = 0; i < tam; i++) {
+                        console.log("estoy sumando", resGeneral[i], "con:", this.dataRegiones[k].estadisticas[0].resultados[i])
+                        resGeneral[i] = resGeneral[i] + this.dataRegiones[k].estadisticas[0].resultados[i]
+                        console.log("los valores quedan comooooooooo", resGeneral)
+                    }
+                }
+                console.log("salgo")
+                this.generalData.datasets[0].data = resGeneral
+                for (let i = 0; i < tam; i++) {
+                    console.log("entro")
+                    //console.log("las categorias son :", this.dataRegiones[this.value].estadisticas[0].categorias[i]);
+                    this.generalData.labels.push(this.dataRegiones[0].estadisticas[0].categorias[i]);
+                    // console.log("lso resultados son: ", this.dataRegiones[this.value].estadisticas[0].resultados[i]);
+
+
+                }
+            },
+
+
+            crearJSON() {
+                let preguntass = []
+                console.log("cantidad de preguntas", this.cantPreguntas)
+                for (let i = 0; i < this.cantPreguntas; i++) {
+                    var variable = {
+                        idpregunta: i,
+                        pregunta: this.preguntaCate,
+                        opciones: null,
+                        escala: this.escalas
+                    }
+                    preguntass.push(variable)
+                    console.log("quiero añadir", preguntass)
+                }
 
                 this.json = {
                     nombre: this.nombreCategoria,
@@ -470,19 +536,10 @@ created(){
                 }
 
 
-
                 console.log("jsooooooooooooon", this.json)
             },
-
-            buscarPorNombre(value){
-
-            },
-
-            buscarPorCorreo(){
-
-            },
-            }
-    };
+        }
+    }
 
 
 </script>
