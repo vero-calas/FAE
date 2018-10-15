@@ -67,7 +67,7 @@
                      <md-icon>menu</md-icon>
                  </md-button>
                  <div style="float: right">
-                 <span class="md-title">E-EMATUR</span>
+                 <span class="md-title">e-ematur</span>
                  </div>
 
 
@@ -107,7 +107,7 @@
                      <form-component v-bind:datos="preguntas"></form-component>
                  </div>
                  <div v-if="this.eleccion == 3">
-                     <admin-component v-bind:datos="[regiones, usuarios]"></admin-component>
+                     <admin-component v-bind:datos="[regiones, usuarios, encuestados]"></admin-component>
                  </div>
                  <div v-if="this.eleccion == 4">
                      <empresa-component v-bind:datos="regiones"></empresa-component>
@@ -190,6 +190,7 @@
              preguntas:null,
              regiones: null,
              usuarios: null,
+             encuestados: null,
              usuariosE: null
 
          }),
@@ -232,6 +233,15 @@
                  this.error = true;
              });
 
+             this.$http.get('http://localhost:8092/encuestados/all').then(response => {
+                 this.encuestados = response.data;
+                 console.log('data de regiones obtenido es:', this.encuestados);
+                 this.eleccion = 1;
+                 this.load += 34
+             }, (response) => {
+                 this.error = true;
+             });
+
              this.$http.get('http://localhost:8092/usuarios/name/d').then(response => {
                  this.usuariosE = response.data;
                  console.log('data de usuario d obtenido es:', this.usuariosE);
@@ -239,7 +249,6 @@
              }, (response) => {
                  this.error = true;
              });
-
 
          },
 
@@ -279,7 +288,7 @@
      }
      .md-toolbar.md-theme-default.md-accent .md-title{
      @import url('https://fonts.googleapis.com/css?family=Francois+One');
-         font-family: 'Francois One', sans-serif;
+         font-family: 'Lobster Two', cursive;
          font-size: 35px;
          color: #FABC3C;
          margin-left: 20px;
