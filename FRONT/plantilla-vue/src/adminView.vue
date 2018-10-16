@@ -59,6 +59,61 @@
                         </md-card-content>
                     </md-card>
 
+
+                    <md-card style="width: 45%; float: right">
+                        <md-card-header>
+                            <div class="md-title">Cantidades por Estado Civil:</div>
+                        </md-card-header>
+                        <md-card-content>
+                            <div>
+                                <vue-chart  v-if="this.tortaEstadoC !== null" type="pie" :data="this.tortaEstadoC"></vue-chart>
+                                <div v-else>
+                                    <div class=" lds-css ng-scope">
+                                        <div style="width:100%;height:100%" class="lds-bars">
+                                            <div></div><div></div><div></div><div></div> <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+
+                    <md-card style="width: 45%; float: left">
+                        <md-card-header>
+                            <div class="md-title">Cantidades por Edad:</div>
+                        </md-card-header>
+                        <md-card-content>
+                            <div>
+                                <vue-chart  v-if="this.tortaEdad !== null" type="pie" :data="this.tortaEdad"></vue-chart>
+                                <div v-else>
+                                    <div class=" lds-css ng-scope">
+                                        <div style="width:100%;height:100%" class="lds-bars">
+                                            <div></div><div></div><div></div><div></div> <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+
+                    <md-card style="width: 45%; float: right">
+                        <md-card-header>
+                            <div class="md-title">Cantidades por Situación Laboral:</div>
+                        </md-card-header>
+                        <md-card-content>
+                            <div>
+                                <vue-chart  v-if="this.tortaLaboral !== null" type="pie" :data="this.tortaLaboral"></vue-chart>
+                                <div v-else>
+                                    <div class=" lds-css ng-scope">
+                                        <div style="width:100%;height:100%" class="lds-bars">
+                                            <div></div><div></div><div></div><div></div> <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+
                 </div>
             </md-tab>
 
@@ -429,6 +484,9 @@ bla
             barData: null,
             promedioData: null,
             tortaGenero: null,
+            tortaEstadoC: null,
+            tortaEdad: null,
+            tortaLaboral: null,
             showd: null,
             resGeneral: null,
             valores: [],
@@ -454,7 +512,10 @@ bla
             this.guardarRes();
             this.crearGeneral();
             this.crearPromedio();
-            this.creaGraficoTorta();
+            this.crearGraficoTorta();
+            this.crearTortaEstadoCivil();
+            this.crearTortaEdad();
+            this.crearTortaLaboral();
             console.log("grafico de promedio creado", this.generalData)
             console.log("grafico creado", this.promedioData);
             this.barData = this.crearGrafico();
@@ -610,7 +671,7 @@ bla
                 console.log("jsooooooooooooon", this.json)
             },
 
-            creaGraficoTorta(){
+            crearGraficoTorta(){
                 let dataGenero = []
                 let contadorM = 0;
                 let contadorF = 0;
@@ -647,8 +708,170 @@ bla
                     }
                 },
 
-            // crear gráfico laboral, nivel de estudio, nivel de ingresos, estado civil, rango de edad
+            crearTortaEstadoCivil(){
+            //{"Casada(o)","Soltera(o)","Divorciada(o) o Separada(o)","Viuda(o)","Otro","No sabe-No responde"]
+                let dataEstadoC = []
+                let contadorC = 0; let contadorSolt = 0; let contadorDS = 0;
+                let contadorV = 0; let contadorX = 0; let contadorNA = 0;
+                for (let i=0; i<this.dataEncuestados.length; i++){
+                    if (this.dataEncuestados[i].estadoCivil == "Soltera(o)"){
+                        contadorSolt++
+                        console.log("la cantidad de hombreses", contadorSolt)
+                    }
+                    else if(this.dataEncuestados[i].estadoCivil == "Casada(o)"){
+                        contadorC++
+                        console.log("lac antidad de mujer es", contadorC)
+                    }
+                    else if(this.dataEncuestados[i].estadoCivil == "Divorciada(o) o Separada(o)"){
+                        contadorDS++
+                        console.log("lac antidad de mujer es", contadorDS)
+                    }
+                    else if(this.dataEncuestados[i].estadoCivil == "Viuda(o)"){
+                        contadorV++
+                        console.log("lac antidad de mujer es", contadorV)
+                    }
+                    else if(this.dataEncuestados[i].estadoCivil == "Otro"){
+                        contadorX++
+                        console.log("lac antidad de mujer es", contadorX)
+                    }
+                    else {
+                        contadorNA++
+                    }
+                }
 
+                dataEstadoC.push(contadorC);
+                dataEstadoC.push(contadorSolt);
+                dataEstadoC.push(contadorDS);
+                dataEstadoC.push(contadorV);
+                dataEstadoC.push(contadorX);
+                dataEstadoC.push(contadorNA);
+                console.log("la data queda en el orden:", dataEstadoC)
+                this.tortaEstadoC = {
+                    labels: ["Casada(o)","Soltera(o)","Divorciada(o) o Separada(o)","Viuda(o)","Otro","No sabe-No responde"],
+                    datasets: [
+                        {
+                            label: "",
+                            backgroundColor:  ['#FF7043',
+                                '#FFA726',
+                                '#FFCA28',
+                                '#FFEE58',
+                                '#D4E157',
+                                '#9CCC65 '],
+                            data: dataEstadoC
+                        },
+                    ]
+                }
+            },
+            // crear gráfico nivel de estudio, nivel de ingresos
+            crearTortaEdad(){
+                let dataEdad = []
+                let contador18 = 0; let contador25 = 0; let contador35 = 0;
+                let contador45 = 0; let contador55 = 0; let contador65 = 0;
+                let contadorNA = 0;
+                for (let i=0; i<this.dataEncuestados.length; i++){
+                    if (this.dataEncuestados[i].rangoDeEdad == "Entre 18 y 24"){
+                        contador18++
+                        console.log("la cantidad de hombreses", contador18)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Entre 25 y 34"){
+                        contador25++
+                        console.log("lac antidad de mujer es", contador25)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Entre 35 y 44"){
+                        contador35++
+                        console.log("lac antidad de mujer es", contador35)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Entre 45 y 54"){
+                        contador45++
+                        console.log("lac antidad de mujer es", contador45)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Entre 55 y 64"){
+                        contador55++
+                        console.log("lac antidad de mujer es", contador55)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Mayor de 65"){
+                        contador65++
+                        console.log("lac antidad de mujer es", contador65)
+                    }
+                    else {
+                        contadorNA++
+                    }
+                }
+                dataEdad.push(contador18);
+                dataEdad.push(contador25);
+                dataEdad.push(contador35);
+                dataEdad.push(contador45);
+                dataEdad.push(contador55);
+                dataEdad.push(contador65);
+                dataEdad.push(contadorNA);
+                console.log("la data queda en el orden:", dataEdad)
+                this.tortaEdad = {
+                    labels: ["Entre 18 y 24", "Entre 25 y 34","Entre 35 y 44","Entre 45 y 54",
+                        "Entre 55 y 64","Mayor de 65", "No sabe-No responde"],
+                    datasets: [
+                        {
+                            label: "",
+                            backgroundColor:  ['#FF7043', '#FFA726', '#FFCA28', '#FFEE58', '#D4E157', '#9CCC65 ',
+                                '#26A69A'],
+                            data: dataEdad
+                        },
+                    ]
+                }
+            },
+
+            crearTortaLaboral(){
+                let dataLaboral = []
+                let contadorPT = 0; let contadorFT = 0; let contadorBE = 0;
+                let contadorDC = 0; let contadorJ = 0; let contadorE = 0;
+                let contadorNA = 0;
+                for (let i=0; i<this.dataEncuestados.length; i++){
+                    if (this.dataEncuestados[i].rangoDeEdad == "Trabaja part time"){
+                        contadorPT++
+                        console.log("la cantidad de hombreses", contadorPT)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Trabaja full time"){
+                        contadorFT++
+                        console.log("lac antidad de mujer es", contadorFT)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Busca empleo"){
+                        contadorBE++
+                        console.log("lac antidad de mujer es", contadorBE)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Dueña de Casa"){
+                        contadorDC++
+                        console.log("lac antidad de mujer es", contadorDC)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Jubilado"){
+                        contadorJ++
+                        console.log("lac antidad de mujer es", contadorJ)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Estudiante"){
+                        contadorE++
+                        console.log("lac antidad de mujer es", contadorE)
+                    }
+                    else {
+                        contadorNA++
+                    }
+                }
+                dataLaboral.push(contadorPT); dataLaboral.push(contadorFT); dataLaboral.push(contadorBE);
+                dataLaboral.push(contadorDC); dataLaboral.push(contadorJ); dataLaboral.push(contadorE);
+                dataLaboral.push(contadorNA);
+                console.log("la data queda en el orden:", dataLaboral)
+                this.tortaLaboral = {
+                    labels: ["Trabaja part time","Trabaja full time","Busca empleo", "Dueña de Casa",
+                        "Jubilado","Estudiante","No sabe-No responde"],
+                    datasets: [
+                        {
+                            label: "",
+                            backgroundColor:  ['#FF7043', '#FFA726', '#FFCA28', '#FFEE58', '#D4E157', '#9CCC65 ',
+                                '#26A69A'],
+                            data: dataLaboral
+                        },
+                    ]
+                }
+            }
+
+            //
         }
     }
 
