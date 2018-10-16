@@ -242,6 +242,8 @@
             },
 
 
+
+
             createPieChart(){
                 this.pieChart = {
                     labels:["Hombres (%)", "Mujeres (%)", "Otro (%)"],

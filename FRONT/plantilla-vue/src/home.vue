@@ -53,26 +53,14 @@
                     <div style="float: right; width: 30%">
                         <md-card>
                             <md-card-header>
-                                <div class="md-title">Datos interesantes: </div>
-                            </md-card-header>
-
-                            <md-card-content>
-                                <br>
-                                <i class="material-icons">face</i>Contador de visitas: 13
-                                <hr>
-
-                                <i class="material-icons">thumb_up_alt</i>Contador de respuestas: 4
-                                <hr>
-
-                            </md-card-content>
-                            <md-card-header>
                                 <div class="md-title">Turismo en Chile: </div>
                             </md-card-header>
 
                             <md-card-content>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat.
+                                La World Travel Awards por cuarto año consecutivo ha elegido a Chile como el mejor destino de turismo aventura de Sudamérica 2018. Sin duda, este reiterado reconocimiento internacional es una gran oportunidad como país, para ofrecer y cristalizar una atención sobresaliente a los turistas que nos visitan y construir una imagen como destino turístico de nivel internacional.  Si bien, las características geográficas de Chile (desiertos, montañas y lagos, playas y mar) son un gran estímulo para los visitantes, esto por sí solo no basta para construir una experiencia única y diferente para el turista. Es necesario gestionar un proceso sinérgico a partir del complemento del sector público y el sector privado, única manera de ofrecer servicios turísticos integrales a los visitantes. En este contexto, por un lado, hoteles, restaurantes, comercios y medios de transporte y telecomunicaciones y por otro, oficinas de servicios de turismo, municipalidades, guarda parqués, incluso los propios habitantes, juegan un rol gravitante en la construcción de esta imagen como destino turístico internacional.
+                                <hr>
+                                <img  class="img-responsive" src="https://images.sipse.com/XcKdUIMJr5cgvgtxW2HW6TXjm4g=/800x497/smart/2018/04/25/1524624771669.jpg">
+
                             </md-card-content>
 
                         </md-card>
@@ -87,38 +75,29 @@
                     </div>
 
                     <div>
+                        <div style="float: right; width: 40%">
+                            <md-card>
+                                <md-card-header>
+                                    <div class="md-title"> Información general </div>
+                                </md-card-header>
+                                <md-card-content>
+                                    e-ematur surge como resultado de la tesis doctoral denominada: “Confianza hacia los Destinos Turísticos. El rol de la Imagen, sus habitantes e Instituciones”. Este estudio fue presentado en el marco del Programa de Doctorado en Ciencias Empresariales impartido por la Facultad de Ciencias Económicas y Empresariales de la Universidad Autónoma de Madrid, España. Cabe destacar que este trabajo de investigación fue calificado como “Sobresaliente Cum Laude”,
+                                    siendo esta la máxima calificación que se puede obtener en España.
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    <div>
                         <md-card>
                             <md-card-header>
                                 <div class="md-title"> ¿Quiénes somos? </div>
                             </md-card-header>
                             <md-card-content>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat.
-                            </md-card-content>
-                        </md-card>
-
-                        <md-card>
-                            <md-card-header>
-                                <div class="md-title"> Información general </div>
-                            </md-card-header>
-                            <md-card-content>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat.
-                            </md-card-content>
-                        </md-card>
-
-                        <md-card>
-                            <md-card-header>
-                                <div class="md-title"> </div>
-                            </md-card-header>
-                            <md-card-content>
-                                <img  class="img-responsive" src="https://images.sipse.com/XcKdUIMJr5cgvgtxW2HW6TXjm4g=/800x497/smart/2018/04/25/1524624771669.jpg">
+                                e-ematur es un servicio de medición online de percepciones pionero en el área del marketing turístico.  Es un servicio innovador que permite la detección temprana, prevención, diagnóstico y tratamiento de un débil posicionamiento de imagen logrado por un destino turístico.
                             </md-card-content>
                         </md-card>
                     </div>
 
+                    </div>
                 </div>
             </md-tab>
 
@@ -134,9 +113,7 @@
                             <div class="md-title">Sobre la empresa: </div>
                         </md-card-header>
                     <md-card-content>
-                    <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip ex ea commodo consequat.</label>
+                    <label>e-ematur pretende ser el proveedor líder a nivel mundial de soluciones tecnológicas de marketing para mejorar la percepción de los destinos turísticos. A través de un modelo de suscripción predecible y asequible, nuestros clientes podrán adquirir y aplicar las mejores estrategias de marketing para posicionar, consolidar y/o recordar la imagen de un destino turístico a nivel internacional, nacional o local. Servicios tecnológicos que serán complementados con asesorías y capacitaciones especializadas dictadas por expertos, en el tratamiento de la imagen de los destinos turísticos.</label>
                      </md-card-content>
                     </md-card>
                     <md-card class="card">
@@ -168,12 +145,16 @@
                                 <div class="md-title">Información de contacto:</div>
                             </md-card-header>
                             <md-card-content>
-                                <label> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                    aliquip ex ea commodo consequat. </label>
-                                <label><i class="material-icons">call</i> +569 0000000 </label>
-                                <label><i class="material-icons">mail_outline</i> ejemplo@ejemplo.cl </label>
-                                <label><i class="material-icons">public</i> https: facebook </label>
+                                <label> A su disposición medios de contacto directo:</label>
+                                <hr>
+                                <label><i class="material-icons">call</i> +56-9-98875670 </label>
+                                <hr>
+                                <label><i class="material-icons">mail_outline</i> enrique.marinao@gmail.com</label>
+                                <hr>
+                                <label><i class="material-icons">mail_outline</i> enrique.marinao@usach.cl </label>
+                                <hr>
+                                <label><i class="material-icons">mail_outline</i> enrique.marinao@e-ematur.cl </label>
+                                <!--<label><i class="material-icons">public</i> https: facebook </label>-->
                             </md-card-content>
                         </md-card>
                     </div>
@@ -185,252 +166,48 @@
             <md-tab id="tab-favorites" md-label="Responder encuesta" to="/components/tabs/favorites">
 
                 <div>
-                    <md-steppers md-vertical>
 
-                        <!--                          PRIMERA ETAPA DE ENCUESTA                                        -->
-                        <!--                          **************************                                       -->
 
-                        <md-step id="primero" md-label="Preguntas generales" md-description="Preguntas generales destinadas a la realización de estadísticas">
 
-                        </md-step>
+                    <div>
+                        <!-- opciones  md-vertical, md-horizontal, md-alternative-->
 
-                        <!--                          SEGUNDA ETAPA DE ENCUESTA                                        -->
-                        <!--                          **************************                                       -->
-                        <md-step id="segundo" md-label="Familiaridad" md-description="Preguntas referentes al nivel de socialización alcanzado en el lugar visitado">
-                            <br>
-                            <label> Por favor, responda según su opinión </label>
-                            <br>
-                            <div>
-                                <label>Elija el nivel de familiaridad del lugar:</label>
-                                <div>
-                                    <md-radio v-model="satisPersonas" value="1">Muy alto</md-radio>
-                                    <md-radio v-model="satisPersonas" value="2">Alto</md-radio>
-                                    <md-radio v-model="satisPersonas" value="3">Medio</md-radio>
-                                    <md-radio v-model="satisPersonas" value="4">Bajo</md-radio>
-                                    <md-radio v-model="satisPersonas" value="5">Muy bajo</md-radio>
-                                    <small>Valor de la elección: {{ satisPersonas }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Elija el nivel de reputación del lugar:</label>
-                                <div>
-                                    <md-radio v-model="reputacion" value="1">Muy alto</md-radio>
-                                    <md-radio v-model="reputacion" value="2">Alto</md-radio>
-                                    <md-radio v-model="reputacion" value="3">Medio</md-radio>
-                                    <md-radio v-model="reputacion" value="4">Bajo</md-radio>
-                                    <md-radio v-model="reputacion" value="5">Muy bajo</md-radio>
-                                    <small>Valor de la elección: {{ reputacion }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Los habitantes de este lugar son honestos:</label>
-                                <div>
-                                    <md-radio v-model="habitantes" value="1">Totalmente de acuerdo</md-radio>
-                                    <md-radio v-model="habitantes" value="2">De acuerdo</md-radio>
-                                    <md-radio v-model="habitantes" value="3">Indiferente</md-radio>
-                                    <md-radio v-model="habitantes" value="4">En desacuerdo</md-radio>
-                                    <md-radio v-model="habitantes" value="5">Totalmente en desacuerdo</md-radio>
-                                    <small>Valor de la elección: {{ habitantes }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Los instituciones públicas de este lugar son honestas:</label>
-                                <div>
-                                    <md-radio v-model="instpublic" value="1">Totalmente de acuerdo</md-radio>
-                                    <md-radio v-model="instpublic" value="2">De acuerdo</md-radio>
-                                    <md-radio v-model="instpublic" value="3">Indiferente</md-radio>
-                                    <md-radio v-model="instpublic" value="4">En desacuerdo</md-radio>
-                                    <md-radio v-model="instpublic" value="5">Totalmente en desacuerdo</md-radio>
-                                    <small>Valor de la elección: {{ instpublic }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Los instituciones privadas de este lugar son honestas:</label>
-                                <div>
-                                    <md-radio v-model="instPriv" value="1">Totalmente de acuerdo</md-radio>
-                                    <md-radio v-model="instPriv" value="2">De acuerdo</md-radio>
-                                    <md-radio v-model="instPriv" value="3">Indiferente</md-radio>
-                                    <md-radio v-model="instPriv" value="4">En desacuerdo</md-radio>
-                                    <md-radio v-model="instPriv" value="5">Totalmente en desacuerdo</md-radio>
-                                    <small>Valor de la elección: {{ instPriv }}</small>
-                                </div>
-                            </div>
-                        </md-step>
+                        <md-steppers md-vertical>
 
-                        <!--                          TERCERA ETAPA DE ENCUESTA                                        -->
-                        <!--                          **************************                                       -->
-                        <md-step id="tercero" md-label="Entorno" md-description="Preguntas referentes al nivel de comodidad y adaptación en el lugar visitado">
-                            <br>
-                            <label> Por favor, responda según su opinión </label>
-                            <br>
-                            <div>
-                                <label>En este lugar las instalaciones son modernas y seguras:</label>
-                                <div>
-                                    <md-radio v-model="instalaciones" value="1">Totalmente de acuerdo</md-radio>
-                                    <md-radio v-model="instalaciones" value="2">De acuerdo</md-radio>
-                                    <md-radio v-model="instalaciones" value="3">Indiferente</md-radio>
-                                    <md-radio v-model="instalaciones" value="4">En desacuerdo</md-radio>
-                                    <md-radio v-model="instalaciones" value="5">Totalmente en desacuerdo</md-radio>
-                                    <small>Valor de la elección: {{ instalaciones }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Este lugar es entretenido:</label>
-                                <div>
-                                    <md-radio v-model="entretencion" value="1">Totalmente de acuerdo</md-radio>
-                                    <md-radio v-model="entretencion" value="2">De acuerdo</md-radio>
-                                    <md-radio v-model="entretencion" value="3">Indiferente</md-radio>
-                                    <md-radio v-model="entretencion" value="4">En desacuerdo</md-radio>
-                                    <md-radio v-model="entretencion" value="5">Totalmente en desacuerdo</md-radio>
-                                    <small>Valor de la elección: {{ entretencion }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Este lugar me relaja:</label>
-                                <div>
-                                    <md-radio v-model="relajacion" value="1">Totalmente de acuerdo</md-radio>
-                                    <md-radio v-model="relajacion" value="2">De acuerdo</md-radio>
-                                    <md-radio v-model="relajacion" value="3">Indiferente</md-radio>
-                                    <md-radio v-model="relajacion" value="4">En desacuerdo</md-radio>
-                                    <md-radio v-model="relajacion" value="5">Totalmente en desacuerdo</md-radio>
-                                    <small>Valor de la elección: {{ relajacion }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label> A este lugar viene gente similar a mí:</label>
-                                <div>
-                                    <md-radio v-model="gente" value="1">Totalmente de acuerdo</md-radio>
-                                    <md-radio v-model="gente" value="2">De acuerdo</md-radio>
-                                    <md-radio v-model="gente" value="3">Indiferente</md-radio>
-                                    <md-radio v-model="gente" value="4">En desacuerdo</md-radio>
-                                    <md-radio v-model="gente" value="5">Totalmente en desacuerdo</md-radio>
-                                    <small>Valor de la elección: {{ gente }}</small>
-                                </div>
-                            </div>
 
-                        </md-step>
+                            <!--                          SEGUNDA ETAPA DE ENCUESTA                                        -->
+                            <!--                          **************************                                       -->
+                            <md-step id=0  :md-label="Bienvenido">
+                                <label>Bienvenido a la encuesta sobre el turismo en Chile</label>
+                            </md-step>
+                            <md-step v-model="array" v-if="i!==20" :key="i" :value="i" v-for="(categoria,i) in datos" :id="datos[i].id"  :md-label="datos[i].nombre"  :md-description="datos[i].descripcion" >
+                                <br>valoooor i, {{i}}
+                                <label> Por favor, responda según su opinión </label>
+                                <br>
+                                <div v-model="array2" v-if="j!==20" :key="j" :value="j" v-for="(preguntas,j) in categoria.preguntas">
+                                    <hr>
+                                    <label> {{ preguntas.pregunta }} </label>
+                                    <div>
+                                        <md-radio v-model="form2[i].respuesta[j]" v-if="k!==14" :key="k" :value="k" v-for="(escala,k) in preguntas.escala">
+                                            <label v-if="preguntas.escala !== null">
+                                                {{preguntas.escala[k]}}
+                                            </label>
+                                        </md-radio>
+                                        <md-radio v-model="form2[i].respuesta[j]" v-if="k!==14" :key="k" :value="k" v-for="(escala,k) in preguntas.opciones">
+                                            <label v-if="preguntas.opciones !== null">
+                                                {{preguntas.opciones[k]}}
+                                            </label>
+                                        </md-radio>
+                                    </div>
+                                </div>
+                            </md-step>
 
-                        <!--                          CUARTA ETAPA DE ENCUESTA                                        -->
-                        <!--                          **************************                                      -->
-                        <md-step id="cuarto" md-label="Satsifacción" md-description="Preguntas eferentes al nivel de satisfacción y disfrute del lugar visitado">
-                            <br>
-                            <label> Por favor, responda según su opinión </label>
-                            <br>
-                            <div>
-                                <label>Este lugar es satisfactorio:</label>
-                                <div>
-                                    <md-radio v-model="satisfaccion" value="1">Totalmente de acuerdo</md-radio>
-                                    <md-radio v-model="satisfaccion" value="2">De acuerdo</md-radio>
-                                    <md-radio v-model="satisfaccion" value="3">Indiferente</md-radio>
-                                    <md-radio v-model="satisfaccion" value="4">En desacuerdo</md-radio>
-                                    <md-radio v-model="satisfaccion" value="5">Totalmente en desacuerdo</md-radio>
-                                    <small>Valor de la elección: {{ satisfaccion }}</small>
-                                </div>
-                            </div>
-                        </md-step>
+                            <md-button class="md-raised md-primary; center">Enviar Respuestas</md-button>
 
-                        <!--                          QUINTA ETAPA DE ENCUESTA                                        -->
-                        <!--                          **************************                                      -->
-                        <md-step id="quinto" md-label="Datos Personales" md-description="Queremos saber un poco de ti, toda tu información estará protegida">
-                            <br>
-                            <label> Por favor, rellene todos los campos, sus datos se mantendrán confidenciales. </label>
-                            <br>
-                            <!--                              elemento                                          -->
-                            <div>
-                                <label>Elija su género:</label>
-                                <div>
-                                    <md-radio v-model="gender" value="M">Mujer</md-radio>
-                                    <md-radio v-model="gender" value="H">Hombre</md-radio>
-                                    <md-radio v-model="gender" value="X">Otro</md-radio>
-                                    <small>Valor de la elección: {{ gender }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label> Ciudad de origen: </label>
-                                <md-autocomplete v-model="selectedCountry" :md-options="countries" :md-open-on-focus="false">
-                                    <label>Escriba o elija una opción</label>
-                                </md-autocomplete>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Elija su estado civil:</label>
-                                <div>
-                                    <md-radio v-model="estadoCivil" value="S">Soltero</md-radio>
-                                    <md-radio v-model="estadoCivil" value="C">Casado</md-radio>
-                                    <md-radio v-model="estadoCivil" value="X">Otro</md-radio>
-                                    <small>Valor de la elección: {{ estadoCivil }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Seleccione su nivel de estudios:</label>
-                                <div>
-                                    <md-radio v-model="estudios" value="X">Sin estudios</md-radio>
-                                    <md-radio v-model="estudios" value="B">Básico</md-radio>
-                                    <md-radio v-model="estudios" value="M">Medio</md-radio>
-                                    <md-radio v-model="estudios" value="T">Técnico</md-radio>
-                                    <md-radio v-model="estudios" value="U">Universitario</md-radio>
-                                    <small>Valor de la elección: {{ estudios }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Mi edad se encuentra entre:</label>
-                                <div>
-                                    <md-radio v-model="edad" value="A">Menor de 18 años</md-radio>
-                                    <md-radio v-model="edad" value="B">18 y 30 años</md-radio>
-                                    <md-radio v-model="edad" value="C">31 y 40 años</md-radio>
-                                    <md-radio v-model="edad" value="D">Mayor de 40 años</md-radio>
-                                    <small>Valor de la elección: {{ edad }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Mi nivel de ingresos es:</label>
-                                <div>
-                                    <md-radio v-model="ingresos" value="A">Menor a $1 millón</md-radio>
-                                    <md-radio v-model="ingresos" value="B">Mayor a $1 millón</md-radio>
-                                    <md-radio v-model="ingresos" value="X">No respondo</md-radio>
-                                    <small>Valor de la elección: {{ ingresos }}</small>
-                                </div>
-                            </div>
-                            <!--                              elemento                                          -->
-                            <br>
-                            <div>
-                                <label>Mi situación laboral es:</label>
-                                <div>
-                                    <md-radio v-model="laboral" value="A">Trabajo tiempo completo</md-radio>
-                                    <md-radio v-model="laboral" value="B">Trabajo tiempo parcial</md-radio>
-                                    <md-radio v-model="laboral" value="C">Busco trabajo</md-radio>
-                                    <md-radio v-model="laboral" value="D">No vtrabajo</md-radio>
-                                    <small>Valor de la elección: {{ laboral }}</small>
-                                </div>
-                            </div>
-                        </md-step>
-
-                    </md-steppers>
+                        </md-steppers>
+                        {{form2}}
+                    </div>
                 </div>
-
             </md-tab>
         </md-tabs>
 
@@ -443,6 +220,35 @@
 <script>
     export default {
         name: "home",
+        props: ['datos'],
+        data: () => ({
+            form2:[],
+            array:[],
+            array2:null,
+            cantidadCategoria: null
+
+        }),
+
+        created() {
+        this.cantidad();
+        },
+        mounted(){
+        },
+
+        methods:{
+            cantidad(){
+             this.cantidadCategoria = this.datos.length
+                console.log("largo", this.cantidadCategoria)
+            for (let i=0; i<this.cantidadCategoria; i++){
+                let json ={
+                    respuesta: []
+                }
+                this.form2.push(json)
+            }
+            }
+
+
+        }
     }
 
 </script>

@@ -3,25 +3,63 @@
 
         <md-tabs md-sync-route class="md-transparent" md-alignment="fixed">
             <md-tab id="tab-home" md-label="Resumen" to="/components/tabs/home">
-<md-card style="width: 50%; height: 100%">
-    <md-card-header>
-        Gráfico con las cantidades máximas por Región
-    </md-card-header>
-                <div>
 
-                    <vue-chart  v-if="this.generalData !== null" type="horizontalBar" :data="this.generalData"></vue-chart>
-                    <div v-else>
-                        <div class=" lds-css ng-scope">
-                            <div style="width:100%;height:100%" class="lds-bars">
-                                <div></div><div></div><div></div><div></div> <div></div>
+                <div>
+                <md-card style="width: 45%; float: left">
+                    <md-card-header>
+                        <div class="md-title">Cantidades por región:</div>
+                    </md-card-header>
+                    <md-card-content>
+                                <div>
+                                    <vue-chart  v-if="this.generalData !== null" type="horizontalBar" :data="this.generalData"></vue-chart>
+                                    <div v-else>
+                                        <div class=" lds-css ng-scope">
+                                            <div style="width:100%;height:100%" class="lds-bars">
+                                                <div></div><div></div><div></div><div></div> <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </md-card-content>
+                </md-card>
+
+                <md-card style="width: 45%; float: right">
+                    <md-card-header>
+                        <div class="md-title">Promedio por región:</div>
+                    </md-card-header>
+                    <md-card-content>
+                        <div>
+                            <vue-chart  v-if="this.promedioData !== null" type="horizontalBar" :data="this.promedioData"></vue-chart>
+                            <div v-else>
+                                <div class=" lds-css ng-scope">
+                                    <div style="width:100%;height:100%" class="lds-bars">
+                                        <div></div><div></div><div></div><div></div> <div></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </md-card-content>
+                </md-card>
+
+                    <md-card style="width: 45%; float: left">
+                        <md-card-header>
+                            <div class="md-title">Cantidades por género:</div>
+                        </md-card-header>
+                        <md-card-content>
+                            <div>
+                                <vue-chart  v-if="this.tortaGenero !== null" type="pie" :data="this.tortaGenero"></vue-chart>
+                                <div v-else>
+                                    <div class=" lds-css ng-scope">
+                                        <div style="width:100%;height:100%" class="lds-bars">
+                                            <div></div><div></div><div></div><div></div> <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
 
                 </div>
-</md-card>
-
-
             </md-tab>
 
             <md-tab id="tab-pages" md-label="Estadísticas por Región" to="/components/tabs/pages">
@@ -377,7 +415,7 @@ bla
             /*  data en forma de lista del v-bind  */
             dataRegiones: null,
             dataUsuarios: null,
-
+            dataEncuestados: null,
             /* variables html */
             json: null,
             eleccion: "",
@@ -389,8 +427,11 @@ bla
 
             /*variables para el gráfico de regiones*/
             barData: null,
+            promedioData: null,
+            tortaGenero: null,
             showd: null,
-
+            resGeneral: null,
+            valores: [],
             /*variables para el gráfico de regiones*/
             generalData: null,
             showd2: null,
@@ -409,10 +450,14 @@ bla
             this.value = 0;
             this.dataRegiones = this.datos[0];
             this.dataUsuarios = this.datos[1];
+            this.dataEncuestados = this.datos[2];
+            this.guardarRes();
             this.crearGeneral();
-            console.log("grafico de resumen creado", this.generalData)
+            this.crearPromedio();
+            this.creaGraficoTorta();
+            console.log("grafico de promedio creado", this.generalData)
+            console.log("grafico creado", this.promedioData);
             this.barData = this.crearGrafico();
-            console.log("grafico creado", this.barData);
         },
 
 
@@ -441,7 +486,6 @@ bla
                     })
                 })
             },
-
 
             crearGrafico() {
                 console.log("VAlor para graficqar: ", this.value)
@@ -492,28 +536,55 @@ bla
                 console.log("estoy aqui miau 2", this.dataRegiones)
                 var tam = this.dataRegiones[0].estadisticas[0].categorias.length;
                 console.log("estoy aqui miau 3")
-                let resGeneral = this.dataRegiones[0].estadisticas[0].resultados
-                console.log("resGeneral:", resGeneral)
-                for (let k = 1; k < this.dataRegiones.length; k++) {
-                    console.log("k valeeeeeeeeeeee,", k)
-                    for (let i = 0; i < tam; i++) {
-                        console.log("estoy sumando", resGeneral[i], "con:", this.dataRegiones[k].estadisticas[0].resultados[i])
-                        resGeneral[i] = resGeneral[i] + this.dataRegiones[k].estadisticas[0].resultados[i]
-                        console.log("los valores quedan comooooooooo", resGeneral)
-                    }
-                }
-                console.log("salgo")
-                this.generalData.datasets[0].data = resGeneral
+                this.generalData.datasets[0].data = this.resGeneral
                 for (let i = 0; i < tam; i++) {
                     console.log("entro")
                     //console.log("las categorias son :", this.dataRegiones[this.value].estadisticas[0].categorias[i]);
                     this.generalData.labels.push(this.dataRegiones[0].estadisticas[0].categorias[i]);
                     // console.log("lso resultados son: ", this.dataRegiones[this.value].estadisticas[0].resultados[i]);
-
-
                 }
             },
 
+            guardarRes(){
+                var tam = this.dataRegiones[0].estadisticas[0].categorias.length;
+                this.resGeneral = this.dataRegiones[0].estadisticas[0].resultados
+                console.log("resGeneral:", this.resGeneral)
+                for (let k = 1; k < this.dataRegiones.length; k++) {
+                    console.log("k valeeeeeeeeeeee,", k)
+                    for (let i = 0; i < tam; i++) {
+                        console.log("estoy sumando", this.resGeneral[i], "con:", this.dataRegiones[k].estadisticas[0].resultados[i])
+                        this.resGeneral[i] = this.resGeneral[i] + this.dataRegiones[k].estadisticas[0].resultados[i]
+                        console.log("los valores quedan comooooooooo", this.resGeneral)
+                    }
+                }
+                console.log("salgo")
+            },
+
+            crearPromedio(){
+                    console.log("estoy aqui miau")
+                    this.promedioData = {
+                        labels: [],
+                        datasets: [
+                            {
+                                label: "Cantidad",
+                                backgroundColor: "#fbe246",
+                                data: null
+                            },
+
+                        ]
+                    };
+                    var tam = this.dataRegiones[0].estadisticas[0].categorias.length;
+                    for (let i = 0; i < tam; i++) {
+                        console.log("entro")
+                        this.promedioData.labels.push(this.dataRegiones[0].estadisticas[0].categorias[i]);
+                    }
+                for(let i=0; i<tam; i++){
+                    this.valores.push(this.resGeneral[i]/this.dataRegiones.length)
+                }
+                console.log("crearPromedio", this.valores)
+                this.promedioData.datasets[0].data = this.valores
+                console.log("promedio:", this.promedioData)
+            },
 
             crearJSON() {
                 let preguntass = []
@@ -538,6 +609,46 @@ bla
 
                 console.log("jsooooooooooooon", this.json)
             },
+
+            creaGraficoTorta(){
+                let dataGenero = []
+                let contadorM = 0;
+                let contadorF = 0;
+                let contadorX = 0;
+                for (let i=0; i<this.dataEncuestados.length; i++){
+                    if (this.dataEncuestados[i].sexo == "M"){
+                        contadorM++
+                        console.log("la cantidad de hombreses", contadorM)
+                    }
+                    else if(this.dataEncuestados[i].sexo == "F"){
+                        contadorF++
+                        console.log("lac antidad de mujer es", contadorF)
+                    }
+                    else {
+                        contadorX++
+                    }
+                }
+
+                dataGenero.push(contadorM);
+                dataGenero.push(contadorF);
+                dataGenero.push(contadorX);
+                console.log("la data queda en el orden:", dataGenero)
+                    this.tortaGenero = {
+                        labels: ["Hombres", "Mujeres", "Otro"],
+                        datasets: [
+                            {
+                                label: "",
+                                backgroundColor: ['#FF7043',
+                                    '#FFA726',
+                                    '#FFCA28',],
+                                data: dataGenero
+                            },
+                        ]
+                    }
+                },
+
+            // crear gráfico laboral, nivel de estudio, nivel de ingresos, estado civil, rango de edad
+
         }
     }
 
