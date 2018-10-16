@@ -1,36 +1,777 @@
+CATEGORIA:
+{       "ID" : "1",
+        "nombre" : "Percepción Cognitiva",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Las instalaciones en Chile son muy seguras",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+                      {
+                      "idpregunta" : "2",
+                      "pregunta" : "Las instalaciones en Chile son muy variadas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+                      {
+                      "idpregunta" : "3",
+                      "pregunta" : "Las instalaciones en Chile son muy cómodas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+		      {
+                      "idpregunta" : "4",
+                      "pregunta" : "Chile se caracteriza por su seguridad pública",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+		      {
+                      "idpregunta" : "5",
+                      "pregunta" : "Chile se caracteriza por su buen sistema de transporte",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+		      {
+                      "idpregunta" : "6",
+                      "pregunta" : "Chile se caracteriza por su buena señalización",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+		      {
+                      "idpregunta" : "7",
+                      "pregunta" : "Chile tiene interesantes atractivos culturales",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+		      {
+                      "idpregunta" : "8",
+                      "pregunta" : "Chile tiene interesantes atractivos folklóricos",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+		      {
+                      "idpregunta" : "9",
+                      "pregunta" : "Chile tiene interesantes atractivos históricos",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+		      {
+                      "idpregunta" : "10",
+                      "pregunta" : "Chile tiene interesantes costumbres propias",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
 
-/*
- * Script que se encarga de poblar la base de datos
- *
- */
+{       "ID" : "2",
+        "nombre" : "Evaluación Afectiva",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Chile me hace sentir feliz",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+		      {
+                      "idpregunta" : "2",
+                      "pregunta" : "Chile me hace sentir contento",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+		      {
+                      "idpregunta" : "3",
+                      "pregunta" : "Chile me hace sentir alegre",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Chile me hace sentir divertido",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }, 
+			{
+                      "idpregunta" : "5",
+                      "pregunta" : "Chile me hace sentir entusiasmado",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
 
-print("STARTING SCRIPT");
-//Host donde está nuestra base de datos, no tiene que ser nuestro equipo local, puede ser cualquier mongoDb.
-//conn = new Mongo("localhost");
-//Nombre de la base de datos que vamos a utilizar
-//db = conn.getDB("antuandb");
+{       "ID" : "3",
+        "nombre" : "Beneficio Hedónico",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Me encanta Chile por sus formas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Me encanta Chile por su estética",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{		
+                      "idpregunta" : "3",
+                      "pregunta" : "Chile es un placer para mis sentidos",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Me encanta observar todos los sitios de Chile",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "5",
+                      "pregunta" : "Chile es especial para distraerse",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "6",
+                      "pregunta" : "Chile es de mucho entuasiasmo, tanto, que me contagia",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "7",
+                      "pregunta" : "Chile es ideal para observar como se divierten los demás",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "8",
+                      "pregunta" : "Chile es para gozar la vida",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "9",
+                      "pregunta" : "Chile me hace escapar de mi rutina diaria",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "10",
+                      "pregunta" : "Chile me hace sentir en otro mundo",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "11",
+                      "pregunta" : "Me siento tan involucrado(a) a Chile, que olvido todo lo demás",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
 
-/*Limpiamos la base de datos por si existia algo antes*/
-db.dropDatabase();
+
+{       "ID" : "4",
+        "nombre" : "Beneficio Simbólico",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Chile refleja lo que soy",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Chile es coherente con como me veo a mi mismo",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Chile se identifica con mi estilo de vida",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Chile es ideal para mis amigos",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "5",
+                      "pregunta" : "Chile refleja mi forma de ser",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
 
 
-/*coleciones de nuestro modelo de datos*/
-db.createCollection("usuarios");
-db.createCollection("region");
-db.createCollection("categoria");
+{       "ID" : "5",
+        "nombre" : "Beneficio Funcional",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "En Chile conseguí hacer turismo justo como lo necesitaba",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "En Chile encontré las vacaciones que estaba buscando",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "En Chile es conveniente vacacionar",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Comparado con otros lugares similares, Chile es el mejor lugar para vacacionar",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "5",
+                      "pregunta" : "En Chile encuentro vacaciones diseñadas para mi",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "6",
+        "nombre" : "Familiaridad",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Chile me es muy familiar",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Chile me es muy conocido",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "De Chile siempre estoy bien informado(a)",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "De Chile siempre estoy consciente",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "5",
+                      "pregunta" : "Mis amigos y familiares dicen que conozco muy bien Chile",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "7",
+        "nombre" : "Satisfacción",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "En Chile siempre he vivido experiencias muy satisfactorias",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "En Chile siempre me siento muy satisfecho",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "En Chile siempre me siento muy satisfecho porque la atención recibida es ideal",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "En Chile siempre he logrado cosas muy importantes",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "5",
+                      "pregunta" : "Estoy muy satisfecho con mi decisión de visitar Chile",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "8",
+        "nombre" : "Reputación",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Chile tiene una muy buena reputación",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Chile tiene mejor reputación que otros lugares similares",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Chile es muy respetado por la gente",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }, 
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "De Chile la gente habla muy bien",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "5",
+                      "pregunta" : "La buena reputación de Chile la respalda su historia",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "9",
+        "nombre" : "Honestidad (Confianza en los habitantes de Chile)",
+	      "descripcion" : "Mi percepción es que la gente de Chile...",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Nunca realiza falsas afirmaciones",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Es honesta",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Es clara y oportuna",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Es siempre franca",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "10",
+        "nombre" : "Benevolencia (Confianza en los habitantes de Chile)",
+	"descripcion" : "Mi percepción es que la gente de Chile...",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Tiene en cuenta como repercuten sus acciones en los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Entrega orientación adecuada a los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "No haría nada intencional que pudiera perjudicar a los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Se interesa por el bienestar del turista",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "11",
+        "nombre" : "Competencia (Confianza en los habitantes de Chile)",
+	"descripcion" : "Mi percepción es que la gente de Chile...",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Tiene en general una elevada cultura turística",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Tiene habilidad para tratar con los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Tiene experiencia para tratar con los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Tiene la destreza necesaria para hacer sus actividades",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "12",
+        "nombre" : "Honestidad (Confianza en las Instituciones Públicas)",
+	"descripcion" : "Mi percepción es que las Instituciones Públicas de Chile al entregar información...",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Asumen sus compromisos",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Son claras y oportunas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Son fiables",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Se caracterizan por su transparencia",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "13",
+        "nombre" : "Benevolencia (Confianza en las Instituciones Públicas)",
+	"descripcion" : "Mi percepción es que las Instituciones Públicas de Chile al entregar información...",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Se preocupan por el bienestar de los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Tienen en cuenta como repercuten sus decisiones en los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Actúan en beneficio de los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },	
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Están abiertas a las necesidades de los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "14",
+        "nombre" : "Competencia (Confianza en las Instituciones Públicas)",
+	"descripcion" : "Mi percepción es que las Instituciones Públicas de Chile al entregar información...",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Tienen la habilidad necesaria para realizar su trabajo",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Tienen bastante conocimiento del lugar",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Tienen la destreza necesaria para realizar sus actividades",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Conocen a los turistas como para ofrecerles la información que necesitan",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "15",
+        "nombre" : "Honestidad (Confianza en las Instituciones Privadas)",
+	"descripcion" : "Mi percepción es que las Instituciones Privadas de Chile al ofrecer sus servicios...",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Asumen sus compromisos",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Son claras y oportunas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Son fiables",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Se caracterizan por su transparencia",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "16",
+        "nombre" : "Benevolencia (Confianza en las Instituciones Privadas)",
+	"descripcion" : "Mi percepción es que las Instituciones privadas de Chile al ofrecer sus servicios...",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Se preocupan por el bienestar de los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Tienen en cuenta como repercuten sus decisiones en los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Actúan en beneficio de los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Están abiertas a las necesidades de los turistas",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "17",
+        "nombre" : "Competencia (Confianza en las Instituciones Privadas)",
+	"descripcion" : "Mi percepción es que las Instituciones Privadas de Chile al ofrecer sus servicios...",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Tienen la habilidad necesaria para realizar su trabajo",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "Tienen la experiencia necesaria en servicios turísticos",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Tienen la destreza necesaria para realizar sus actividades",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Conocen a los turistas como para ofrecerles los servicios que necesitan",
+                      "escala" : [1, 2, 3, 4, 5, 6, 7]
+                      }]
+},
+
+{       "ID" : "18",
+        "nombre" : "Datos Personales",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Por favor señale su nivel de estudios: ",
+                      "opciones" : ["Básica incompleta","Básica completa","Media incompleta","Media completa","Técnico (o instituto profesional) incompleto","Técnico (o instituto profesional) completo","Universitario incompleto","Universitario completo","Estudios de postgrado incompleto","Estudios de postgrado completo","Otro","No sabe-No Responde"]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "¿Cuál es su situación laboral actual?",
+                      "opciones" : ["Trabaja part time","Trabaja full time","Busca empleo", "Dueña de Casa","Jubilado","Estudiante","No sabe-No responde"]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Nivel de Ingresos del Grupo Familiar:",
+                      "opciones" : ["Menos de 150.000","Entre 150.001 y 250.000","Entre 250.001 y 450.000","Entre 450.001 y 750.000","Entre 750.001 y 1.000.000","Entre 1.000.001 y 1.500.000", "Entre 1.500.001 y 2.000.000", "Entre 2.000.001 y 3.000.000", "Más de 3.000.001", "No sabe-No responde"]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Sexo del entrevistado",
+                      "opciones" : ["Masculino","Femenino"]
+                      },
+			{
+                      "idpregunta" : "5",
+                      "pregunta" : "Estado Civil",
+                      "opciones" : ["Casada(o)","Soltera(o)","Divorciada(o) o Separada(o)","Viuda(o)","Otro","No sabe-No responde"]
+                      },
+			{
+                      "idpregunta" : "6",
+                      "pregunta" : "Intervalo de edad del entrevistado",
+                      "opciones" : ["Entre 18 y 24", "Entre 25 y 34","Entre 35 y 44","Entre 45 y 54","Entre 55 y 64","Mayor de 65", "No sabe-No responde"]
+                      }]
+}
+
+CATEGORIAS.
+1- Percepcion Cognitiva
+2- Evaluacion Afectiva
+3- Beneficio Hedónico
+4- Beneficio Simbólico
+5- Beneficio Funcional
+6- Familiaridad
+7- Satisfacción
+8- Reputación
+9- Honestidad (Confianza en la gente)
+10- Benevolencia (Confianza en la gente)
+11- Competencia (Confianza en la gente)
+12- Honestidad (Confianza en las instituciones publicas)
+13- Benevolencia (Confianza en las instituciones publicas)
+14- Competencia (Confianza en las instituciones publicas)
+15- Honestidad (Confianza en las instituciones privadas)
+16- Benevolencia (Confianza en las instituciones privadas)
+17- Competencia (Confianza en las instituciones privadas)
+18- Datos Personales
 
 
-/* Usuarios */
-print("***********CREANDO USUARIOS*********");
+/-----------------------------------------------------
 
+REGION:
+{
 
+        "ID" : "1",
+        "nombre" : "XV - Arica y Parinacota",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+
+{
+
+        "ID" : "2",
+        "nombre" : "I - Tarapacá",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+
+{
+
+        "ID" : "3",
+        "nombre" : "II - Antofagasta",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+
+{
+
+        "ID" : "4",
+        "nombre" : "III - Atacama",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+
+{
+
+        "ID" : "5",
+        "nombre" : "IV - Coquimbo",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+
+{
+
+        "ID" : "6",
+        "nombre" : "V - Valparaíso",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+
+{
+
+        "ID" : "7",
+        "nombre" : "VI - Libertador Bernardo O'Higgins",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+{
+
+        "ID" : "8",
+        "nombre" : "VII - Maule",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+{
+
+        "ID" : "9",
+        "nombre" : "VIII - Bío-Bío",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+{
+
+        "ID" : "10",
+        "nombre" : "IX - La Araucanía",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+{
+
+        "ID" : "11",
+        "nombre" : "XIV - Los Ríos",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+{
+
+        "ID" : "12",
+        "nombre" : "X - Los Lagos",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+{
+
+        "ID" : "13",
+        "nombre" : "XI - Aysén",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+{
+
+        "ID" : "14",
+        "nombre" : "XII - Magallanes y la Antártica Chilena",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+{
+
+        "ID" : "15",
+        "nombre" : "RM - Metropolitana",
+        "estadisticas" : [{
+                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
+                          "resultados" : [0, 0, 0, 0, 0, 0],
+                          "mes": 1,
+                          "anio": 2018
+        }]
+
+}
+
+put:
+{
+	"resultados":[1, 23, 342, 2, 1, 1]
+}
+/-----------------------------------------------------
+
+USUARIOS:
 user1 = {
 
-          "usuario_id" : "0",
-          "nombre" : "Admin",
-          "mail" : "mail@mail.cl",
-          "pass": "asdf",
-          "ban":false,
+          "id" : "1",
+          "nombre" : "Admin1",
+          "correo" : "mail@mail.cl",
+          "contrasena": "asdf",
+          "activo":true,
           "rol": 1
 
 };
@@ -38,413 +779,38 @@ user1 = {
 user2 = {
 
 
-          "usuario_id" : "1",
-          "nombre" : "Empresa",
-          "mail" : "mail2@mail.cl",
-          "pass": "asdf",
-          "ban":false,
+          "id" : "2",
+          "nombre" : "Admin2",
+          "correo" : "mail2@mail.cl",
+          "contrasena": "asdf2",
+          "activo":true,
           "rol": 2
 
 };
 
-
-
-print("***********CREANDO REGIONES*********");
-
-/* Regiones */
-
-
-region1 = {
-
-        "region_id" : "1",
-        "nombre" : "Arica y Parinacota y Tarapacá",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region2 = {
-
-        "region_id" : "2",
-        "nombre" : "Antofagasta",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region3 = {
-
-        "region_id" : "3",
-        "nombre" : "Atacama y Coquimbo",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region4 = {
-
-        "region_id" : "4",
-        "nombre" : "Valparaíso",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region5 = {
-
-        "region_id" : "5",
-        "nombre" : "O'Higgins",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region6 = {
-
-        "region_id" : "6",
-        "nombre" : "Maule",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region7 = {
-
-        "region_id" : "7",
-        "nombre" : "Biobío y Araucanía",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region8 = {
-
-        "region_id" : "8",
-        "nombre" : "Araucanía",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region9 = {
-
-        "region_id" : "9",
-        "nombre" : "Los Ríos y Los Lagos",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region10 = {
-
-        "region_id" : "10",
-        "nombre" : "Los Lagos y Aysén",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region11 = {
-
-        "region_id" : "11",
-        "nombre" : "Magallanes",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-region12 = {
-
-        "region_id" : "12",
-        "nombre" : "Metropolitana De Santiago",
-        "categorías" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-        "estadísticas" : [0, 0, 0, 0, 0, 0]
-
-};
-
-
-
-print("***********CREANDO CATEGORÍAS*********");
-
-/* Categorías */
-
-
-cat1 = {
-
-        "ID" : "0",
-        "nombre" : "Familiaridad",
-        "descripcion" : "",
-        "preguntas" : [{
-                      "pregunta" : "Chile me es muy familiar",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile me es muy conocido",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "De Chile me siempre estoy muy informado",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "De Chile me siempre estoy consciente",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Mis amigos y familiares dicen que conozco muy bien Chile",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      }
-]
-
-};
-
-cat2 = {
-
-        "ID" : "1",
-        "nombre" : "Satisfacción",
-        "descripcion" : "",
-        "preguntas" : [{
-                      "pregunta" : "Chile me hace sentir feliz",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile me hace sentir contento",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile me hace sentir alegre",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile me hace sentir divertido",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile me hace sentir entusiasmado",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "En Chile he vivido experiencias muy satisfactorias",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "En Chile siempre me siento muy satisfecho",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "En Chile siempre me siento muy satisfecho porque la atención recibida es ideal",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "En Chile he logrado cosas muy importantes",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Estoy muy satisfecho de mi decisión de visitar Chile",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-
-]
-
-};
-
-cat3 = {
-
-        "ID" : "2",
-        "nombre" : "Seguridad",
-        "descripcion" : "",
-        "preguntas" : [{
-                      "pregunta" : "Las instalaciones en Chile son muy seguras",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Las instalaciones en Chile son muy variadas",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Las instalaciones en Chile son muy cómodas",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile se caracteriza por su seguirdad pública",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile se caracteriza por su buen sistema de transporte",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile se caracteriza por su buena señalización",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      }
-]
-
-};
-
-cat4 = {
-
-        "ID" : "3",
-        "nombre" : "Reputación",
-        "descripcion" : "",
-        "preguntas" : [{
-                      "pregunta" : "Chile tiene una muy buena reputación",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile tiene mejor reputación que otros lugares similares",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "Chile es muy respetado por la gente",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "De Chile la gente habla muy bien",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "La buena reputación de Chile la respalda su historia",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "La gente en Chile tienen en cuenta como repercuten sus acciones en los turistas",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "La gente en Chile entrega orientación adecuada a los turistas",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "La gente en Chile no haría nada intencional que pudiera perjudicar a los turistas",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      },
-                      {
-                      "pregunta" : "La gente en Chile se interesa por el bienestar del turista",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7],
-                      "resultados" : [0, 0, 0, 0, 0, 0, 0]
-                      }
-]
-
-};
-
-
-print("***********GUARDANDO USUARIOS*********");
-
-db.usuarios.save(user1);
-db.usuarios.save(user2);
-
-print("***********GUARDANDO REGIONES*********");
-
-db.region.save(region1);
-db.region.save(region2);
-db.region.save(region3);
-db.region.save(region4);
-db.region.save(region5);
-db.region.save(region6);
-db.region.save(region7);
-db.region.save(region8);
-db.region.save(region9);
-db.region.save(region10);
-db.region.save(region11);
-db.region.save(region12);
-
-print("***********GUARDANDO CATEGORÍAS*********");
-
-db.categoria.save(cat1);
-db.categoria.save(cat2);
-db.categoria.save(cat3);
-db.categoria.save(cat4);
-
-print("SCRIPT FINALIZADO");
-
-
-
-/*---------------------------------------------------------------*/
-/*---------------------------------------------------------------*/
-                                PRUEBAS
-/*---------------------------------------------------------------*/
-/*---------------------------------------------------------------*/
-{"ID" : "83642",
-        "nombre" : "Satisfacción",
-        "descripcion" : "",
-        "preguntas" : [{
-        			  "id_pregunta":"1",
-                      "pregunta" : "Chile me hace sentir feliz",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      },
-                      {
-                      "id_pregunta":"2",
-                      "pregunta" : "Chile me hace sentir contento",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      },
-                      {
-                      "id_pregunta":"3",
-                      "pregunta" : "Chile me hace sentir alegre",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      },
-                      {
-                      "id_pregunta":"4",
-                      "pregunta" : "Chile me hace sentir divertido",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      },
-                      {
-                      "id_pregunta":"5",
-                      "pregunta" : "Chile me hace sentir entusiasmado",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      },
-                      {
-                      "id_pregunta":"6",
-                      "pregunta" : "En Chile he vivido experiencias muy satisfactorias",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      },
-                      {
-                      "id_pregunta":"7",
-                      "pregunta" : "En Chile siempre me siento muy satisfecho",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      },
-                      {
-                      "id_pregunta":"8",
-                      "pregunta" : "En Chile siempre me siento muy satisfecho porque la atención recibida es ideal",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      },
-                      {
-                      "id_pregunta":"9",
-                      "pregunta" : "En Chile he logrado cosas muy importantes",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      },
-                      {
-                      "id_pregunta":"10",
-                      "pregunta" : "Estoy muy satisfecho de mi decisión de visitar Chile",
-                      "escala" : [1, 2, 3, 4, 5, 6, 7]
-                      }
-
-]}
+/-----------------------------------------------------
+
+ENCUESTADO:
+{
+        "correo" : "as2d@asd.com",
+        "nivelDeEstudio": "Básica Completa",
+        "situacionLaboral": "Busca empleo",
+        "nivelDeIngreso": "Entre 150.001 y 250.000",
+        "sexo": "Masculino",
+        "estadoCivil": "Soltera(o)",
+        "rangoDeEdad": "Entre 25 y 34",
+        "fecha": "2018-08-25",
+        "idregion": "1",
+        "telefono": "283728233",
+        "resultados": [{
+                    "idcategoria": "1",
+                    "idpregunta": ["1","2","3","4","5","6","7","8","9","10"],
+                    "respuesta": [7,7,7,7,5,3,5,7,8,5]
+        },
+        {
+                    "idcategoria": "2",
+                    "idpregunta": ["1","2","3","4","5"],
+                    "respuesta": [7,7,7,7,5]
+        }]
+
+}

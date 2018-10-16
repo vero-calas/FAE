@@ -26,7 +26,11 @@ public class CategoriaService {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Categoria create(@RequestBody Categoria resource){
-        return categoriaRepository.save(resource);
+        if(categoriaRepository.findById(resource.getID()).isPresent())
+            return null;
+        else
+            return categoriaRepository.save(resource);
+
     }
 
     //Actualizar una categoría agregando una pregunta
@@ -42,15 +46,59 @@ public class CategoriaService {
         return categoria;
     }
 
-    /*
+    //Actualizar una pregunta de una categoría dada.
     @RequestMapping(value="/updatePregunta/{categoria_id}/{pregunta_id}",method = RequestMethod.PUT)
     @ResponseStatus
     @ResponseBody
     public Categoria actualizarPregunta(@PathVariable("categoria_id") String categoria_id, @PathVariable("pregunta_id") String pregunta_id, @RequestBody Pregunta pregunta){
-        Categoria categoria = categoriaRepository.findById()
-    }*/
+        Categoria categoria = categoriaRepository.findById(categoria_id).get();
+        List<Pregunta> listadoPreguntas = categoria.getPreguntas();
+        Pregunta pregunta1;
+        for(int i = 0; i < listadoPreguntas.size(); i++){
+            pregunta1 = listadoPreguntas.get(i);
+            if(pregunta1.getIdpregunta().equals(pregunta_id)){
+                pregunta1.setPregunta(pregunta.getPregunta());
+                pregunta1.setEscala(pregunta.getEscala());
+                pregunta1.setOpciones(pregunta.getOpciones());
+                listadoPreguntas.set(i,pregunta1);
+                categoria.setPreguntas(listadoPreguntas);
+                categoriaRepository.save(categoria);
+                return categoria;
+            }
+        }
+        return categoria;
+    }
 
-    //Agregar filtro por id.
+    //Eliminar una pregunta dada una categoria
+    @RequestMapping(value="/deletePregunta/{categoria_id}/{pregunta_id}",method = RequestMethod.DELETE)
+    @ResponseStatus
+    @ResponseBody
+    public List<Categoria> eliminarPregunta(@PathVariable("categoria_id") String categoria_id, @PathVariable("pregunta_id") String pregunta_id){
+        Categoria categoria = categoriaRepository.findById(categoria_id).get();
+        List<Pregunta> listadoPreguntas = categoria.getPreguntas();
+        for(int i = 0; i < listadoPreguntas.size(); i++){
+            if(listadoPreguntas.get(i).getIdpregunta().equals(pregunta_id)){
+                listadoPreguntas.remove(i);
+                categoria.setPreguntas(listadoPreguntas);
+                categoriaRepository.save(categoria);
+                return categoriaRepository.findAll();
+            }
+        }
+
+        return categoriaRepository.findAll();
+    }
+
+    //Actualizar una categoria (Sin actualizar preguntas)
+    @RequestMapping(value="/updateCategoria/{categoria_id}",method = RequestMethod.PUT)
+    @ResponseStatus
+    @ResponseBody
+    public List<Categoria> actualizarCategoria(@PathVariable("categoria_id") String categoria_id, @RequestBody Categoria categoria){
+        Categoria categoria1 = categoriaRepository.findById(categoria_id).get();
+        categoria1.setNombre(categoria.getNombre());
+        categoria1.setDescripcion(categoria.getDescripcion());
+        categoriaRepository.save(categoria1);
+        return categoriaRepository.findAll();
+    }
 
 
     //Entrega el último ID de la Categoría + 1

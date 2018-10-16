@@ -25,7 +25,12 @@ public class RegionService {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Region create(@RequestBody Region resource){ return regionRepository.save(resource); }
+    public Region create(@RequestBody Region resource){
+        if(regionRepository.findById(resource.getID()).isPresent())
+            return null;
+        else
+            return regionRepository.save(resource);
+    }
 
     //Actualizar estadisticas
     @RequestMapping(value="/update/{id}/{mes}-{anio}",method = RequestMethod.PUT)

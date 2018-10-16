@@ -25,10 +25,10 @@ public class Encuestado {
     public String sexo;
 
     @Field("estado_civil")
-    public String estadoCivil;  //DUDA
+    public String estadoCivil;
 
     @Field("rango_de_edad")
-    public String rangoDeEdad; //DUDA
+    public String rangoDeEdad;
 
     @Field("telefono")
     public String telefono;
@@ -36,11 +36,11 @@ public class Encuestado {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     public Date fecha = new Date();
 
-    @Field("resultados")
-    public List<Resultado> resultados;
-
     @Field("idregion")
     public String idregion;
+
+    @Field("resultados")
+    public List<Resultado> resultados;
 
     public Encuestado(){}
 
