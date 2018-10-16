@@ -293,20 +293,32 @@
                             <label>Escriba el nombre del usuario</label>
                             <md-textarea v-model="buscarNom"></md-textarea>
                         </md-field>
-                     <!--   <md-button v-on:click="buscarPorNombre(buscarNom)" class="md-raised">Buscar</md-button> -->
-bla
-                        {{mostrarNom}}
-                        {{this.mostrarNom}}
-                        <br><hr>
+                     <md-button v-on:click="buscarPorNom" class="md-raised">Buscar</md-button>
+                        <div v-if="mostrarNom == null">
+                        </div>
+                        <div class="center" v-else>
+                             <md-card  v-for="user in mostrarNom">
+                            <label>Nombre: {{user.nombre}}</label><br>
+                            <label>Correo: {{user.correo}}</label><br>
+                            <label>Rol: {{user.rol}}</label>
+                        </md-card>
+                        </div>
+                        <hr>
                         <label>Buscar por el correo:</label>
                         <md-field>
                             <label>Escriba el correo del usuario</label>
                             <md-textarea v-model="buscarCorr"></md-textarea>
                         </md-field>
-                   <!--     <md-button v-on:click="buscarPorCorreo" class="md-raised">Buscar</md-button> -->
-bla
-
-                        {{this.mostrarCorr}}
+                   <md-button v-on:click="buscarPorCorr" class="md-raised">Buscar</md-button>
+                        <div v-if="mostrarCorr == null">
+                        </div>
+                        <div class="center" v-else>
+                            <md-card  v-for="correo in mostrarCorr">
+                                <label>Nombre: {{correo.nombre}}</label><br>
+                                <label>Correo: {{correo.correo}}</label><br>
+                                <label>Rol: {{correo.rol}}</label>
+                            </md-card>
+                        </div>
 
 
                     </md-card-media>
@@ -341,7 +353,10 @@ bla
 
             <br>
                     <hr>
-            <label>Cantidad de preguntas:</label>
+                            <md-checkbox v-model="booleanEscala">Crear preguntas por escala</md-checkbox>
+                            <md-checkbox v-model="booleanOpciones">Crear preguntas con opciones</md-checkbox>
+            <div v-if="booleanOpciones">
+                            <label>Cantidad de preguntas:</label>
                     <md-field>
                     <md-select name="cantPreguntas" id="cantPreguntas" v-model="cantPreguntas">
                         <md-option value="1">1</md-option>
@@ -359,25 +374,62 @@ bla
                     <label>Pregunta {{i}}:</label>
                     <md-field>
                         <label>Ingrese la pregunta que desea realizar</label>
-                        <md-textarea :id=i v-model="preguntaCate" md-autogrow></md-textarea>
+                        <md-textarea :id=i v-model="preguntaCate[i]" md-autogrow></md-textarea>
                     </md-field>
                     <br>
                     <label>Escala:</label>
                     <md-field>
                         <label>Ingrese la escala con que desea evaluar la pregunta</label>
-                        <md-textarea :id=i v-model="escalas" md-autogrow></md-textarea>
+                        <md-textarea :id=i v-model="opciones[i]" md-autogrow></md-textarea>
                     </md-field>
-                    <label>*Seguir el formato: valor1, valor2, valor3 ...</label>
+
                     <hr>
                     {{this.preguntass}}
                 </div>
+            </div>
+                            <div v-if="booleanEscala && booleanOpciones==false">
+                                <label>Cantidad de preguntas:</label>
+                                <md-field>
+                                    <md-select name="cantPreguntas" id="cantPreguntas" v-model="cantPreguntas2">
+                                        <md-option value="1">1</md-option>
+                                        <md-option value="12">2</md-option>
+                                        <md-option value="123">3</md-option>
+                                        <md-option value="1234">4</md-option>
+                                        <md-option value="12345">5</md-option>
+                                    </md-select>
+                                </md-field>
+                                <hr>
+                                <div v-for="i in this.cantPreguntas2" >
 
-                    <md-button v-on:click="crearJSON" class="md-raised">Aceptar</md-button>
+                                    <br>
+                                    <label>Pregunta {{i}}:</label>
+                                    <md-field>
+                                        <label>Ingrese la pregunta que desea realizar</label>
+                                        <md-textarea :id=i v-model="preguntaCate2[i]" md-autogrow></md-textarea>
+                                    </md-field>
+                                    <br>
+                                    <label>Escala:</label>
+                                    <md-field>
+                                        <md-radio v-model="escalas" value="my-radio">1</md-radio>
+                                        <md-radio v-model="escalas" value="my-radio">2</md-radio>
+                                        <md-radio v-model="escalas" value="my-radio">3</md-radio>
+                                        <md-radio v-model="escalas" value="my-radio">4</md-radio>
+                                        <md-radio v-model="escalas" value="my-radio">5</md-radio>
+                                        <md-radio v-model="escalas" value="my-radio">6</md-radio>
+                                        <md-radio v-model="escalas" value="my-radio">7</md-radio>
+
+                                    </md-field>
+
+                                    <hr>
+                                    {{this.preguntass}}
+                                </div>
+                            </div>
+
+                            <md-button v-on:click="crearJSON" class="md-raised">Aceptar</md-button>
                         </md-card-media>
                     </md-card>
                 </div>
             </md-tab>
-
 
             <md-tab id="tab-estudio" md-label="Enviar estudio" to="/components/tabs/estudio">
 
@@ -474,10 +526,10 @@ bla
             /* variables html */
             json: null,
             eleccion: "",
-            buscarCorr: "",
-            buscarNom: "",
+            buscarCorr: null,
+            buscarNom: null,
             mostrarCorr: [],
-            mostrarNom: null,
+            mostrarNom: [],
 
 
             /*variables para el gráfico de regiones*/
@@ -498,8 +550,14 @@ bla
             nombreCategoria: null,
             description: null,
             escalas: [],
+            opciones: [],
             cantPreguntas: null,
-            preguntaCate: null
+            cantPreguntas2: null,
+            preguntaCate: [],
+            preguntaCate2: [],
+            booleanEscala: false,
+            booleanOpciones: false
+
         }),
 
         created() {
@@ -516,6 +574,8 @@ bla
             this.crearTortaEstadoCivil();
             this.crearTortaEdad();
             this.crearTortaLaboral();
+            this.buscarPorNom();
+            this.buscarPorCorr();
             console.log("grafico de promedio creado", this.generalData)
             console.log("grafico creado", this.promedioData);
             this.barData = this.crearGrafico();
@@ -869,9 +929,30 @@ bla
                         },
                     ]
                 }
-            }
-
+            },
             //
+
+            buscarPorCorreo(){
+
+            },
+            buscarPorNom(){
+
+                for (let i=0; i<this.dataUsuarios.length; i++){
+                    if(this.dataUsuarios[i].nombre.includes(this.buscarNom)){
+                        this.mostrarNom.push(this.dataUsuarios[i])
+                    }
+                }
+
+            },
+            buscarPorCorr(){
+
+                for (let i=0; i<this.dataUsuarios.length; i++){
+                    if(this.dataUsuarios[i].correo.includes(this.buscarCorr)){
+                        this.mostrarCorr.push(this.dataUsuarios[i])
+                    }
+                }
+
+            }
         }
     }
 
