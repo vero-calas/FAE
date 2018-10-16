@@ -116,16 +116,6 @@
                     <label>e-ematur pretende ser el proveedor líder a nivel mundial de soluciones tecnológicas de marketing para mejorar la percepción de los destinos turísticos. A través de un modelo de suscripción predecible y asequible, nuestros clientes podrán adquirir y aplicar las mejores estrategias de marketing para posicionar, consolidar y/o recordar la imagen de un destino turístico a nivel internacional, nacional o local. Servicios tecnológicos que serán complementados con asesorías y capacitaciones especializadas dictadas por expertos, en el tratamiento de la imagen de los destinos turísticos.</label>
                      </md-card-content>
                     </md-card>
-                    <md-card class="card">
-                        <md-card-header>
-                            <div class="md-title">Objetivos: </div>
-                        </md-card-header>
-                        <md-card-content>
-                            <label>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat.</label>
-                        </md-card-content>
-                    </md-card>
                 </div>
             </div>
 

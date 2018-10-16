@@ -124,13 +124,13 @@
                         <md-card style="width:98%">
                             <md-card-header>
                                 <div class="md-title" style="text-align: center">
-                                    Resumen:
+                                    Datos específicos:
                                 </div>
                             </md-card-header>
                         </md-card>
 
                         <!-- Grafico -->
-                        <md-card>
+                        <md-card style="width: 97%; float: left">
                             <md-card-header>
                                 <div class="md-title">Aprobación en distintos ámbitos</div>
                             </md-card-header>
@@ -143,21 +143,6 @@
                                 </div>
                                </div>
                             </md-card-media>
-                            <md-card-expand>
-                                <md-card-expand-content>
-                                    <md-card-content>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                                    </md-card-content>
-                                </md-card-expand-content>
-                                <md-card-actions md-alignment="space-between">
-                                    <md-card-expand-trigger>
-                                        <md-button class="md-icon-button">
-                                            <md-icon>keyboard_arrow_down</md-icon>
-                                        </md-button>
-                                    </md-card-expand-trigger>
-                                </md-card-actions>
-
-                            </md-card-expand>
                         </md-card>
 
 
@@ -349,8 +334,6 @@
                     <label>Escriba una pequeña descripcion para la categoría</label>
                     <md-textarea v-model="description"></md-textarea>
                 </md-field>
-
-
             <br>
                     <hr>
                             <md-checkbox v-model="booleanEscala">Crear preguntas por escala</md-checkbox>
@@ -367,21 +350,21 @@
                     </md-select>
                         </md-field>
                     <hr>
-
                 <div v-for="i in this.cantPreguntas" >
-
                     <br>
                     <label>Pregunta {{i}}:</label>
                     <md-field>
                         <label>Ingrese la pregunta que desea realizar</label>
                         <md-textarea :id=i v-model="preguntaCate[i]" md-autogrow></md-textarea>
                     </md-field>
+                    {{preguntaCate}}
                     <br>
                     <label>Escala:</label>
                     <md-field>
                         <label>Ingrese la escala con que desea evaluar la pregunta</label>
                         <md-textarea :id=i v-model="opciones[i]" md-autogrow></md-textarea>
                     </md-field>
+                    {{opciones}}
 
                     <hr>
                     {{this.preguntass}}
@@ -407,20 +390,19 @@
                                         <label>Ingrese la pregunta que desea realizar</label>
                                         <md-textarea :id=i v-model="preguntaCate2[i]" md-autogrow></md-textarea>
                                     </md-field>
+                                    {{preguntaCate2}}
                                     <br>
                                     <label>Escala:</label>
                                     <md-field>
-                                        <md-radio v-model="escalas" value="my-radio">1</md-radio>
-                                        <md-radio v-model="escalas" value="my-radio">2</md-radio>
-                                        <md-radio v-model="escalas" value="my-radio">3</md-radio>
-                                        <md-radio v-model="escalas" value="my-radio">4</md-radio>
-                                        <md-radio v-model="escalas" value="my-radio">5</md-radio>
-                                        <md-radio v-model="escalas" value="my-radio">6</md-radio>
-                                        <md-radio v-model="escalas" value="my-radio">7</md-radio>
-
+                                        <md-radio v-model="escalas" value="1"><label>1</label></md-radio>
+                                        <md-radio v-model="escalas" value="2"><label>2</label></md-radio>
+                                        <md-radio v-model="escalas" value="3"><label>3</label></md-radio>
+                                        <md-radio v-model="escalas" value="4"><label>4</label></md-radio>
+                                        <md-radio v-model="escalas" value="5"><label>5</label></md-radio>
+                                        <md-radio v-model="escalas" value="6"><label>6</label></md-radio>
+                                        <md-radio v-model="escalas" value="7"><label>7</label></md-radio>
                                     </md-field>
-
-                                    <hr>
+                                    {{escalas}}
                                     {{this.preguntass}}
                                 </div>
                             </div>
@@ -567,17 +549,9 @@
             this.dataRegiones = this.datos[0];
             this.dataUsuarios = this.datos[1];
             this.dataEncuestados = this.datos[2];
-            this.guardarRes();
-            this.crearGeneral();
-            this.crearPromedio();
-            this.crearGraficoTorta();
-            this.crearTortaEstadoCivil();
-            this.crearTortaEdad();
-            this.crearTortaLaboral();
-            this.buscarPorNom();
-            this.buscarPorCorr();
-            console.log("grafico de promedio creado", this.generalData)
-            console.log("grafico creado", this.promedioData);
+            this.guardarRes(); this.crearGeneral(); this.crearPromedio(); this.crearGraficoTorta();
+            this.crearTortaEstadoCivil(); this.crearTortaEdad(); this.crearTortaLaboral();
+            this.buscarPorNom(); this.buscarPorCorr();
             this.barData = this.crearGrafico();
         },
 
@@ -711,17 +685,36 @@
                 let preguntass = []
                 console.log("cantidad de preguntas", this.cantPreguntas)
                 for (let i = 0; i < this.cantPreguntas; i++) {
-                    var variable = {
-                        idpregunta: i,
-                        pregunta: this.preguntaCate,
-                        opciones: null,
-                        escala: this.escalas
+                    console.log("preguntaCate tineeeeee", this.preguntaCate, "y su largooo essss", this.preguntaCate.length);
+                    if (this.preguntaCate[i] != null && this.preguntaCate2.length == 0) {
+                        //preguntaCate2 son escalas
+                        console.log("entro a este if");
+                        var variable = {
+                            idpregunta: i,
+                            pregunta: this.preguntaCate[i],
+                            opciones: this.opciones,
+                            escala: null
+                        }
+                        preguntass.push(variable)
                     }
-                    preguntass.push(variable)
+                    else if(this.preguntaCate2[i] != null && this.preguntaCate.length == 0){
+                            console.log("entro a este else if");
+                            var variable = {
+                                idpregunta: i,
+                                pregunta: this.preguntaCate[i],
+                                opciones: null,
+                                escala: this.escalas
+                            }
+                        preguntass.push(variable)
+                        }
+                        else{
+                            console.log("No se puede añadir esta categoría")
+                        }
+                    }
                     console.log("quiero añadir", preguntass)
-                }
 
                 this.json = {
+                    ID: 19,
                     nombre: this.nombreCategoria,
                     descripcion: this.description,
                     preguntas: preguntass
@@ -729,6 +722,12 @@
 
 
                 console.log("jsooooooooooooon", this.json)
+
+                this.$http.post('http://localhost:8092/categories/', this.json).then((response) => {
+                    console.log("Hice el post")
+                }, (response) => {
+                    console.log("Fallo servicio")
+                });
             },
 
             crearGraficoTorta(){
@@ -737,11 +736,11 @@
                 let contadorF = 0;
                 let contadorX = 0;
                 for (let i=0; i<this.dataEncuestados.length; i++){
-                    if (this.dataEncuestados[i].sexo == "M"){
+                    if (this.dataEncuestados[i].sexo == "Masculino"){
                         contadorM++
                         console.log("la cantidad de hombreses", contadorM)
                     }
-                    else if(this.dataEncuestados[i].sexo == "F"){
+                    else if(this.dataEncuestados[i].sexo == "Femenino"){
                         contadorF++
                         console.log("lac antidad de mujer es", contadorF)
                     }
@@ -885,27 +884,27 @@
                 let contadorDC = 0; let contadorJ = 0; let contadorE = 0;
                 let contadorNA = 0;
                 for (let i=0; i<this.dataEncuestados.length; i++){
-                    if (this.dataEncuestados[i].rangoDeEdad == "Trabaja part time"){
+                    if (this.dataEncuestados[i].situacionLaboral == "Trabaja part time"){
                         contadorPT++
                         console.log("la cantidad de hombreses", contadorPT)
                     }
-                    else if(this.dataEncuestados[i].rangoDeEdad == "Trabaja full time"){
+                    else if(this.dataEncuestados[i].situacionLaboral == "Trabaja full time"){
                         contadorFT++
                         console.log("lac antidad de mujer es", contadorFT)
                     }
-                    else if(this.dataEncuestados[i].rangoDeEdad == "Busca empleo"){
+                    else if(this.dataEncuestados[i].situacionLaboral == "Busca empleo"){
                         contadorBE++
                         console.log("lac antidad de mujer es", contadorBE)
                     }
-                    else if(this.dataEncuestados[i].rangoDeEdad == "Dueña de Casa"){
+                    else if(this.dataEncuestados[i].situacionLaboral == "Dueña de Casa"){
                         contadorDC++
                         console.log("lac antidad de mujer es", contadorDC)
                     }
-                    else if(this.dataEncuestados[i].rangoDeEdad == "Jubilado"){
+                    else if(this.dataEncuestados[i].situacionLaboral == "Jubilado"){
                         contadorJ++
                         console.log("lac antidad de mujer es", contadorJ)
                     }
-                    else if(this.dataEncuestados[i].rangoDeEdad == "Estudiante"){
+                    else if(this.dataEncuestados[i].situacionLaboral == "Estudiante"){
                         contadorE++
                         console.log("lac antidad de mujer es", contadorE)
                     }
@@ -931,10 +930,6 @@
                 }
             },
             //
-
-            buscarPorCorreo(){
-
-            },
             buscarPorNom(){
 
                 for (let i=0; i<this.dataUsuarios.length; i++){
@@ -944,6 +939,7 @@
                 }
 
             },
+
             buscarPorCorr(){
 
                 for (let i=0; i<this.dataUsuarios.length; i++){
