@@ -101,13 +101,13 @@
          <md-app-content class="md-content">
              <div>
                  <div v-if="this.eleccion == 1">
-                     <home-component></home-component>
+                     <home-component v-bind:datos="preguntas"></home-component>
                  </div>
                  <div v-if="this.eleccion == 2">
                      <form-component v-bind:datos="preguntas"></form-component>
                  </div>
                  <div v-if="this.eleccion == 3">
-                     <admin-component v-bind:datos="[regiones, usuarios, encuestados]"></admin-component>
+                     <admin-component v-bind:datos="[regiones, usuarios, encuestados, preguntas]"></admin-component>
                  </div>
                  <div v-if="this.eleccion == 4">
                      <empresa-component v-bind:datos="regiones"></empresa-component>

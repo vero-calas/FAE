@@ -17,9 +17,9 @@
 
                 <!--                          SEGUNDA ETAPA DE ENCUESTA                                        -->
                 <!--                          **************************                                       -->
-                <div>
-
-                </div>
+                <md-step id=0  :md-label="Bienvenido"  :md-description="Miau">
+                    <label>Bienvenido a la encuesta sobre el turismo en Chile</label>
+                </md-step>
                 <md-step v-model="array" v-if="i!==20" :key="i" :value="i" v-for="(categoria,i) in datos" :id="datos[i].id"  :md-label="datos[i].nombre"  :md-description="datos[i].descripcion" >
                     <br>
                     <label> Por favor, responda según su opinión </label>
