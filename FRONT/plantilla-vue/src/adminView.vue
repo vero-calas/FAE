@@ -59,6 +59,61 @@
                         </md-card-content>
                     </md-card>
 
+
+                    <md-card style="width: 45%; float: right">
+                        <md-card-header>
+                            <div class="md-title">Cantidades por Estado Civil:</div>
+                        </md-card-header>
+                        <md-card-content>
+                            <div>
+                                <vue-chart  v-if="this.tortaEstadoC !== null" type="pie" :data="this.tortaEstadoC"></vue-chart>
+                                <div v-else>
+                                    <div class=" lds-css ng-scope">
+                                        <div style="width:100%;height:100%" class="lds-bars">
+                                            <div></div><div></div><div></div><div></div> <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+
+                    <md-card style="width: 45%; float: left">
+                        <md-card-header>
+                            <div class="md-title">Cantidades por Edad:</div>
+                        </md-card-header>
+                        <md-card-content>
+                            <div>
+                                <vue-chart  v-if="this.tortaEdad !== null" type="pie" :data="this.tortaEdad"></vue-chart>
+                                <div v-else>
+                                    <div class=" lds-css ng-scope">
+                                        <div style="width:100%;height:100%" class="lds-bars">
+                                            <div></div><div></div><div></div><div></div> <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+
+                    <md-card style="width: 45%; float: right">
+                        <md-card-header>
+                            <div class="md-title">Cantidades por Situación Laboral:</div>
+                        </md-card-header>
+                        <md-card-content>
+                            <div>
+                                <vue-chart  v-if="this.tortaLaboral !== null" type="pie" :data="this.tortaLaboral"></vue-chart>
+                                <div v-else>
+                                    <div class=" lds-css ng-scope">
+                                        <div style="width:100%;height:100%" class="lds-bars">
+                                            <div></div><div></div><div></div><div></div> <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+
                 </div>
             </md-tab>
 
@@ -69,15 +124,15 @@
                         <md-card style="width:98%">
                             <md-card-header>
                                 <div class="md-title" style="text-align: center">
-                                    Resumen:
+                                    Datos específicos:
                                 </div>
                             </md-card-header>
                         </md-card>
 
                         <!-- Grafico -->
-                        <md-card>
+                        <md-card style="width: 97%; float: left">
                             <md-card-header>
-                                <div class="md-title">Aprobación en distintos ámbitos</div>
+                                <div class="md-title">Categorías por región:</div>
                             </md-card-header>
                             <md-card-media>
                                <div v-if="this.showd">
@@ -88,24 +143,22 @@
                                 </div>
                                </div>
                             </md-card-media>
-                            <md-card-expand>
-                                <md-card-expand-content>
-                                    <md-card-content>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                                    </md-card-content>
-                                </md-card-expand-content>
-                                <md-card-actions md-alignment="space-between">
-                                    <md-card-expand-trigger>
-                                        <md-button class="md-icon-button">
-                                            <md-icon>keyboard_arrow_down</md-icon>
-                                        </md-button>
-                                    </md-card-expand-trigger>
-                                </md-card-actions>
-
-                            </md-card-expand>
                         </md-card>
 
-
+                        <md-card style="width: 97%; float: left">
+                            <md-card-header>
+                                <div class="md-title">Categorías por fecha:</div>
+                            </md-card-header>
+                            <md-card-media>
+                                <div v-if="this.showd">
+                                    <vue-chart  v-if="this.barData !== null" type="horizontalBar" :data="this.barData"></vue-chart>
+                                    <div v-else>
+                                        <div class=" lds-css ng-scope">
+                                        </div>
+                                    </div>
+                                </div>
+                            </md-card-media>
+                        </md-card>
                         <br><br><br>
                         <div style="float: left; width: 50%">
                             <!-- Datos generales -->
@@ -238,20 +291,32 @@
                             <label>Escriba el nombre del usuario</label>
                             <md-textarea v-model="buscarNom"></md-textarea>
                         </md-field>
-                     <!--   <md-button v-on:click="buscarPorNombre(buscarNom)" class="md-raised">Buscar</md-button> -->
-bla
-                        {{mostrarNom}}
-                        {{this.mostrarNom}}
-                        <br><hr>
+                     <md-button v-on:click="buscarPorNom" class="md-raised">Buscar</md-button>
+                        <div v-if="mostrarNom == null">
+                        </div>
+                        <div class="center" v-else>
+                             <md-card  v-for="user in mostrarNom">
+                            <label>Nombre: {{user.nombre}}</label><br>
+                            <label>Correo: {{user.correo}}</label><br>
+                            <label>Rol: {{user.rol}}</label>
+                        </md-card>
+                        </div>
+                        <hr>
                         <label>Buscar por el correo:</label>
                         <md-field>
                             <label>Escriba el correo del usuario</label>
                             <md-textarea v-model="buscarCorr"></md-textarea>
                         </md-field>
-                   <!--     <md-button v-on:click="buscarPorCorreo" class="md-raised">Buscar</md-button> -->
-bla
-
-                        {{this.mostrarCorr}}
+                   <md-button v-on:click="buscarPorCorr" class="md-raised">Buscar</md-button>
+                        <div v-if="mostrarCorr == null">
+                        </div>
+                        <div class="center" v-else>
+                            <md-card  v-for="correo in mostrarCorr">
+                                <label>Nombre: {{correo.nombre}}</label><br>
+                                <label>Correo: {{correo.correo}}</label><br>
+                                <label>Rol: {{correo.rol}}</label>
+                            </md-card>
+                        </div>
 
 
                     </md-card-media>
@@ -260,7 +325,7 @@ bla
             </div>
              </md-tab>
 
-            <md-tab id="tab-favorites" md-label="Administración" to="/components/tabs/favorites">
+            <md-tab id="tab-favorites" md-label="Añadir Categoria" to="/components/tabs/favorites">
                 <div>
                     <md-card style="width: 100%; height: 100%; float: none">
                         <md-card-header>
@@ -282,11 +347,12 @@ bla
                     <label>Escriba una pequeña descripcion para la categoría</label>
                     <md-textarea v-model="description"></md-textarea>
                 </md-field>
-
-
             <br>
                     <hr>
-            <label>Cantidad de preguntas:</label>
+                            <md-checkbox v-model="booleanEscala">Crear preguntas por escala</md-checkbox>
+                            <md-checkbox v-model="booleanOpciones">Crear preguntas con opciones</md-checkbox>
+            <div v-if="booleanOpciones">
+                            <label>Cantidad de preguntas:</label>
                     <md-field>
                     <md-select name="cantPreguntas" id="cantPreguntas" v-model="cantPreguntas">
                         <md-option value="1">1</md-option>
@@ -297,32 +363,112 @@ bla
                     </md-select>
                         </md-field>
                     <hr>
-
                 <div v-for="i in this.cantPreguntas" >
-
                     <br>
                     <label>Pregunta {{i}}:</label>
                     <md-field>
                         <label>Ingrese la pregunta que desea realizar</label>
-                        <md-textarea :id=i v-model="preguntaCate" md-autogrow></md-textarea>
+                        <md-textarea :id=i v-model="preguntaCate[i]" md-autogrow></md-textarea>
                     </md-field>
+                    {{preguntaCate}}
                     <br>
                     <label>Escala:</label>
                     <md-field>
                         <label>Ingrese la escala con que desea evaluar la pregunta</label>
-                        <md-textarea :id=i v-model="escalas" md-autogrow></md-textarea>
+                        <md-textarea :id=i v-model="opciones[i]" md-autogrow></md-textarea>
                     </md-field>
-                    <label>*Seguir el formato: valor1, valor2, valor3 ...</label>
+                    {{opciones}}
+
                     <hr>
                     {{this.preguntass}}
                 </div>
+            </div>
+                            <div v-if="booleanEscala && booleanOpciones==false">
+                                <label>Cantidad de preguntas:</label>
+                                <md-field>
+                                    <md-select name="cantPreguntas" id="cantPreguntas" v-model="cantPreguntas2">
+                                        <md-option value="1">1</md-option>
+                                        <md-option value="12">2</md-option>
+                                        <md-option value="123">3</md-option>
+                                        <md-option value="1234">4</md-option>
+                                        <md-option value="12345">5</md-option>
+                                    </md-select>
+                                </md-field>
+                                <hr>
+                                <div v-for="i in this.cantPreguntas2" >
 
-                    <md-button v-on:click="crearJSON" class="md-raised">Aceptar</md-button>
+                                    <br>
+                                    <label>Pregunta {{i}}:</label>
+                                    <md-field>
+                                        <label>Ingrese la pregunta que desea realizar</label>
+                                        <md-textarea :id=i v-model="preguntaCate2[i]" md-autogrow></md-textarea>
+                                    </md-field>
+                                    {{preguntaCate2}}
+                                    <br>
+                                    <label>Escala:</label>
+                                    <md-field>
+                                        <md-radio v-model="escalas" value="1"><label>1</label></md-radio>
+                                        <md-radio v-model="escalas" value="2"><label>2</label></md-radio>
+                                        <md-radio v-model="escalas" value="3"><label>3</label></md-radio>
+                                        <md-radio v-model="escalas" value="4"><label>4</label></md-radio>
+                                        <md-radio v-model="escalas" value="5"><label>5</label></md-radio>
+                                        <md-radio v-model="escalas" value="6"><label>6</label></md-radio>
+                                        <md-radio v-model="escalas" value="7"><label>7</label></md-radio>
+                                    </md-field>
+                                    {{escalas}}
+                                    {{this.preguntass}}
+                                </div>
+                            </div>
+
+                            <md-button v-on:click="crearJSON" class="md-raised">Aceptar</md-button>
                         </md-card-media>
                     </md-card>
                 </div>
             </md-tab>
 
+            <md-tab id="tab-preguntas" md-label="Eliminar Preguntas" to="/components/tabs/preguntas">
+
+                <md-card style="width:30%; float: left">
+                    <md-card-header>
+                        <div class="md-title"> Categorías: </div>
+                    </md-card-header>
+                    <div v-for="categoria in dataPreguntas">
+                       <label>-Numeración de la categoría: {{categoria.ID}}<br>
+                              -Nombre de la categoría: {{categoria.nombre}}<br>
+                           <md-button  class="md-raised md-accent">Eliminar</md-button> </label>
+                        <hr>
+                    </div>
+                </md-card>
+                <md-card style="width: 68%; float: right">
+                    <md-card-header>
+                        <div class="md-title"> Edición de categorías: </div>
+                    </md-card-header>
+                    <br>
+                    <label>Seleccione la categoría que desea editar:</label>
+                    <select>
+                        <option  v-for="(elemento, i) in dataPreguntas">
+                            {{elemento.nombre}}</option>
+                    </select>
+                    <br>
+                    <br>
+                    <hr>
+                    <div>
+                        <label>Modifique el nombre de la categoria:</label>
+                        <md-field>
+                            <label>Nuevo nombre de la categoría</label>
+                            <md-textarea v-model="nuevoNombre" md-autogrow></md-textarea>
+                        </md-field>
+                        <hr>
+                        <label>Modifique la descripcion de la categoria:</label>
+                        <md-field>
+                            <label>Nueva descripción de la categoría</label>
+                            <md-textarea v-model="nuevaDescripcion" md-autogrow></md-textarea>
+                        </md-field>
+                    </div>
+
+                </md-card>
+
+            </md-tab>
 
             <md-tab id="tab-estudio" md-label="Enviar estudio" to="/components/tabs/estudio">
 
@@ -395,6 +541,7 @@ bla
                 </md-card>
 
             </md-tab>
+
         </md-tabs>
 
 
@@ -416,19 +563,23 @@ bla
             dataRegiones: null,
             dataUsuarios: null,
             dataEncuestados: null,
+            dataPreguntas: null,
             /* variables html */
             json: null,
             eleccion: "",
-            buscarCorr: "",
-            buscarNom: "",
+            buscarCorr: null,
+            buscarNom: null,
             mostrarCorr: [],
-            mostrarNom: null,
+            mostrarNom: [],
 
 
             /*variables para el gráfico de regiones*/
             barData: null,
             promedioData: null,
             tortaGenero: null,
+            tortaEstadoC: null,
+            tortaEdad: null,
+            tortaLaboral: null,
             showd: null,
             resGeneral: null,
             valores: [],
@@ -440,8 +591,18 @@ bla
             nombreCategoria: null,
             description: null,
             escalas: [],
+            opciones: [],
             cantPreguntas: null,
-            preguntaCate: null
+            cantPreguntas2: null,
+            preguntaCate: [],
+            preguntaCate2: [],
+            booleanEscala: false,
+            booleanOpciones: false,
+
+            /**/
+            nuevoNombre: null,
+            nuevaDescripcion: null
+
         }),
 
         created() {
@@ -451,12 +612,10 @@ bla
             this.dataRegiones = this.datos[0];
             this.dataUsuarios = this.datos[1];
             this.dataEncuestados = this.datos[2];
-            this.guardarRes();
-            this.crearGeneral();
-            this.crearPromedio();
-            this.creaGraficoTorta();
-            console.log("grafico de promedio creado", this.generalData)
-            console.log("grafico creado", this.promedioData);
+            this.dataPreguntas = this.datos[3];
+            this.guardarRes(); this.crearGeneral(); this.crearPromedio(); this.crearGraficoTorta();
+            this.crearTortaEstadoCivil(); this.crearTortaEdad(); this.crearTortaLaboral();
+            this.buscarPorNom(); this.buscarPorCorr();
             this.barData = this.crearGrafico();
         },
 
@@ -495,9 +654,9 @@ bla
                         {
                             data: [],
                             label: ["Puntuación alcanzada"],
-                            backgroundColor: ['#FF7043', '#FFA726', '#FFCA28', '#FFEE58', '#D4E157', '#9CCC65 ',
-                                '#26A69A', '#26C6DA', '#29B6F6', '#42A5F5', '#5C6BC0', '#3F51B5',
-                                '#7E57C2', '#AB47BC', '#EC407A', '#EF9A9A', '#D1C4E9  '],
+                            backgroundColor: ['#D4E157','#D4E157','#D4E157','#D4E157','#D4E157',
+                                '#D4E157','#D4E157','#D4E157','#D4E157','#D4E157','#D4E157','#D4E157','#D4E157','#D4E157',
+                                '#D4E157','#D4E157','#D4E157'],
                         },
 
                     ]
@@ -590,17 +749,36 @@ bla
                 let preguntass = []
                 console.log("cantidad de preguntas", this.cantPreguntas)
                 for (let i = 0; i < this.cantPreguntas; i++) {
-                    var variable = {
-                        idpregunta: i,
-                        pregunta: this.preguntaCate,
-                        opciones: null,
-                        escala: this.escalas
+                    console.log("preguntaCate tineeeeee", this.preguntaCate, "y su largooo essss", this.preguntaCate.length);
+                    if (this.preguntaCate[i] != null && this.preguntaCate2.length == 0) {
+                        //preguntaCate2 son escalas
+                        console.log("entro a este if");
+                        var variable = {
+                            idpregunta: i,
+                            pregunta: this.preguntaCate[i],
+                            opciones: this.opciones,
+                            escala: null
+                        }
+                        preguntass.push(variable)
                     }
-                    preguntass.push(variable)
+                    else if(this.preguntaCate2[i] != null && this.preguntaCate.length == 0){
+                            console.log("entro a este else if");
+                            var variable = {
+                                idpregunta: i,
+                                pregunta: this.preguntaCate[i],
+                                opciones: null,
+                                escala: this.escalas
+                            }
+                        preguntass.push(variable)
+                        }
+                        else{
+                            console.log("No se puede añadir esta categoría")
+                        }
+                    }
                     console.log("quiero añadir", preguntass)
-                }
 
                 this.json = {
+                    ID: 19,
                     nombre: this.nombreCategoria,
                     descripcion: this.description,
                     preguntas: preguntass
@@ -608,19 +786,25 @@ bla
 
 
                 console.log("jsooooooooooooon", this.json)
+
+                this.$http.post('http://localhost:8092/categories/', this.json).then((response) => {
+                    console.log("Hice el post")
+                }, (response) => {
+                    console.log("Fallo servicio")
+                });
             },
 
-            creaGraficoTorta(){
+            crearGraficoTorta(){
                 let dataGenero = []
                 let contadorM = 0;
                 let contadorF = 0;
                 let contadorX = 0;
                 for (let i=0; i<this.dataEncuestados.length; i++){
-                    if (this.dataEncuestados[i].sexo == "M"){
+                    if (this.dataEncuestados[i].sexo == "Masculino"){
                         contadorM++
                         console.log("la cantidad de hombreses", contadorM)
                     }
-                    else if(this.dataEncuestados[i].sexo == "F"){
+                    else if(this.dataEncuestados[i].sexo == "Femenino"){
                         contadorF++
                         console.log("lac antidad de mujer es", contadorF)
                     }
@@ -647,8 +831,188 @@ bla
                     }
                 },
 
-            // crear gráfico laboral, nivel de estudio, nivel de ingresos, estado civil, rango de edad
+            crearTortaEstadoCivil(){
+            //{"Casada(o)","Soltera(o)","Divorciada(o) o Separada(o)","Viuda(o)","Otro","No sabe-No responde"]
+                let dataEstadoC = []
+                let contadorC = 0; let contadorSolt = 0; let contadorDS = 0;
+                let contadorV = 0; let contadorX = 0; let contadorNA = 0;
+                for (let i=0; i<this.dataEncuestados.length; i++){
+                    if (this.dataEncuestados[i].estadoCivil == "Soltera(o)"){
+                        contadorSolt++
+                        console.log("la cantidad de hombreses", contadorSolt)
+                    }
+                    else if(this.dataEncuestados[i].estadoCivil == "Casada(o)"){
+                        contadorC++
+                        console.log("lac antidad de mujer es", contadorC)
+                    }
+                    else if(this.dataEncuestados[i].estadoCivil == "Divorciada(o) o Separada(o)"){
+                        contadorDS++
+                        console.log("lac antidad de mujer es", contadorDS)
+                    }
+                    else if(this.dataEncuestados[i].estadoCivil == "Viuda(o)"){
+                        contadorV++
+                        console.log("lac antidad de mujer es", contadorV)
+                    }
+                    else if(this.dataEncuestados[i].estadoCivil == "Otro"){
+                        contadorX++
+                        console.log("lac antidad de mujer es", contadorX)
+                    }
+                    else {
+                        contadorNA++
+                    }
+                }
 
+                dataEstadoC.push(contadorC);
+                dataEstadoC.push(contadorSolt);
+                dataEstadoC.push(contadorDS);
+                dataEstadoC.push(contadorV);
+                dataEstadoC.push(contadorX);
+                dataEstadoC.push(contadorNA);
+                console.log("la data queda en el orden:", dataEstadoC)
+                this.tortaEstadoC = {
+                    labels: ["Casada(o)","Soltera(o)","Divorciada(o) o Separada(o)","Viuda(o)","Otro","No sabe-No responde"],
+                    datasets: [
+                        {
+                            label: "",
+                            backgroundColor:  ['#FF7043',
+                                '#FFA726',
+                                '#FFCA28',
+                                '#FFEE58',
+                                '#D4E157',
+                                '#9CCC65 '],
+                            data: dataEstadoC
+                        },
+                    ]
+                }
+            },
+            // crear gráfico nivel de estudio, nivel de ingresos
+            crearTortaEdad(){
+                let dataEdad = []
+                let contador18 = 0; let contador25 = 0; let contador35 = 0;
+                let contador45 = 0; let contador55 = 0; let contador65 = 0;
+                let contadorNA = 0;
+                for (let i=0; i<this.dataEncuestados.length; i++){
+                    if (this.dataEncuestados[i].rangoDeEdad == "Entre 18 y 24"){
+                        contador18++
+                        console.log("la cantidad de hombreses", contador18)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Entre 25 y 34"){
+                        contador25++
+                        console.log("lac antidad de mujer es", contador25)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Entre 35 y 44"){
+                        contador35++
+                        console.log("lac antidad de mujer es", contador35)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Entre 45 y 54"){
+                        contador45++
+                        console.log("lac antidad de mujer es", contador45)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Entre 55 y 64"){
+                        contador55++
+                        console.log("lac antidad de mujer es", contador55)
+                    }
+                    else if(this.dataEncuestados[i].rangoDeEdad == "Mayor de 65"){
+                        contador65++
+                        console.log("lac antidad de mujer es", contador65)
+                    }
+                    else {
+                        contadorNA++
+                    }
+                }
+                dataEdad.push(contador18);
+                dataEdad.push(contador25);
+                dataEdad.push(contador35);
+                dataEdad.push(contador45);
+                dataEdad.push(contador55);
+                dataEdad.push(contador65);
+                dataEdad.push(contadorNA);
+                console.log("la data queda en el orden:", dataEdad)
+                this.tortaEdad = {
+                    labels: ["Entre 18 y 24", "Entre 25 y 34","Entre 35 y 44","Entre 45 y 54",
+                        "Entre 55 y 64","Mayor de 65", "No sabe-No responde"],
+                    datasets: [
+                        {
+                            label: "",
+                            backgroundColor:  ['#FF7043', '#FFA726', '#FFCA28', '#FFEE58', '#D4E157', '#9CCC65 ',
+                                '#26A69A'],
+                            data: dataEdad
+                        },
+                    ]
+                }
+            },
+
+            crearTortaLaboral(){
+                let dataLaboral = []
+                let contadorPT = 0; let contadorFT = 0; let contadorBE = 0;
+                let contadorDC = 0; let contadorJ = 0; let contadorE = 0;
+                let contadorNA = 0;
+                for (let i=0; i<this.dataEncuestados.length; i++){
+                    if (this.dataEncuestados[i].situacionLaboral == "Trabaja part time"){
+                        contadorPT++
+                        console.log("la cantidad de hombreses", contadorPT)
+                    }
+                    else if(this.dataEncuestados[i].situacionLaboral == "Trabaja full time"){
+                        contadorFT++
+                        console.log("lac antidad de mujer es", contadorFT)
+                    }
+                    else if(this.dataEncuestados[i].situacionLaboral == "Busca empleo"){
+                        contadorBE++
+                        console.log("lac antidad de mujer es", contadorBE)
+                    }
+                    else if(this.dataEncuestados[i].situacionLaboral == "Dueña de Casa"){
+                        contadorDC++
+                        console.log("lac antidad de mujer es", contadorDC)
+                    }
+                    else if(this.dataEncuestados[i].situacionLaboral == "Jubilado"){
+                        contadorJ++
+                        console.log("lac antidad de mujer es", contadorJ)
+                    }
+                    else if(this.dataEncuestados[i].situacionLaboral == "Estudiante"){
+                        contadorE++
+                        console.log("lac antidad de mujer es", contadorE)
+                    }
+                    else {
+                        contadorNA++
+                    }
+                }
+                dataLaboral.push(contadorPT); dataLaboral.push(contadorFT); dataLaboral.push(contadorBE);
+                dataLaboral.push(contadorDC); dataLaboral.push(contadorJ); dataLaboral.push(contadorE);
+                dataLaboral.push(contadorNA);
+                console.log("la data queda en el orden:", dataLaboral)
+                this.tortaLaboral = {
+                    labels: ["Trabaja part time","Trabaja full time","Busca empleo", "Dueña de Casa",
+                        "Jubilado","Estudiante","No sabe-No responde"],
+                    datasets: [
+                        {
+                            label: "",
+                            backgroundColor:  ['#FF7043', '#FFA726', '#FFCA28', '#FFEE58', '#D4E157', '#9CCC65 ',
+                                '#26A69A'],
+                            data: dataLaboral
+                        },
+                    ]
+                }
+            },
+            //
+            buscarPorNom(){
+
+                for (let i=0; i<this.dataUsuarios.length; i++){
+                    if(this.dataUsuarios[i].nombre.includes(this.buscarNom)){
+                        this.mostrarNom.push(this.dataUsuarios[i])
+                    }
+                }
+
+            },
+
+            buscarPorCorr(){
+
+                for (let i=0; i<this.dataUsuarios.length; i++){
+                    if(this.dataUsuarios[i].correo.includes(this.buscarCorr)){
+                        this.mostrarCorr.push(this.dataUsuarios[i])
+                    }
+                }
+
+            }
         }
     }
 

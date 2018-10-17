@@ -87,12 +87,11 @@
 
          <md-app-drawer :md-active.sync="menuVisible" md-persistent="full">
              <md-toolbar class="md-transparent" md-elevation="0">
-                 <img width="150" height="80" src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Logo_TV_2015.png">
+                 <img width="150" height="80" src="https://images.vexels.com/media/users/3/145779/isolated/preview/53f7a1777bd2d2c3f8628d745268c5a3-ilustraci-n-del-loro-by-vexels.png">
              </md-toolbar>
 
              <div class="list-group">
                  <a v-on:click="setSelectedItemHome" href="#" class="list-group-item"><label class="labelSide">Home</label><md-icon class="position">home</md-icon></a>
-                 <a v-on:click="setSelectedItemUserForm" href="#" class="list-group-item"><label class="labelSide">Formulario</label><md-icon class="position">local_play</md-icon></a>
                  <a v-on:click="setSelectedItemAdminView" href="#" class="list-group-item"><label class="labelSide">Administrador</label><md-icon class="position">local_play</md-icon></a>
                  <a v-on:click="setSelectedItemEmpresaView" href="#" class="list-group-item"><label class="labelSide">Empresa</label><md-icon class="position">local_play</md-icon></a>
              </div>
@@ -102,9 +101,6 @@
              <div>
                  <div v-if="this.eleccion == 1">
                      <home-component v-bind:datos="preguntas"></home-component>
-                 </div>
-                 <div v-if="this.eleccion == 2">
-                     <form-component v-bind:datos="preguntas"></form-component>
                  </div>
                  <div v-if="this.eleccion == 3">
                      <admin-component v-bind:datos="[regiones, usuarios, encuestados, preguntas]"></admin-component>
@@ -255,9 +251,6 @@
          methods: {
              setSelectedItemHome(){
                  this.eleccion=1;
-             },
-             setSelectedItemUserForm(){
-                 this.eleccion=2;
              },
              setSelectedItemAdminView(){
                  this.eleccion=3;
