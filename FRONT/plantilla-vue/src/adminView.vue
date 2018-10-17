@@ -132,7 +132,7 @@
                         <!-- Grafico -->
                         <md-card style="width: 97%; float: left">
                             <md-card-header>
-                                <div class="md-title">Aprobación en distintos ámbitos</div>
+                                <div class="md-title">Categorías por región:</div>
                             </md-card-header>
                             <md-card-media>
                                <div v-if="this.showd">
@@ -145,7 +145,20 @@
                             </md-card-media>
                         </md-card>
 
-
+                        <md-card style="width: 97%; float: left">
+                            <md-card-header>
+                                <div class="md-title">Categorías por fecha:</div>
+                            </md-card-header>
+                            <md-card-media>
+                                <div v-if="this.showd">
+                                    <vue-chart  v-if="this.barData !== null" type="horizontalBar" :data="this.barData"></vue-chart>
+                                    <div v-else>
+                                        <div class=" lds-css ng-scope">
+                                        </div>
+                                    </div>
+                                </div>
+                            </md-card-media>
+                        </md-card>
                         <br><br><br>
                         <div style="float: left; width: 50%">
                             <!-- Datos generales -->
@@ -312,7 +325,7 @@
             </div>
              </md-tab>
 
-            <md-tab id="tab-favorites" md-label="Administración" to="/components/tabs/favorites">
+            <md-tab id="tab-favorites" md-label="Añadir Categoria" to="/components/tabs/favorites">
                 <div>
                     <md-card style="width: 100%; height: 100%; float: none">
                         <md-card-header>
@@ -413,6 +426,50 @@
                 </div>
             </md-tab>
 
+            <md-tab id="tab-preguntas" md-label="Eliminar Preguntas" to="/components/tabs/preguntas">
+
+                <md-card style="width:30%; float: left">
+                    <md-card-header>
+                        <div class="md-title"> Categorías: </div>
+                    </md-card-header>
+                    <div v-for="categoria in dataPreguntas">
+                       <label>-Numeración de la categoría: {{categoria.ID}}<br>
+                              -Nombre de la categoría: {{categoria.nombre}}<br>
+                           <md-button  class="md-raised md-accent">Eliminar</md-button> </label>
+                        <hr>
+                    </div>
+                </md-card>
+                <md-card style="width: 68%; float: right">
+                    <md-card-header>
+                        <div class="md-title"> Edición de categorías: </div>
+                    </md-card-header>
+                    <br>
+                    <label>Seleccione la categoría que desea editar:</label>
+                    <select>
+                        <option  v-for="(elemento, i) in dataPreguntas">
+                            {{elemento.nombre}}</option>
+                    </select>
+                    <br>
+                    <br>
+                    <hr>
+                    <div>
+                        <label>Modifique el nombre de la categoria:</label>
+                        <md-field>
+                            <label>Nuevo nombre de la categoría</label>
+                            <md-textarea v-model="nuevoNombre" md-autogrow></md-textarea>
+                        </md-field>
+                        <hr>
+                        <label>Modifique la descripcion de la categoria:</label>
+                        <md-field>
+                            <label>Nueva descripción de la categoría</label>
+                            <md-textarea v-model="nuevaDescripcion" md-autogrow></md-textarea>
+                        </md-field>
+                    </div>
+
+                </md-card>
+
+            </md-tab>
+
             <md-tab id="tab-estudio" md-label="Enviar estudio" to="/components/tabs/estudio">
 
                 <md-card style="width:98%">
@@ -484,6 +541,7 @@
                 </md-card>
 
             </md-tab>
+
         </md-tabs>
 
 
@@ -505,6 +563,7 @@
             dataRegiones: null,
             dataUsuarios: null,
             dataEncuestados: null,
+            dataPreguntas: null,
             /* variables html */
             json: null,
             eleccion: "",
@@ -538,7 +597,11 @@
             preguntaCate: [],
             preguntaCate2: [],
             booleanEscala: false,
-            booleanOpciones: false
+            booleanOpciones: false,
+
+            /**/
+            nuevoNombre: null,
+            nuevaDescripcion: null
 
         }),
 
@@ -549,6 +612,7 @@
             this.dataRegiones = this.datos[0];
             this.dataUsuarios = this.datos[1];
             this.dataEncuestados = this.datos[2];
+            this.dataPreguntas = this.datos[3];
             this.guardarRes(); this.crearGeneral(); this.crearPromedio(); this.crearGraficoTorta();
             this.crearTortaEstadoCivil(); this.crearTortaEdad(); this.crearTortaLaboral();
             this.buscarPorNom(); this.buscarPorCorr();
@@ -590,9 +654,9 @@
                         {
                             data: [],
                             label: ["Puntuación alcanzada"],
-                            backgroundColor: ['#FF7043', '#FFA726', '#FFCA28', '#FFEE58', '#D4E157', '#9CCC65 ',
-                                '#26A69A', '#26C6DA', '#29B6F6', '#42A5F5', '#5C6BC0', '#3F51B5',
-                                '#7E57C2', '#AB47BC', '#EC407A', '#EF9A9A', '#D1C4E9  '],
+                            backgroundColor: ['#D4E157','#D4E157','#D4E157','#D4E157','#D4E157',
+                                '#D4E157','#D4E157','#D4E157','#D4E157','#D4E157','#D4E157','#D4E157','#D4E157','#D4E157',
+                                '#D4E157','#D4E157','#D4E157'],
                         },
 
                     ]
