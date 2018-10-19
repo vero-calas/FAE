@@ -1,12 +1,21 @@
 package com.mongodb.mongodb.rest;
 
+import com.mongodb.mongodb.config.JwtConfig;
 import com.mongodb.mongodb.model.Usuario;
 import com.mongodb.mongodb.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+
+import static com.mongodb.mongodb.config.JwtConfig.HEADER_STRING;
+import static com.mongodb.mongodb.config.JwtConfig.TOKEN_PREFIX;
+import static com.mongodb.mongodb.config.JwtConfig.tokenize;
 
 @CrossOrigin(origins = {"http://localhost:8081"})
 @RestController
@@ -74,19 +83,20 @@ public class UsuarioService {
         return Integer.toString(id);
     }
 
+
     @RequestMapping(value="/login", method = RequestMethod.POST)
-    @ResponseStatus
-    @ResponseBody
-    public String login(@RequestBody Usuario user){
+    public ResponseEntity login(@RequestBody Usuario user){
         Usuario realUser = usuarioRepository.findByCorreo(user.getCorreo());
         if(realUser != null) {
             if(realUser.getContrasena().equals(user.getContrasena())){
-                return "Loggeado";
+                MultiValueMap<String, String> multivalue = new LinkedMultiValueMap<String, String>();
+                multivalue.add(HEADER_STRING,TOKEN_PREFIX + tokenize(user));
+                return new ResponseEntity(multivalue,HttpStatus.OK);
             }else{
-                return "Contraseña Incorrecta";
+                return new ResponseEntity<>("Contraseña Incorrecta",HttpStatus.UNAUTHORIZED);
             }
         }else{
-            return "No existe usuario.";
+            return new ResponseEntity<>("No existe usuario.", HttpStatus.BAD_REQUEST);
         }
     }
 
