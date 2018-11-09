@@ -151,6 +151,17 @@ public class CategoriaService {
         return new ResponseEntity<>(Integer.toString(idPregunta),HttpStatus.OK);
     }
 
+    @RequestMapping(value="/deleteCategoria/{categoriaid}", method = RequestMethod.DELETE)
+    @ResponseStatus
+    public ResponseEntity eliminarCategoria(@PathVariable("categoriaid") String categoriaId){
+        if(categoriaRepository.findById(categoriaId).isPresent()){
+            categoriaRepository.deleteById(categoriaId);
+            return new ResponseEntity<>(categoriaRepository.findAll(),HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("ID Categoría no existe.",HttpStatus.BAD_REQUEST);
+        }
+    }
+
     private int findMax(int size, List<Categoria> listaCategoria, List<Pregunta> listaPreguntas, int esPregunta /*Para saber si es pregunta o categoria*/){
         String id;
         int id1;
