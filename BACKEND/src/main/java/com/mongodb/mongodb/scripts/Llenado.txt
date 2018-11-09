@@ -1,5 +1,40 @@
 CATEGORIA:
+
 {       "ID" : "1",
+        "nombre" : "Datos Personales",
+        "preguntas" : [{
+                      "idpregunta" : "1",
+                      "pregunta" : "Por favor señale su nivel de estudios: ",
+                      "opciones" : ["Básica incompleta","Básica completa","Media incompleta","Media completa","Técnico (o instituto profesional) incompleto","Técnico (o instituto profesional) completo","Universitario incompleto","Universitario completo","Estudios de postgrado incompleto","Estudios de postgrado completo","Otro","No sabe-No Responde"]
+                      },
+			{
+                      "idpregunta" : "2",
+                      "pregunta" : "¿Cuál es su situación laboral actual?",
+                      "opciones" : ["Trabaja part time","Trabaja full time","Busca empleo", "Dueña de Casa","Jubilado","Estudiante","No sabe-No responde"]
+                      },
+			{
+                      "idpregunta" : "3",
+                      "pregunta" : "Nivel de Ingresos del Grupo Familiar:",
+                      "opciones" : ["Menos de 150.000","Entre 150.001 y 250.000","Entre 250.001 y 450.000","Entre 450.001 y 750.000","Entre 750.001 y 1.000.000","Entre 1.000.001 y 1.500.000", "Entre 1.500.001 y 2.000.000", "Entre 2.000.001 y 3.000.000", "Más de 3.000.001", "No sabe-No responde"]
+                      },
+			{
+                      "idpregunta" : "4",
+                      "pregunta" : "Sexo del entrevistado",
+                      "opciones" : ["Masculino","Femenino"]
+                      },
+			{
+                      "idpregunta" : "5",
+                      "pregunta" : "Estado Civil",
+                      "opciones" : ["Casada(o)","Soltera(o)","Divorciada(o) o Separada(o)","Viuda(o)","Otro","No sabe-No responde"]
+                      },
+			{
+                      "idpregunta" : "6",
+                      "pregunta" : "Intervalo de edad del entrevistado",
+                      "opciones" : ["Entre 18 y 24", "Entre 25 y 34","Entre 35 y 44","Entre 45 y 54","Entre 55 y 64","Mayor de 65", "No sabe-No responde"]
+                      }]
+}
+
+{       "ID" : "2",
         "nombre" : "Percepción Cognitiva",
         "preguntas" : [{
                       "idpregunta" : "1",
@@ -53,7 +88,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "2",
+{       "ID" : "3",
         "nombre" : "Evaluación Afectiva",
         "preguntas" : [{
                       "idpregunta" : "1",
@@ -82,7 +117,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "3",
+{       "ID" : "4",
         "nombre" : "Beneficio Hedónico",
         "preguntas" : [{
                       "idpregunta" : "1",
@@ -142,7 +177,7 @@ CATEGORIA:
 },
 
 
-{       "ID" : "4",
+{       "ID" : "5",
         "nombre" : "Beneficio Simbólico",
         "preguntas" : [{
                       "idpregunta" : "1",
@@ -172,7 +207,7 @@ CATEGORIA:
 },
 
 
-{       "ID" : "5",
+{       "ID" : "6",
         "nombre" : "Beneficio Funcional",
         "preguntas" : [{
                       "idpregunta" : "1",
@@ -201,7 +236,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "6",
+{       "ID" : "7",
         "nombre" : "Familiaridad",
         "preguntas" : [{
                       "idpregunta" : "1",
@@ -230,7 +265,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "7",
+{       "ID" : "8",
         "nombre" : "Satisfacción",
         "preguntas" : [{
                       "idpregunta" : "1",
@@ -259,7 +294,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "8",
+{       "ID" : "9",
         "nombre" : "Reputación",
         "preguntas" : [{
                       "idpregunta" : "1",
@@ -288,7 +323,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "9",
+{       "ID" : "10",
         "nombre" : "Honestidad (Confianza en los habitantes de Chile)",
 	      "descripcion" : "Mi percepción es que la gente de Chile...",
         "preguntas" : [{
@@ -313,7 +348,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "10",
+{       "ID" : "11",
         "nombre" : "Benevolencia (Confianza en los habitantes de Chile)",
 	"descripcion" : "Mi percepción es que la gente de Chile...",
         "preguntas" : [{
@@ -338,7 +373,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "11",
+{       "ID" : "12",
         "nombre" : "Competencia (Confianza en los habitantes de Chile)",
 	"descripcion" : "Mi percepción es que la gente de Chile...",
         "preguntas" : [{
@@ -363,7 +398,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "12",
+{       "ID" : "13",
         "nombre" : "Honestidad (Confianza en las Instituciones Públicas)",
 	"descripcion" : "Mi percepción es que las Instituciones Públicas de Chile al entregar información...",
         "preguntas" : [{
@@ -388,7 +423,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "13",
+{       "ID" : "14",
         "nombre" : "Benevolencia (Confianza en las Instituciones Públicas)",
 	"descripcion" : "Mi percepción es que las Instituciones Públicas de Chile al entregar información...",
         "preguntas" : [{
@@ -413,7 +448,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "14",
+{       "ID" : "15",
         "nombre" : "Competencia (Confianza en las Instituciones Públicas)",
 	"descripcion" : "Mi percepción es que las Instituciones Públicas de Chile al entregar información...",
         "preguntas" : [{
@@ -438,7 +473,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "15",
+{       "ID" : "16",
         "nombre" : "Honestidad (Confianza en las Instituciones Privadas)",
 	"descripcion" : "Mi percepción es que las Instituciones Privadas de Chile al ofrecer sus servicios...",
         "preguntas" : [{
@@ -463,7 +498,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "16",
+{       "ID" : "17",
         "nombre" : "Benevolencia (Confianza en las Instituciones Privadas)",
 	"descripcion" : "Mi percepción es que las Instituciones privadas de Chile al ofrecer sus servicios...",
         "preguntas" : [{
@@ -488,7 +523,7 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "17",
+{       "ID" : "18",
         "nombre" : "Competencia (Confianza en las Instituciones Privadas)",
 	"descripcion" : "Mi percepción es que las Instituciones Privadas de Chile al ofrecer sus servicios...",
         "preguntas" : [{
@@ -513,59 +548,26 @@ CATEGORIA:
                       }]
 },
 
-{       "ID" : "18",
-        "nombre" : "Datos Personales",
-        "preguntas" : [{
-                      "idpregunta" : "1",
-                      "pregunta" : "Por favor señale su nivel de estudios: ",
-                      "opciones" : ["Básica incompleta","Básica completa","Media incompleta","Media completa","Técnico (o instituto profesional) incompleto","Técnico (o instituto profesional) completo","Universitario incompleto","Universitario completo","Estudios de postgrado incompleto","Estudios de postgrado completo","Otro","No sabe-No Responde"]
-                      },
-			{
-                      "idpregunta" : "2",
-                      "pregunta" : "¿Cuál es su situación laboral actual?",
-                      "opciones" : ["Trabaja part time","Trabaja full time","Busca empleo", "Dueña de Casa","Jubilado","Estudiante","No sabe-No responde"]
-                      },
-			{
-                      "idpregunta" : "3",
-                      "pregunta" : "Nivel de Ingresos del Grupo Familiar:",
-                      "opciones" : ["Menos de 150.000","Entre 150.001 y 250.000","Entre 250.001 y 450.000","Entre 450.001 y 750.000","Entre 750.001 y 1.000.000","Entre 1.000.001 y 1.500.000", "Entre 1.500.001 y 2.000.000", "Entre 2.000.001 y 3.000.000", "Más de 3.000.001", "No sabe-No responde"]
-                      },
-			{
-                      "idpregunta" : "4",
-                      "pregunta" : "Sexo del entrevistado",
-                      "opciones" : ["Masculino","Femenino"]
-                      },
-			{
-                      "idpregunta" : "5",
-                      "pregunta" : "Estado Civil",
-                      "opciones" : ["Casada(o)","Soltera(o)","Divorciada(o) o Separada(o)","Viuda(o)","Otro","No sabe-No responde"]
-                      },
-			{
-                      "idpregunta" : "6",
-                      "pregunta" : "Intervalo de edad del entrevistado",
-                      "opciones" : ["Entre 18 y 24", "Entre 25 y 34","Entre 35 y 44","Entre 45 y 54","Entre 55 y 64","Mayor de 65", "No sabe-No responde"]
-                      }]
-}
-
 CATEGORIAS.
-1- Percepcion Cognitiva
-2- Evaluacion Afectiva
-3- Beneficio Hedónico
-4- Beneficio Simbólico
-5- Beneficio Funcional
-6- Familiaridad
-7- Satisfacción
-8- Reputación
-9- Honestidad (Confianza en la gente)
-10- Benevolencia (Confianza en la gente)
-11- Competencia (Confianza en la gente)
-12- Honestidad (Confianza en las instituciones publicas)
-13- Benevolencia (Confianza en las instituciones publicas)
-14- Competencia (Confianza en las instituciones publicas)
-15- Honestidad (Confianza en las instituciones privadas)
-16- Benevolencia (Confianza en las instituciones privadas)
-17- Competencia (Confianza en las instituciones privadas)
-18- Datos Personales
+1- Datos Personales
+2- Percepcion Cognitiva
+3- Evaluacion Afectiva
+4- Beneficio Hedónico
+5- Beneficio Simbólico
+6- Beneficio Funcional
+7- Familiaridad
+8- Satisfacción
+9- Reputación
+10- Honestidad (Confianza en la gente)
+11- Benevolencia (Confianza en la gente)
+12- Competencia (Confianza en la gente)
+13- Honestidad (Confianza en las instituciones publicas)
+14- Benevolencia (Confianza en las instituciones publicas)
+15- Competencia (Confianza en las instituciones publicas)
+16- Honestidad (Confianza en las instituciones privadas)
+17- Benevolencia (Confianza en las instituciones privadas)
+18- Competencia (Confianza en las instituciones privadas)
+
 
 
 /-----------------------------------------------------
@@ -578,8 +580,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -591,8 +592,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -604,8 +604,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -617,8 +616,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -630,8 +628,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -643,8 +640,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -656,8 +652,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -668,8 +663,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -680,8 +674,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -692,8 +685,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -704,8 +696,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -716,8 +707,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -728,8 +718,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -740,8 +729,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }
@@ -752,8 +740,7 @@ REGION:
         "estadisticas" : [{
                           "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
                           "resultados" : [0, 0, 0, 0, 0, 0],
-                          "mes": 1,
-                          "anio": 2018
+                          "fecha": ["1","2018"]
         }]
 
 }

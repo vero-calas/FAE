@@ -6,16 +6,14 @@ public class Estadistica {
 
     private List<String> categorias;
     private List<Integer> resultados;
-    private int mes;
-    private int anio;
+    private List<String> fecha;
 
     public Estadistica(){}
 
-    public Estadistica(List<String> categorias, List<Integer> resultados, int mes, int anio){
+    public Estadistica(List<String> categorias, List<Integer> resultados, List<String> fecha){
         this.categorias = categorias;
         this.resultados = resultados;
-        this.anio = anio;
-        this.mes = mes;
+        this.fecha = fecha;
     }
 
     public List<String> getCategorias() { return categorias; }
@@ -26,11 +24,7 @@ public class Estadistica {
 
     public void setResultados(List<Integer> resultados) { this.resultados = resultados; }
 
-    public int getMes() { return mes; }
+    public List<String> getFecha() { return fecha; }
 
-    public void setMes(int mes) { this.mes = mes; }
-
-    public int getAnio() { return anio; }
-
-    public void setAnio(int anio) { this.anio = anio; }
+    public void setFecha(List<String> fecha) { this.fecha = fecha; }
 }

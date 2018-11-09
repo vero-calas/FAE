@@ -4,6 +4,7 @@ import com.mongodb.mongodb.model.Encuestado;
 import com.mongodb.mongodb.repository.EncuestadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,10 +19,10 @@ public class EncuestadoService {
 
     //Get All Encuestados
     @GetMapping(value="/all")
-    public List<Encuestado> getAllEncuestados(){ return encuestadoRepository.findAll(); }
+    public ResponseEntity getAllEncuestados(){ return new ResponseEntity<>(encuestadoRepository.findAll(),HttpStatus.OK); }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Encuestado create(@RequestBody Encuestado resource){ return encuestadoRepository.save(resource);}
+    public ResponseEntity create(@RequestBody Encuestado resource){ return new ResponseEntity<>(encuestadoRepository.save(resource),HttpStatus.CREATED);}
 }

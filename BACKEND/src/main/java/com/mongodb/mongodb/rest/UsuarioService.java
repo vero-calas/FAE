@@ -27,17 +27,17 @@ public class UsuarioService {
 
     //Get All Usuarios
     @GetMapping(value = "/all")
-    public List<Usuario> getAllUsuario() { return usuarioRepository.findAll(); }
+    public ResponseEntity getAllUsuario() { return new ResponseEntity<>(usuarioRepository.findAll(),HttpStatus.OK); }
 
     //Agregar un nuevo usuario
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Usuario create(@RequestBody Usuario resource){
+    public ResponseEntity create(@RequestBody Usuario resource){
         if(usuarioRepository.findByCorreo(resource.getCorreo())==null){
-            return usuarioRepository.save(resource);
+            return new ResponseEntity<>(usuarioRepository.save(resource),HttpStatus.CREATED);
         }else{
-            return null;
+            return new ResponseEntity<>("Correo ya existe.",HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -45,42 +45,43 @@ public class UsuarioService {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
     @ResponseStatus
     @ResponseBody
-    public List<Usuario> update(@PathVariable("id") String id, @RequestBody Usuario usuario){
-
-        Usuario usuario1 = usuarioRepository.findById(id).get();
-        usuario1.setActivo(usuario.getActivo());
-        usuario1.setContrasena(usuario.getContrasena());
-        usuario1.setCorreo(usuario.getCorreo());
-        usuario1.setNombre(usuario.getNombre());
-        usuario1.setRol(usuario.getRol());
-        usuarioRepository.save(usuario1);
-        return usuarioRepository.findAll();
+    public ResponseEntity update(@PathVariable("id") String id, @RequestBody Usuario usuario){
+        if(usuarioRepository.findById(id).isPresent()){
+            Usuario usuario1 = usuarioRepository.findById(id).get();
+            usuario1.setActivo(usuario.getActivo());
+            usuario1.setContrasena(usuario.getContrasena());
+            usuario1.setCorreo(usuario.getCorreo());
+            usuario1.setNombre(usuario.getNombre());
+            usuario1.setRol(usuario.getRol());
+            usuarioRepository.save(usuario1);
+            return new ResponseEntity<>(usuarioRepository.findAll(),HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("ID Usuario no existe",HttpStatus.BAD_REQUEST);
+        }
     }
 
     //Filtrar por nombre
     @RequestMapping(value="/name/{nombre}", method = RequestMethod.GET)
     @ResponseStatus
-    @ResponseBody
-    public List<Usuario> getByName(@PathVariable("nombre") String nombre){
-        return usuarioRepository.findAllByNombreContaining(nombre);
+    public ResponseEntity getByName(@PathVariable("nombre") String nombre){
+        return new ResponseEntity<>(usuarioRepository.findAllByNombreContaining(nombre),HttpStatus.OK);
     }
 
     //Filtrar por correo
     @RequestMapping(value="/email/{correo}", method = RequestMethod.GET)
     @ResponseStatus
     @ResponseBody
-    public Usuario getByEmail(@PathVariable("correo") String correo){
-        return usuarioRepository.findByCorreo(correo);
+    public ResponseEntity getByEmail(@PathVariable("correo") String correo){
+        return new ResponseEntity<>(usuarioRepository.findByCorreo(correo),HttpStatus.OK);
     }
 
     //Entrega el último ID + 1
     @RequestMapping(value="/id", method = RequestMethod.GET)
     @ResponseStatus
-    @ResponseBody
-    public String getLastId(){
+    public ResponseEntity getLastId(){
         List<Usuario> listaUsuarios = usuarioRepository.findAll();
         int id = findMax(listaUsuarios.size(),listaUsuarios)+1;
-        return Integer.toString(id);
+        return new ResponseEntity<>(Integer.toString(id),HttpStatus.OK);
     }
 
 
