@@ -8,51 +8,59 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.List;
 
 @CrossOrigin(origins = {"http://localhost:8081"})
 @RestController
 @RequestMapping("/categories")
-public class CategoriaService {
+public class CategoriaService extends AbstractoService{
 
     @Autowired
     CategoriaRepository categoriaRepository;
 
     //Obtener todas las categorias, con sus preguntas
     @GetMapping(value="/all")
-    public ResponseEntity getAllCategories(){ return new ResponseEntity<>(categoriaRepository.findAll(),HttpStatus.OK); }
+    public ResponseEntity getAllCategories(){
+        return new ResponseEntity<>(categoriaRepository.findAll(),HttpStatus.OK);
+    }
 
     //Insertar una nueva categoria, con nuevas preguntas
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity create(@RequestBody Categoria resource){
-        if(categoriaRepository.findById(resource.getID()).isPresent()) {
-            return new ResponseEntity<>("ID ya existe. ",HttpStatus.BAD_REQUEST);
+        if(!isAuthorized(1))
+            return new ResponseEntity<>("No está autorizado.",HttpStatus.UNAUTHORIZED);
+        else{
+            if(categoriaRepository.findById(resource.getID()).isPresent()) {
+                return new ResponseEntity<>("ID ya existe. ",HttpStatus.BAD_REQUEST);
+            }
+            else
+                return new ResponseEntity<>(categoriaRepository.save(resource),HttpStatus.CREATED);
         }
-        else
-            return new ResponseEntity<>(categoriaRepository.save(resource),HttpStatus.CREATED);
-
     }
 
     //Actualizar una categoría agregando una pregunta
     @RequestMapping(value="/update/{id}",method = RequestMethod.PUT)
     @ResponseBody
     public ResponseEntity agregarPregunta(@PathVariable("id") String id, @RequestBody Pregunta pregunta){
-        if(categoriaRepository.findById(id).isPresent()){
-            Categoria categoria = categoriaRepository.findById(id).get();
-            List<Pregunta> listadoPreguntas = categoria.getPreguntas();
-            int idPregunta = findMax(listadoPreguntas.size(),null,listadoPreguntas,1);
-            if(Integer.parseInt(pregunta.getIdpregunta()) <= idPregunta){
-                return new ResponseEntity<>("ID Pregunta ya existe.", HttpStatus.BAD_REQUEST);
-            }else{
-                listadoPreguntas.add(pregunta);
-                categoria.setPreguntas(listadoPreguntas);
-                categoriaRepository.save(categoria);
-                return new ResponseEntity<>(categoria,HttpStatus.OK);
-            }
+        if(!isAuthorized(1)){
+            return new ResponseEntity<>("No está autorizado.",HttpStatus.UNAUTHORIZED);
         }else{
-            return new ResponseEntity<>("ID Categoria no existe.",HttpStatus.BAD_REQUEST);
+            if(categoriaRepository.findById(id).isPresent()){
+                Categoria categoria = categoriaRepository.findById(id).get();
+                List<Pregunta> listadoPreguntas = categoria.getPreguntas();
+                int idPregunta = findMax(listadoPreguntas.size(),null,listadoPreguntas,1);
+                if(Integer.parseInt(pregunta.getIdpregunta()) <= idPregunta){
+                    return new ResponseEntity<>("ID Pregunta ya existe.", HttpStatus.BAD_REQUEST);
+                }else{
+                    listadoPreguntas.add(pregunta);
+                    categoria.setPreguntas(listadoPreguntas);
+                    categoriaRepository.save(categoria);
+                    return new ResponseEntity<>(categoria,HttpStatus.OK);
+                }
+            }else{
+                return new ResponseEntity<>("ID Categoria no existe.",HttpStatus.BAD_REQUEST);
+            }
         }
     }
 
@@ -61,25 +69,29 @@ public class CategoriaService {
     @ResponseStatus
     @ResponseBody
     public ResponseEntity actualizarPregunta(@PathVariable("categoria_id") String categoria_id, @PathVariable("pregunta_id") String pregunta_id, @RequestBody Pregunta pregunta){
-        if(categoriaRepository.findById(categoria_id).isPresent()){
-            Categoria categoria = categoriaRepository.findById(categoria_id).get();
-            List<Pregunta> listadoPreguntas = categoria.getPreguntas();
-            Pregunta pregunta1;
-            for(int i = 0; i < listadoPreguntas.size(); i++){
-                pregunta1 = listadoPreguntas.get(i);
-                if(pregunta1.getIdpregunta().equals(pregunta_id)){
-                    pregunta1.setPregunta(pregunta.getPregunta());
-                    pregunta1.setEscala(pregunta.getEscala());
-                    pregunta1.setOpciones(pregunta.getOpciones());
-                    listadoPreguntas.set(i,pregunta1);
-                    categoria.setPreguntas(listadoPreguntas);
-                    categoriaRepository.save(categoria);
-                    return new ResponseEntity<>(categoria,HttpStatus.OK);
-                }
-            }
-            return new ResponseEntity<>("ID Pregunta no existe",HttpStatus.BAD_REQUEST);
+        if(!isAuthorized(1)){
+            return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
         }else{
-            return new ResponseEntity<>("ID Categoría no existe",HttpStatus.BAD_REQUEST);
+            if(categoriaRepository.findById(categoria_id).isPresent()){
+                Categoria categoria = categoriaRepository.findById(categoria_id).get();
+                List<Pregunta> listadoPreguntas = categoria.getPreguntas();
+                Pregunta pregunta1;
+                for(int i = 0; i < listadoPreguntas.size(); i++){
+                    pregunta1 = listadoPreguntas.get(i);
+                    if(pregunta1.getIdpregunta().equals(pregunta_id)){
+                        pregunta1.setPregunta(pregunta.getPregunta());
+                        pregunta1.setEscala(pregunta.getEscala());
+                        pregunta1.setOpciones(pregunta.getOpciones());
+                        listadoPreguntas.set(i,pregunta1);
+                        categoria.setPreguntas(listadoPreguntas);
+                        categoriaRepository.save(categoria);
+                        return new ResponseEntity<>(categoria,HttpStatus.OK);
+                    }
+                }
+                return new ResponseEntity<>("ID Pregunta no existe",HttpStatus.BAD_REQUEST);
+            }else{
+                return new ResponseEntity<>("ID Categoría no existe",HttpStatus.BAD_REQUEST);
+            }
         }
     }
 
@@ -88,22 +100,25 @@ public class CategoriaService {
     @ResponseStatus
     @ResponseBody
     public ResponseEntity eliminarPregunta(@PathVariable("categoria_id") String categoria_id, @PathVariable("pregunta_id") String pregunta_id){
-        if(categoriaRepository.findById(categoria_id).isPresent()){
-            Categoria categoria = categoriaRepository.findById(categoria_id).get();
-            List<Pregunta> listadoPreguntas = categoria.getPreguntas();
-            for(int i = 0; i < listadoPreguntas.size(); i++){
-                if(listadoPreguntas.get(i).getIdpregunta().equals(pregunta_id)){
-                    listadoPreguntas.remove(i);
-                    categoria.setPreguntas(listadoPreguntas);
-                    categoriaRepository.save(categoria);
-                    return new ResponseEntity<>(categoriaRepository.findAll(), HttpStatus.OK);
-                }
-            }
-            return new ResponseEntity<>("ID Pregunta no existe",HttpStatus.BAD_REQUEST);
+        if(!isAuthorized(1)){
+            return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
         }else{
-            return new ResponseEntity<>("ID Categoría no existe",HttpStatus.BAD_REQUEST);
+            if(categoriaRepository.findById(categoria_id).isPresent()){
+                Categoria categoria = categoriaRepository.findById(categoria_id).get();
+                List<Pregunta> listadoPreguntas = categoria.getPreguntas();
+                for(int i = 0; i < listadoPreguntas.size(); i++){
+                    if(listadoPreguntas.get(i).getIdpregunta().equals(pregunta_id)){
+                        listadoPreguntas.remove(i);
+                        categoria.setPreguntas(listadoPreguntas);
+                        categoriaRepository.save(categoria);
+                        return new ResponseEntity<>(categoriaRepository.findAll(), HttpStatus.OK);
+                    }
+                }
+                return new ResponseEntity<>("ID Pregunta no existe",HttpStatus.BAD_REQUEST);
+            }else{
+                return new ResponseEntity<>("ID Categoría no existe",HttpStatus.BAD_REQUEST);
+            }
         }
-
     }
 
     //Actualizar una categoria (Sin actualizar preguntas)
@@ -111,16 +126,19 @@ public class CategoriaService {
     @ResponseStatus
     @ResponseBody
     public ResponseEntity actualizarCategoria(@PathVariable("categoria_id") String categoria_id, @RequestBody Categoria categoria){
-        if(categoriaRepository.findById(categoria_id).isPresent()){
-            Categoria categoria1 = categoriaRepository.findById(categoria_id).get();
-            categoria1.setNombre(categoria.getNombre());
-            categoria1.setDescripcion(categoria.getDescripcion());
-            categoriaRepository.save(categoria1);
-            return new ResponseEntity<>(categoriaRepository.findAll(),HttpStatus.OK);
+        if(!isAuthorized(1)){
+            return new ResponseEntity<>("No está autorizado.",HttpStatus.UNAUTHORIZED);
         }else{
-            return new ResponseEntity<>("ID Categoría no existe",HttpStatus.BAD_REQUEST);
+            if(categoriaRepository.findById(categoria_id).isPresent()){
+                Categoria categoria1 = categoriaRepository.findById(categoria_id).get();
+                categoria1.setNombre(categoria.getNombre());
+                categoria1.setDescripcion(categoria.getDescripcion());
+                categoriaRepository.save(categoria1);
+                return new ResponseEntity<>(categoriaRepository.findAll(),HttpStatus.OK);
+            }else{
+                return new ResponseEntity<>("ID Categoría no existe",HttpStatus.BAD_REQUEST);
+            }
         }
-
     }
 
 
@@ -154,11 +172,15 @@ public class CategoriaService {
     @RequestMapping(value="/deleteCategoria/{categoriaid}", method = RequestMethod.DELETE)
     @ResponseStatus
     public ResponseEntity eliminarCategoria(@PathVariable("categoriaid") String categoriaId){
-        if(categoriaRepository.findById(categoriaId).isPresent()){
-            categoriaRepository.deleteById(categoriaId);
-            return new ResponseEntity<>(categoriaRepository.findAll(),HttpStatus.OK);
+        if(!isAuthorized(1)){
+            return new ResponseEntity<>("No está autorizado.",HttpStatus.UNAUTHORIZED);
         }else{
-            return new ResponseEntity<>("ID Categoría no existe.",HttpStatus.BAD_REQUEST);
+            if(categoriaRepository.findById(categoriaId).isPresent()){
+                categoriaRepository.deleteById(categoriaId);
+                return new ResponseEntity<>(categoriaRepository.findAll(),HttpStatus.OK);
+            }else{
+                return new ResponseEntity<>("ID Categoría no existe.",HttpStatus.BAD_REQUEST);
+            }
         }
     }
 

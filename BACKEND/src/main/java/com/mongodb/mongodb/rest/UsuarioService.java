@@ -13,21 +13,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.mongodb.mongodb.config.JwtConfig.HEADER_STRING;
-import static com.mongodb.mongodb.config.JwtConfig.TOKEN_PREFIX;
-import static com.mongodb.mongodb.config.JwtConfig.tokenize;
+import static com.mongodb.mongodb.config.JwtConfig.*;
 
 @CrossOrigin(origins = {"http://localhost:8081"})
 @RestController
 @RequestMapping("/usuarios")
-public class UsuarioService {
+public class UsuarioService extends AbstractoService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
 
     //Get All Usuarios
     @GetMapping(value = "/all")
-    public ResponseEntity getAllUsuario() { return new ResponseEntity<>(usuarioRepository.findAll(),HttpStatus.OK); }
+    public ResponseEntity getAllUsuario() {
+        if(!isAuthorized(1)){
+            return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
+        }else{
+            return new ResponseEntity<>(usuarioRepository.findAll(),HttpStatus.OK);
+        }
+    }
 
     //Agregar un nuevo usuario
     @RequestMapping(method = RequestMethod.POST)
@@ -46,17 +50,21 @@ public class UsuarioService {
     @ResponseStatus
     @ResponseBody
     public ResponseEntity update(@PathVariable("id") String id, @RequestBody Usuario usuario){
-        if(usuarioRepository.findById(id).isPresent()){
-            Usuario usuario1 = usuarioRepository.findById(id).get();
-            usuario1.setActivo(usuario.getActivo());
-            usuario1.setContrasena(usuario.getContrasena());
-            usuario1.setCorreo(usuario.getCorreo());
-            usuario1.setNombre(usuario.getNombre());
-            usuario1.setRol(usuario.getRol());
-            usuarioRepository.save(usuario1);
-            return new ResponseEntity<>(usuarioRepository.findAll(),HttpStatus.OK);
+        if(!isAuthorized(1) && !isAuthorized(2)){
+            return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
         }else{
-            return new ResponseEntity<>("ID Usuario no existe",HttpStatus.BAD_REQUEST);
+            if(usuarioRepository.findById(id).isPresent()){
+                Usuario usuario1 = usuarioRepository.findById(id).get();
+                usuario1.setActivo(usuario.getActivo());
+                usuario1.setContrasena(usuario.getContrasena());
+                usuario1.setCorreo(usuario.getCorreo());
+                usuario1.setNombre(usuario.getNombre());
+                usuario1.setRol(usuario.getRol());
+                usuarioRepository.save(usuario1);
+                return new ResponseEntity<>(usuarioRepository.findAll(),HttpStatus.OK);
+            }else{
+                return new ResponseEntity<>("ID Usuario no existe",HttpStatus.BAD_REQUEST);
+            }
         }
     }
 
@@ -64,7 +72,10 @@ public class UsuarioService {
     @RequestMapping(value="/name/{nombre}", method = RequestMethod.GET)
     @ResponseStatus
     public ResponseEntity getByName(@PathVariable("nombre") String nombre){
-        return new ResponseEntity<>(usuarioRepository.findAllByNombreContaining(nombre),HttpStatus.OK);
+        if(!isAuthorized(1))
+            return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
+        else
+            return new ResponseEntity<>(usuarioRepository.findAllByNombreContaining(nombre),HttpStatus.OK);
     }
 
     //Filtrar por correo
@@ -72,7 +83,10 @@ public class UsuarioService {
     @ResponseStatus
     @ResponseBody
     public ResponseEntity getByEmail(@PathVariable("correo") String correo){
-        return new ResponseEntity<>(usuarioRepository.findByCorreo(correo),HttpStatus.OK);
+        if(!isAuthorized(1))
+            return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
+        else
+            return new ResponseEntity<>(usuarioRepository.findByCorreo(correo),HttpStatus.OK);
     }
 
     //Entrega el último ID + 1
@@ -91,7 +105,7 @@ public class UsuarioService {
         if(realUser != null) {
             if(realUser.getContrasena().equals(user.getContrasena())){
                 MultiValueMap<String, String> multivalue = new LinkedMultiValueMap<String, String>();
-                multivalue.add(HEADER_STRING,TOKEN_PREFIX + tokenize(user));
+                multivalue.add(HEADER_STRING,TOKEN_PREFIX + tokenize(realUser));
                 return new ResponseEntity(multivalue,HttpStatus.OK);
             }else{
                 return new ResponseEntity<>("Contraseña Incorrecta",HttpStatus.UNAUTHORIZED);

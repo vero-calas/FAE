@@ -14,14 +14,20 @@ import java.util.List;
 @CrossOrigin(origins = {"http://localhost:8081"})
 @RestController
 @RequestMapping("/regiones")
-public class RegionService {
+public class RegionService extends AbstractoService{
 
     @Autowired
     RegionRepository regionRepository;
 
     //Get all Regiones
     @GetMapping(value="all")
-    public ResponseEntity getAllRegiones(){ return new ResponseEntity<>(regionRepository.findAll(),HttpStatus.OK); }
+    public ResponseEntity getAllRegiones(){
+        if(!isAuthorized(1)){
+            return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
+        }else{
+            return new ResponseEntity<>(regionRepository.findAll(),HttpStatus.OK);
+        }
+    }
 
     //Insertar una nueva región
     @RequestMapping(method = RequestMethod.POST)

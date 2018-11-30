@@ -12,14 +12,20 @@ import java.util.List;
 @CrossOrigin(origins = {"http://localhost:8081"})
 @RestController
 @RequestMapping("/encuestados")
-public class EncuestadoService {
+public class EncuestadoService extends AbstractoService{
 
     @Autowired
     EncuestadoRepository encuestadoRepository;
 
     //Get All Encuestados
     @GetMapping(value="/all")
-    public ResponseEntity getAllEncuestados(){ return new ResponseEntity<>(encuestadoRepository.findAll(),HttpStatus.OK); }
+    public ResponseEntity getAllEncuestados(){
+        if(!isAuthorized(1)){
+            return new ResponseEntity<>("No está autorizado.",HttpStatus.UNAUTHORIZED);
+        }else{
+            return new ResponseEntity<>(encuestadoRepository.findAll(),HttpStatus.OK);
+        }
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)

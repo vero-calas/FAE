@@ -26,10 +26,11 @@ public class JwtConfig {
     public static String tokenize(Usuario usuario) {
         Map<String, Object> json = new HashMap<>();
         json.put("correo", usuario.getCorreo());
-        json.put("pass",usuario.getContrasena());
+        json.put("contrasena",usuario.getContrasena());
         json.put("rol",usuario.getRol());
-        json.put("valid",true);
-        return new JWTSigner(SECRET).sign(json);
+        json.put("activo",usuario.getActivo());
+        String token = new JWTSigner(SECRET).sign(json);
+        return token;
     }
 
     //Verifica si el token es válido o no
@@ -37,7 +38,7 @@ public class JwtConfig {
         if(null == token)
             return false;
         try {
-             return (Boolean) new JWTVerifier(SECRET).verify(token).getOrDefault("valid",false);
+             return (Boolean) new JWTVerifier(SECRET).verify(token.replace(TOKEN_PREFIX,"")).getOrDefault("activo",false);
         } catch (NoSuchAlgorithmException | InvalidKeyException | IOException | SignatureException | JWTVerifyException e) {
             log.error(e.getMessage(),e);
             return false;
@@ -45,10 +46,13 @@ public class JwtConfig {
     }
 
     public static Boolean isAuthorized(String token, int role){
-        if(!isAuthenticated(token))
-            return false;
+        if(!isAuthenticated(token)){
+            log.info("error2");
+            return false;}
         try {
-            Integer rol =(Integer) new JWTVerifier(SECRET).verify(token).getOrDefault("rol",3);
+            Integer rol =(Integer) new JWTVerifier(SECRET).verify(token.replace(TOKEN_PREFIX,"")).getOrDefault("rol",3);
+            log.info("rol: {}",rol);
+            log.info("role: {}",role);
             return rol == role;
         } catch (NoSuchAlgorithmException | InvalidKeyException | IOException | SignatureException | JWTVerifyException e) {
             log.error(e.getMessage(),e);
