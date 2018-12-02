@@ -104,9 +104,13 @@ public class UsuarioService extends AbstractoService {
         Usuario realUser = usuarioRepository.findByCorreo(user.getCorreo());
         if(realUser != null) {
             if(realUser.getContrasena().equals(user.getContrasena())){
-                MultiValueMap<String, String> multivalue = new LinkedMultiValueMap<String, String>();
-                multivalue.add(HEADER_STRING,TOKEN_PREFIX + tokenize(realUser));
-                return new ResponseEntity(multivalue,HttpStatus.OK);
+                if(realUser.getActivo()){
+                    MultiValueMap<String, String> multivalue = new LinkedMultiValueMap<String, String>();
+                    multivalue.add(HEADER_STRING,TOKEN_PREFIX + tokenize(realUser));
+                    return new ResponseEntity(multivalue,HttpStatus.OK);
+                }else{
+                    return new ResponseEntity<>("Usuario Inactivo.",HttpStatus.UNAUTHORIZED);
+                }
             }else{
                 return new ResponseEntity<>("Contraseña Incorrecta",HttpStatus.UNAUTHORIZED);
             }

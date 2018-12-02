@@ -27,7 +27,7 @@
              </md-dialog-content>
              <md-dialog-actions>
                  <md-button class="md-primary"  @click="showDialogLogin = false">Cerrar</md-button>
-                 <md-button type="submit">Ingresar</md-button>
+                 <md-button v-on:click="servicioLogin" type="submit">Ingresar</md-button>
 
              </md-dialog-actions>
          </md-dialog>
@@ -181,7 +181,7 @@
                 password: null,
                 isInvalidEmail:false,
                 isInvalidPass:false,
-
+             loginjson:null,
 
              preguntas:null,
              regiones: null,
@@ -202,6 +202,10 @@
 
          created() {
 
+             const auth = {
+                 headers: {'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250cmFzZW5hIjoiYXNkZiIsInJvbCI6MSwiY29ycmVvIjoibWFpbEBtYWlsLmNsIiwiYWN0aXZvIjp0cnVlfQ.f8io8d-_s5ruT-ShuWrJTolHHB0hx4bK7y2lTexiGoo'}
+             }
+
              this.$http.get('http://localhost:8092/categories/all').then(response => {
                  this.preguntas = response.data;
                  console.log('data de preguntas obtenido es:', this.preguntas);
@@ -211,7 +215,7 @@
                  this.error = true;
              });
 
-             this.$http.get('http://localhost:8092/regiones/all').then(response => {
+             this.$http.get('http://localhost:8092/regiones/all',auth).then(response => {
                  this.regiones = response.data;
                  console.log('data de regiones obtenido es:', this.regiones);
                  this.eleccion = 1;
@@ -220,25 +224,25 @@
                  this.error = true;
              });
 
-             this.$http.get('http://localhost:8092/usuarios/all').then(response => {
+             this.$http.get('http://localhost:8092/usuarios/all',auth).then(response => {
                  this.usuarios = response.data;
-                 console.log('data de regiones obtenido es:', this.usuarios);
+                 console.log('data de usuarios obtenido es:', this.usuarios);
                  this.eleccion = 1;
                  this.load += 34
              }, (response) => {
                  this.error = true;
              });
 
-             this.$http.get('http://localhost:8092/encuestados/all').then(response => {
+             this.$http.get('http://localhost:8092/encuestados/all',auth).then(response => {
                  this.encuestados = response.data;
-                 console.log('data de regiones obtenido es:', this.encuestados);
+                 console.log('data de encuestados obtenido es:', this.encuestados);
                  this.eleccion = 1;
                  this.load += 34
              }, (response) => {
                  this.error = true;
              });
 
-             this.$http.get('http://localhost:8092/usuarios/name/d').then(response => {
+             this.$http.get('http://localhost:8092/usuarios/name/d',auth).then(response => {
                  this.usuariosE = response.data;
                  console.log('data de usuario d obtenido es:', this.usuariosE);
                  this.eleccion = 1;
@@ -249,6 +253,7 @@
          },
 
          methods: {
+
              setSelectedItemHome(){
                  this.eleccion=1;
              },
@@ -257,6 +262,23 @@
              },
              setSelectedItemEmpresaView(){
                  this.eleccion=4;
+             },
+
+             servicioLogin(){
+                 const config = {
+                     headers: {'Content-Type': 'application/json'}};
+
+                 this.loginjson = {
+                     correo: this.email,
+                     contrasena: this.password
+                 }
+
+                 this.$http.post('http://localhost:8092/usuarios/login',JSON.stringify(this.loginjson),config).then((response) => {
+                     console.log("Se hizo el login",response.headers.get('Authorization'))
+                     console.log("TODITO",response)
+                 }, (response) =>{
+                     console.log("No se logro el login",response)
+                 });
              },
 
          },
