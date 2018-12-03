@@ -63,7 +63,7 @@
      <md-app md-waterfall md-mode="overlap">
          <md-app-toolbar class="md-accent md-large">
              <div class="md-toolbar-row">
-                 <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
+                 <md-button v-if="this.role < 2" class="md-icon-button" @click="menuVisible = !menuVisible">
                      <md-icon>menu</md-icon>
                  </md-button>
                  <div style="float: right">
@@ -85,16 +85,19 @@
 
 
 
-         <md-app-drawer :md-active.sync="menuVisible" md-persistent="full">
+         <md-app-drawer :md-active.sync="menuVisible" md-persistent="full" v-if="this.role < 2">
              <md-toolbar class="md-transparent" md-elevation="0">
                  <img width="150" height="80" src="https://images.vexels.com/media/users/3/145779/isolated/preview/53f7a1777bd2d2c3f8628d745268c5a3-ilustraci-n-del-loro-by-vexels.png">
              </md-toolbar>
 
-             <div class="list-group">
+             <div class="list-group" v-if="this.role === 1">
                  <a v-on:click="setSelectedItemHome" href="#" class="list-group-item"><label class="labelSide">Home</label><md-icon class="position">home</md-icon></a>
-                 <a v-on:click="setSelectedItemAdminView" href="#" class="list-group-item"><label class="labelSide">Administrador</label><md-icon class="position">local_play</md-icon></a>
                  <a v-on:click="setSelectedItemEmpresaView" href="#" class="list-group-item"><label class="labelSide">Empresa</label><md-icon class="position">local_play</md-icon></a>
              </div>
+             <div class="list-group" v-if="this.role === 0">
+                 <a v-on:click="setSelectedItemHome" href="#" class="list-group-item"><label class="labelSide">Home</label><md-icon class="position">home</md-icon></a>
+                 <a v-on:click="setSelectedItemAdminView" href="#" class="list-group-item"><label class="labelSide">Administrador</label><md-icon class="position">local_play</md-icon></a>
+              </div>
          </md-app-drawer>
 
          <md-app-content class="md-content">
@@ -169,6 +172,8 @@
          name: 'Overlap',
          data: () => ({
              load: 0,
+             //role 0 = admin; role 1 = empresa; role 2 = usuario natural
+             role: 0,
              error:false,
              showDialogLogin: false,
              showDialogRegister: false,
