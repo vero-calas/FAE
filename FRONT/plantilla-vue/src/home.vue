@@ -195,7 +195,59 @@
                             <md-button class="md-raised md-primary; center">Enviar Respuestas</md-button>
 
                         </md-steppers>
-                        {{form2}}
+                    </div>
+                </div>
+            </md-tab>
+
+
+            <md-tab id="tab-encuesta2" md-label="Responder encuesta 2" to="/components/tabs/encuesta2">
+
+                <div>
+
+
+
+                    <div>
+                        <!-- opciones  md-vertical, md-horizontal, md-alternative-->
+
+                        <md-steppers md-horizontal>
+
+
+                            <!--                          SEGUNDA ETAPA DE ENCUESTA                                        -->
+                            <!--                          **************************                                       -->
+                            <md-step id=0  :md-label="Bienvenido">
+                                <label>Bienvenido a la encuesta sobre el turismo en Chile</label>
+                            </md-step>
+                            <md-step >
+                                <br>
+                                <label> Por favor, responda según su opinión </label>
+                                <br>
+                                  <hr>
+                                    <label> Pregunta 1 </label>
+                                <div>
+                                    <md-card>
+                                        <md-radio></md-radio><md-icon class="md-size-3x" style="color: #08e166">
+                                        sentiment_very_satisfied
+                                    </md-icon>
+                                        <label>Satisfecho</label>
+                                    </md-card>
+                                    <md-card>
+                                        <md-radio></md-radio><md-icon class="md-size-3x" style="color: #fbe246">
+                                        sentiment_satisfied
+                                    </md-icon>
+                                        <label>Indiferente</label>
+                                    </md-card>
+                                    <md-card>
+                                        <md-radio></md-radio><md-icon class="md-size-3x" style="color: #fb2514">
+                                        sentiment_very_dissatisfied
+                                    </md-icon>
+                                        <label>Insatisfecho</label>
+                                    </md-card>
+                                </div>
+                            </md-step>
+
+                            <md-button class="md-raised md-primary; center">Enviar Respuestas</md-button>
+
+                        </md-steppers>
                     </div>
                 </div>
             </md-tab>
