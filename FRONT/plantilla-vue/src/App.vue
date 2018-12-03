@@ -96,8 +96,10 @@
              </div>
              <div class="list-group" v-if="this.role === 0">
                  <a v-on:click="setSelectedItemHome" href="#" class="list-group-item"><label class="labelSide">Home</label><md-icon class="position">home</md-icon></a>
-                 <a v-on:click="setSelectedItemAdminView" href="#" class="list-group-item"><label class="labelSide">Administrador</label><md-icon class="position">local_play</md-icon></a>
-              </div>
+                 <a v-on:click="setSelectedItemAdminView" href="#" class="list-group-item"><label class="labelSide">Ver estadísticas</label><md-icon class="position">local_play</md-icon></a>
+                 <a v-on:click="setSelectedItemAdminEdit" href="#" class="list-group-item"><label class="labelSide">Editar información</label><md-icon class="position">local_play</md-icon></a>
+
+             </div>
          </md-app-drawer>
 
          <md-app-content class="md-content">
@@ -105,8 +107,11 @@
                  <div v-if="this.eleccion == 1">
                      <home-component v-bind:datos="preguntas"></home-component>
                  </div>
+                 <div v-if="this.eleccion == 2">
+                     <admin-edit-component v-bind:datos="[usuarios, preguntas]"></admin-edit-component>
+                 </div>
                  <div v-if="this.eleccion == 3">
-                     <admin-component v-bind:datos="[regiones, usuarios, encuestados, preguntas]"></admin-component>
+                     <admin-component v-bind:datos="[regiones, encuestados]"></admin-component>
                  </div>
                  <div v-if="this.eleccion == 4">
                      <empresa-component v-bind:datos="regiones"></empresa-component>
@@ -150,6 +155,7 @@
  <script>
      import home from './home.vue';
      import userForm from './userForm.vue';
+     import adminEdit from './adminEdit.vue';
      import adminView from './adminView.vue';
      import empresaView from './empresaView.vue';
      import {
@@ -166,6 +172,7 @@
              'home-component': home,
              'form-component': userForm,
              'admin-component': adminView,
+             'admin-edit-component': adminEdit,
              'empresa-component': empresaView
          },
 
@@ -262,12 +269,16 @@
              setSelectedItemHome(){
                  this.eleccion=1;
              },
+             setSelectedItemAdminEdit(){
+                 this.eleccion=2;
+             },
              setSelectedItemAdminView(){
                  this.eleccion=3;
              },
              setSelectedItemEmpresaView(){
                  this.eleccion=4;
              },
+
 
              servicioLogin(){
                  const config = {
