@@ -96,9 +96,10 @@
              </div>
              <div class="list-group" v-if="this.role === 0">
                  <a v-on:click="setSelectedItemHome" href="#" class="list-group-item"><label class="labelSide">Home</label><md-icon class="position">home</md-icon></a>
-                 <a v-on:click="setSelectedItemAdminView" href="#" class="list-group-item"><label class="labelSide">Ver estadísticas</label><md-icon class="position">local_play</md-icon></a>
-                 <a v-on:click="setSelectedItemAdminEdit" href="#" class="list-group-item"><label class="labelSide">Editar información</label><md-icon class="position">local_play</md-icon></a>
-
+                 <a v-on:click="setSelectedItemAdminView" href="#" class="list-group-item"><label class="labelSide">Estadísticas generales</label><md-icon class="position">local_play</md-icon></a>
+                 <a v-on:click="setSelectedItemAdminEdit" href="#" class="list-group-item"><label class="labelSide">Editar encuesta general</label><md-icon class="position">local_play</md-icon></a>
+                 <a v-on:click="setSelectedItemAdminView2" href="#" class="list-group-item"><label class="labelSide">Estadísticas de sentimiento</label><md-icon class="position">local_play</md-icon></a>
+                 <a v-on:click="setSelectedItemAdminEdit2" href="#" class="list-group-item"><label class="labelSide">Editar encuesta de sentimiento</label><md-icon class="position">local_play</md-icon></a>
              </div>
          </md-app-drawer>
 
@@ -115,6 +116,12 @@
                  </div>
                  <div v-if="this.eleccion == 4">
                      <empresa-component v-bind:datos="regiones"></empresa-component>
+                 </div>
+                 <div v-if="this.eleccion == 5">
+                     <admin2-component v-bind:datos="[regiones, encuestados]"></admin2-component>
+                 </div>
+                 <div v-if="this.eleccion == 6">
+                     <admin-edit2-component v-bind:datos="[usuarios, preguntas]"></admin-edit2-component>
                  </div>
              </div>
          </md-app-content>
@@ -158,6 +165,8 @@
      import adminEdit from './adminEdit.vue';
      import adminView from './adminView.vue';
      import empresaView from './empresaView.vue';
+     import adminEdit2 from './adminEdit2.vue';
+     import adminView2 from './adminView2.vue';
      import {
          required,
          email
@@ -172,7 +181,9 @@
              'home-component': home,
              'form-component': userForm,
              'admin-component': adminView,
+             'admin2-component': adminView2,
              'admin-edit-component': adminEdit,
+             'admin-edit2-component': adminEdit2,
              'empresa-component': empresaView
          },
 
@@ -278,7 +289,12 @@
              setSelectedItemEmpresaView(){
                  this.eleccion=4;
              },
-
+             setSelectedItemAdminView2(){
+                 this.eleccion=5;
+             },
+             setSelectedItemAdminEdit2(){
+                 this.eleccion=6;
+             },
 
              servicioLogin(){
                  const config = {

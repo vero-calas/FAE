@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <!-- Región del Gráfico -->
         <div style="width:50% ; float: left">
             <md-card style="width:98%">
@@ -10,9 +9,7 @@
                     </div>
                 </md-card-header>
             </md-card>
-
             <!-- Grafico -->
-
             <md-card>
                 <md-card-header>
                     <div class="md-title">Aprobación en distintos ámbitos</div>
