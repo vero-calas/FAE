@@ -162,18 +162,22 @@
                     <div>
                         <!-- opciones  md-vertical, md-horizontal, md-alternative-->
 
-                        <md-steppers md-vertical>
+                        <md-steppers md-horizontal>
 
 
                             <!--                          SEGUNDA ETAPA DE ENCUESTA                                        -->
                             <!--                          **************************                                       -->
-                            <md-step id=0  :md-label="Bienvenido">
-                                <label>Bienvenido a la encuesta sobre el turismo en Chile</label>
+                            <md-step id="0"  :md-label="Bienvenido">
+                                <div>
+                                    <img width="150" height="80" src="https://images.vexels.com/media/users/3/145779/isolated/preview/53f7a1777bd2d2c3f8628d745268c5a3-ilustraci-n-del-loro-by-vexels.png">
+                                    <label>Bienvenido a la encuesta sobre el turismo en Chile</label>
+                                </div>
                             </md-step>
-                            <md-step v-model="array" v-if="i!==20" :key="i" :value="i" v-for="(categoria,i) in datos" :id="datos[i].id"  :md-label="datos[i].nombre"  :md-description="datos[i].descripcion" >
-                                <br>valoooor i, {{i}}
-                                <label> Por favor, responda según su opinión </label>
-                                <br>
+                            <md-step v-model="array" v-if="i!==20" :key="i" :value="i" v-for="(categoria,i) in datos" :id="datos[i].id">
+                                <h1>{{datos[i].nombre}}</h1><br>
+                                <label>{{datos[i].descripcion}}</label>
+                                <br><label> Por favor, responda según su opinión</label>
+                                <hr>
                                 <div v-model="array2" v-if="j!==20" :key="j" :value="j" v-for="(preguntas,j) in categoria.preguntas">
                                     <hr>
                                     <label> {{ preguntas.pregunta }} </label>
@@ -215,7 +219,10 @@
                             <!--                          SEGUNDA ETAPA DE ENCUESTA                                        -->
                             <!--                          **************************                                       -->
                             <md-step id=0  :md-label="Bienvenido">
+                                <div>
+                                <img width="150" height="80" src="https://images.vexels.com/media/users/3/145779/isolated/preview/53f7a1777bd2d2c3f8628d745268c5a3-ilustraci-n-del-loro-by-vexels.png">
                                 <label>Bienvenido a la encuesta sobre el turismo en Chile</label>
+                                </div>
                             </md-step>
                             <md-step >
                                 <br>
@@ -243,9 +250,18 @@
                                         <label>Insatisfecho</label>
                                     </md-card>
                                 </div>
+
                             </md-step>
 
-                            <md-button class="md-raised md-primary; center">Enviar Respuestas</md-button>
+                            <md-step>
+                                Lorem Ipsum
+                            </md-step>
+                            <md-step>
+                                Lorem Ipsum
+                            </md-step>
+                            <md-step>
+                                Lorem Ipsum
+                            </md-step>
 
                         </md-steppers>
                     </div>

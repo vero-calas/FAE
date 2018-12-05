@@ -4,7 +4,10 @@
 
         <md-tabs md-sync-route class="md-transparent" md-alignment="fixed">
             <md-tab id="tab-home" md-label="Home" to="/components/tabs/home">
-
+                <div>
+                    <img width="150" height="80" src="https://images.vexels.com/media/users/3/145779/isolated/preview/53f7a1777bd2d2c3f8628d745268c5a3-ilustraci-n-del-loro-by-vexels.png">
+                    <label>Edición de encuesta por sentimiento</label>
+                </div>
             </md-tab>
 
         <md-tab id="tab-posts" md-label="Estadísticas por Empresa" to="/components/tabs/posts">
@@ -109,9 +112,7 @@
                         </md-field>
                         <br>
                         <hr>
-                        <md-checkbox v-model="booleanEscala">Crear preguntas por escala</md-checkbox>
-                        <md-checkbox v-model="booleanOpciones">Crear preguntas con opciones</md-checkbox>
-                        <div v-if="booleanOpciones">
+                        <div>
                             <label>Cantidad de preguntas:</label>
                             <md-field>
                                 <md-select name="cantPreguntas" id="cantPreguntas" v-model="cantPreguntas">
@@ -133,49 +134,7 @@
                                 {{preguntaCate}}
                                 <br>
                                 <label>Escala:</label>
-                                <md-field>
-                                    <label>Ingrese la escala con que desea evaluar la pregunta</label>
-                                    <md-textarea :id=i v-model="opciones[i]" md-autogrow></md-textarea>
-                                </md-field>
-                                {{opciones}}
-
                                 <hr>
-                                {{this.preguntass}}
-                            </div>
-                        </div>
-                        <div v-if="booleanEscala && booleanOpciones==false">
-                            <label>Cantidad de preguntas:</label>
-                            <md-field>
-                                <md-select name="cantPreguntas" id="cantPreguntas" v-model="cantPreguntas2">
-                                    <md-option value="1">1</md-option>
-                                    <md-option value="12">2</md-option>
-                                    <md-option value="123">3</md-option>
-                                    <md-option value="1234">4</md-option>
-                                    <md-option value="12345">5</md-option>
-                                </md-select>
-                            </md-field>
-                            <hr>
-                            <div v-for="i in this.cantPreguntas2" >
-
-                                <br>
-                                <label>Pregunta {{i}}:</label>
-                                <md-field>
-                                    <label>Ingrese la pregunta que desea realizar</label>
-                                    <md-textarea :id=i v-model="preguntaCate2[i]" md-autogrow></md-textarea>
-                                </md-field>
-                                {{preguntaCate2}}
-                                <br>
-                                <label>Escala:</label>
-                                <md-field>
-                                    <md-radio v-model="escalas" value="1"><label>1</label></md-radio>
-                                    <md-radio v-model="escalas" value="2"><label>2</label></md-radio>
-                                    <md-radio v-model="escalas" value="3"><label>3</label></md-radio>
-                                    <md-radio v-model="escalas" value="4"><label>4</label></md-radio>
-                                    <md-radio v-model="escalas" value="5"><label>5</label></md-radio>
-                                    <md-radio v-model="escalas" value="6"><label>6</label></md-radio>
-                                    <md-radio v-model="escalas" value="7"><label>7</label></md-radio>
-                                </md-field>
-                                {{escalas}}
                                 {{this.preguntass}}
                             </div>
                         </div>
