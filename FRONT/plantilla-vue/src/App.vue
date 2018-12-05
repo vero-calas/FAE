@@ -92,6 +92,7 @@
 
              <div class="list-group" v-if="this.role === 1">
                  <a v-on:click="setSelectedItemHome" href="#" class="list-group-item"><label class="labelSide">Home</label><md-icon class="position">home</md-icon></a>
+                 <a v-on:click="setSelectedItemEmpresaInfo" href="#" class="list-group-item"><label class="labelSide">Mi perfil</label><md-icon class="position">local_play</md-icon></a>
                  <a v-on:click="setSelectedItemEmpresaView" href="#" class="list-group-item"><label class="labelSide">Empresa</label><md-icon class="position">local_play</md-icon></a>
              </div>
              <div class="list-group" v-if="this.role === 0">
@@ -100,6 +101,7 @@
                  <a v-on:click="setSelectedItemAdminEdit" href="#" class="list-group-item"><label class="labelSide">Editar encuesta general</label><md-icon class="position">local_play</md-icon></a>
                  <a v-on:click="setSelectedItemAdminView2" href="#" class="list-group-item"><label class="labelSide">Estadísticas de sentimiento</label><md-icon class="position">local_play</md-icon></a>
                  <a v-on:click="setSelectedItemAdminEdit2" href="#" class="list-group-item"><label class="labelSide">Editar encuesta de sentimiento</label><md-icon class="position">local_play</md-icon></a>
+                 <a v-on:click="setSelectedItemEmpresaInfo" href="#" class="list-group-item"><label class="labelSide">Mi perfil</label><md-icon class="position">local_play</md-icon></a>
              </div>
          </md-app-drawer>
 
@@ -122,6 +124,9 @@
                  </div>
                  <div v-if="this.eleccion == 6">
                      <admin-edit2-component v-bind:datos="[usuarios, preguntas]"></admin-edit2-component>
+                 </div>
+                 <div v-if="this.eleccion == 7">
+                     <empresa-userInfo-component></empresa-userInfo-component>
                  </div>
              </div>
          </md-app-content>
@@ -165,6 +170,7 @@
      import adminEdit from './adminEdit.vue';
      import adminView from './adminView.vue';
      import empresaView from './empresaView.vue';
+     import empresaInfo from './empresaUserInfo.vue';
      import adminEdit2 from './adminEdit2.vue';
      import adminView2 from './adminView2.vue';
      import {
@@ -184,14 +190,15 @@
              'admin2-component': adminView2,
              'admin-edit-component': adminEdit,
              'admin-edit2-component': adminEdit2,
-             'empresa-component': empresaView
+             'empresa-component': empresaView,
+             'empresa-userInfo-component': empresaInfo
          },
 
          name: 'Overlap',
          data: () => ({
              load: 0,
              //role 0 = admin; role 1 = empresa; role 2 = usuario natural
-             role: 0,
+             role: 1,
              error:false,
              showDialogLogin: false,
              showDialogRegister: false,
@@ -294,6 +301,9 @@
              },
              setSelectedItemAdminEdit2(){
                  this.eleccion=6;
+             },
+             setSelectedItemEmpresaInfo(){
+                 this.eleccion=7;
              },
 
              servicioLogin(){
