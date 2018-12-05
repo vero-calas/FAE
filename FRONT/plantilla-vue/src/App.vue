@@ -198,7 +198,7 @@
          data: () => ({
              load: 0,
              //role 0 = admin; role 1 = empresa; role 2 = usuario natural
-             role: 1,
+             role: 0,
              error:false,
              showDialogLogin: false,
              showDialogRegister: false,
@@ -233,7 +233,7 @@
          created() {
 
              const auth = {
-                 headers: {'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250cmFzZW5hIjoiYXNkZiIsInJvbCI6MSwiY29ycmVvIjoibWFpbEBtYWlsLmNsIiwiYWN0aXZvIjp0cnVlfQ.f8io8d-_s5ruT-ShuWrJTolHHB0hx4bK7y2lTexiGoo'}
+                 headers: {'Authorization':'Bearer ' + localStorage.getItem('authtoken')}
              }
 
              this.$http.get('http://localhost:8092/categories/all').then(response => {
@@ -252,6 +252,7 @@
                  this.load += 33
              }, (response) => {
                  this.error = true;
+                 console.log('no obtiene regiones');
              });
 
              this.$http.get('http://localhost:8092/usuarios/all',auth).then(response => {
@@ -261,6 +262,7 @@
                  this.load += 34
              }, (response) => {
                  this.error = true;
+                 console.log('no obtiene usuarios');
              });
 
              this.$http.get('http://localhost:8092/encuestados/all',auth).then(response => {
@@ -270,6 +272,7 @@
                  this.load += 34
              }, (response) => {
                  this.error = true;
+                 console.log('no obtiene encuestados');
              });
 
              this.$http.get('http://localhost:8092/usuarios/name/d',auth).then(response => {
@@ -277,6 +280,7 @@
                  console.log('data de usuario d obtenido es:', this.usuariosE);
                  this.eleccion = 1;
              }, (response) => {
+                 console.log('no obtiene usuarios d');
                  this.error = true;
              });
 
@@ -316,8 +320,10 @@
                  }
 
                  this.$http.post('http://localhost:8092/usuarios/login',JSON.stringify(this.loginjson),config).then((response) => {
-                     console.log("Se hizo el login",response.headers.get('Authorization'))
-                     console.log("TODITO",response)
+                     localStorage.setItem('authtoken',response.body.Authorization);
+                     localStorage.setItem('name',response.body.nombre);
+                     //localStorage.setItem("rol",parseInt(response.body.rol));
+                     console.log("Se hizo el login",response);
                  }, (response) =>{
                      console.log("No se logro el login",response)
                  });
