@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.mongodb.mongodb.config.JwtConfig.*;
 
@@ -105,9 +106,16 @@ public class UsuarioService extends AbstractoService {
         if(realUser != null) {
             if(realUser.getContrasena().equals(user.getContrasena())){
                 if(realUser.getActivo()){
-                    MultiValueMap<String, String> multivalue = new LinkedMultiValueMap<String, String>();
+                    Map<String,String> listaCosas = new HashMap<String, String>();
+                    listaCosas.put(HEADER_STRING,TOKEN_PREFIX+tokenize(realUser));
+                    listaCosas.put("nombre",realUser.getNombre());
+                    listaCosas.put("rol",realUser.getRol().toString());
+
+                    /*MultiValueMap<String, String> multivalue = new LinkedMultiValueMap<String, String>();
                     multivalue.add(HEADER_STRING,TOKEN_PREFIX + tokenize(realUser));
-                    return new ResponseEntity(multivalue,HttpStatus.OK);
+                    multivalue.add("nombre",realUser.getNombre());
+                    multivalue.add("rol",realUser.getRol().toString());*/
+                    return new ResponseEntity(listaCosas,HttpStatus.OK);
                 }else{
                     return new ResponseEntity<>("Usuario Inactivo.",HttpStatus.UNAUTHORIZED);
                 }
