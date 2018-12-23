@@ -21,17 +21,21 @@ public class Usuario {
     public Boolean activo;
 
     @Field("rol")
-    public Integer rol;
+    public Integer rol; //1 = admin y 2 = empresa
+
+    @Field("telefono")
+    public String telefono;
 
     public Usuario(){}
 
-    public Usuario(String ID, String nombre, String correo, String contrasena, Boolean activo, Integer rol) {
+    public Usuario(String ID, String nombre, String correo, String contrasena, Boolean activo, Integer rol, String telefono) {
         this.ID = ID;
         this.nombre = nombre;
         this.correo = correo;
         this.contrasena = contrasena;
         this.activo = activo;
         this.rol = rol;
+        this.telefono = telefono;
     }
 
     public String getID() { return ID; }
@@ -57,4 +61,8 @@ public class Usuario {
     public Integer getRol() { return rol; }
 
     public void setRol(Integer rol) { this.rol = rol; }
+
+    public String getTelefono() { return telefono; }
+
+    public void setTelefono(String telefono) { this.telefono = telefono; }
 }

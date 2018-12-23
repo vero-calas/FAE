@@ -574,192 +574,84 @@ CATEGORIAS.
 
 REGION:
 {
-
         "ID" : "1",
-        "nombre" : "XV - Arica y Parinacota",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "XV - Arica y Parinacota"
 }
 
 {
-
         "ID" : "2",
-        "nombre" : "I - Tarapacá",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "I - Tarapacá"
 }
 
 {
-
         "ID" : "3",
-        "nombre" : "II - Antofagasta",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "II - Antofagasta"
 }
 
 {
-
         "ID" : "4",
-        "nombre" : "III - Atacama",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "III - Atacama"
 }
 
 {
-
         "ID" : "5",
-        "nombre" : "IV - Coquimbo",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "IV - Coquimbo"
 }
 
 {
-
         "ID" : "6",
-        "nombre" : "V - Valparaíso",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "V - Valparaíso"
 }
 
 {
-
         "ID" : "7",
-        "nombre" : "VI - Libertador Bernardo O'Higgins",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "VI - Libertador Bernardo O'Higgins"
 }
 {
-
         "ID" : "8",
-        "nombre" : "VII - Maule",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "VII - Maule"
 }
 {
-
         "ID" : "9",
-        "nombre" : "VIII - Bío-Bío",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "VIII - Bío-Bío"
 }
 {
-
         "ID" : "10",
-        "nombre" : "IX - La Araucanía",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "IX - La Araucanía"
 }
 {
-
         "ID" : "11",
-        "nombre" : "XIV - Los Ríos",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "XIV - Los Ríos"
 }
 {
-
         "ID" : "12",
-        "nombre" : "X - Los Lagos",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "X - Los Lagos"
 }
 {
-
         "ID" : "13",
-        "nombre" : "XI - Aysén",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "XI - Aysén"
 }
 {
-
         "ID" : "14",
-        "nombre" : "XII - Magallanes y la Antártica Chilena",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "XII - Magallanes y la Antártica Chilena"
 }
 {
-
         "ID" : "15",
-        "nombre" : "RM - Metropolitana",
-        "estadisticas" : [{
-                          "categorias" : ["Familiaridad", "Satisfacción", "Seguridad", "Reputación", "Evaluación Afectiva", "Evaluación Cognitiva", "Confianza"],
-                          "resultados" : [0, 0, 0, 0, 0, 0],
-                          "fecha": ["1","2018"]
-        }]
-
+        "nombre" : "RM - Metropolitana"
 }
 
-put:
-{
-	"resultados":[1, 23, 342, 2, 1, 1]
-}
 /-----------------------------------------------------
 
 USUARIOS:
 user1 = {
 
           "id" : "1",
-          "nombre" : "Admin1",
-          "correo" : "mail@mail.cl",
+          "nombre" : "Admin",
+          "correo" : "admin@mail.cl",
           "contrasena": "asdf",
           "activo":true,
-          "rol": 1
+          "rol": 1,
+          "telefono": "+56998843878"
 
 };
 
@@ -767,11 +659,12 @@ user2 = {
 
 
           "id" : "2",
-          "nombre" : "Admin2",
-          "correo" : "mail2@mail.cl",
+          "nombre" : "Empresa",
+          "correo" : "empresa@mail.cl",
           "contrasena": "asdf2",
           "activo":true,
-          "rol": 2
+          "rol": 2,
+          "telefono": "+56998843878"
 
 };
 
@@ -789,6 +682,7 @@ ENCUESTADO:
         "fecha": "2018-08-25",
         "idregion": "1",
         "telefono": "283728233",
+        "tipoEncuesta":1,
         "resultados": [{
                     "idcategoria": "1",
                     "idpregunta": ["1","2","3","4","5","6","7","8","9","10"],

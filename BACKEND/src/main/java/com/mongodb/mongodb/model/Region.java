@@ -15,15 +15,11 @@ public class Region {
     @Field("nombre")
     public String nombre;
 
-    @Field("estadisticas")
-    public List<Estadistica> estadisticas;
-
     public Region(){}
 
-    public Region(String ID, String nombre, List<Estadistica> estadisticas) {
+    public Region(String ID, String nombre) {
         this.ID = ID;
         this.nombre = nombre;
-        this.estadisticas = estadisticas;
     }
 
     public String getID() { return ID; }
@@ -34,7 +30,4 @@ public class Region {
 
     public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public List<Estadistica> getEstadisticas() { return estadisticas; }
-
-    public void setEstadisticas(List<Estadistica> estadisticas) { this.estadisticas = estadisticas; }
 }

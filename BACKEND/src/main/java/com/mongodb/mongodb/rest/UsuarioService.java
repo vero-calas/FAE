@@ -61,6 +61,7 @@ public class UsuarioService extends AbstractoService {
                 usuario1.setCorreo(usuario.getCorreo());
                 usuario1.setNombre(usuario.getNombre());
                 usuario1.setRol(usuario.getRol());
+                usuario1.setTelefono(usuario.getTelefono());
                 usuarioRepository.save(usuario1);
                 return new ResponseEntity<>(usuarioRepository.findAll(),HttpStatus.OK);
             }else{

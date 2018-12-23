@@ -39,12 +39,15 @@ public class Encuestado {
     @Field("idregion")
     public String idregion;
 
+    @Field("tipoencuesta")
+    public Integer tipoEncuesta; //1 = encuesta larga y 2 = encuesta corta
+
     @Field("resultados")
     public List<Resultado> resultados;
 
     public Encuestado(){}
 
-    public Encuestado(String correo, String nivelDeEstudio, String situacionLaboral, String nivelDeIngreso, String sexo, String estadoCivil, String rangoDeEdad, String telefono, Date fecha, List<Resultado> resultados, String idregion) {
+    public Encuestado(String correo, String nivelDeEstudio, String situacionLaboral, String nivelDeIngreso, String sexo, String estadoCivil, String rangoDeEdad, String telefono, Date fecha, List<Resultado> resultados, String idregion, Integer tipoEncuesta) {
         this.correo = correo;
         this.nivelDeEstudio = nivelDeEstudio;
         this.situacionLaboral = situacionLaboral;
@@ -56,6 +59,7 @@ public class Encuestado {
         this.fecha = fecha;
         this.resultados = resultados;
         this.idregion = idregion;
+        this.tipoEncuesta = tipoEncuesta;
     }
 
     public String getIdregion() { return idregion; }
@@ -134,9 +138,11 @@ public class Encuestado {
         return resultados;
     }
 
-    public void setResultados(List<Resultado> resultados) {
-        this.resultados = resultados;
-    }
+    public void setResultados(List<Resultado> resultados) { this.resultados = resultados; }
+
+    public Integer getTipoEncuesta() { return tipoEncuesta; }
+
+    public void setTipoEncuesta(Integer tipoEncuesta) { this.tipoEncuesta = tipoEncuesta; }
 }
 
 
