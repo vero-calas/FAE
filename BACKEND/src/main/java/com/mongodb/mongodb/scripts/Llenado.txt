@@ -19,8 +19,8 @@ CATEGORIA:
                       },
 			{
                       "idpregunta" : "4",
-                      "pregunta" : "Sexo del entrevistado",
-                      "opciones" : ["Masculino","Femenino"]
+                      "pregunta" : "Género del entrevistado",
+                      "opciones" : ["Masculino","Femenino","No binario"]
                       },
 			{
                       "idpregunta" : "5",
@@ -673,7 +673,7 @@ user2 = {
 ENCUESTADO:
 {
         "correo" : "as2d@asd.com",
-        "nivelDeEstudio": "Básica Completa",
+        "nivelDeEstudio": "Básica completa",
         "situacionLaboral": "Busca empleo",
         "nivelDeIngreso": "Entre 150.001 y 250.000",
         "sexo": "Masculino",

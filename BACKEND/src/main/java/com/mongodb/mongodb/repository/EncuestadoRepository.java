@@ -9,4 +9,5 @@ import java.util.List;
 public interface EncuestadoRepository extends MongoRepository<Encuestado, String> {
 
     List<Encuestado> findAllByIdregionAndTipoEncuestaAndFechaBetween(String idRegion, Integer tipoEncuesta, Date fechaInicial, Date fechaFinal);
+    List<Encuestado> findAllByIdregionAndTipoEncuestaAndNivelDeEstudioAndFechaBetween(String idRegion, Integer tipoEncuesta, String nivelEstudio, Date fechaInicial, Date fechaFinal);
 }
