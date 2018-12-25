@@ -194,11 +194,12 @@
              'empresa-userInfo-component': empresaInfo
          },
 
+
          name: 'Overlap',
          data: () => ({
              load: 0,
              //role 0 = admin; role 1 = empresa; role 2 = usuario natural
-             role: 0,
+             role: Number(localStorage.getItem('role'))-1,
              error:false,
              showDialogLogin: false,
              showDialogRegister: false,
@@ -217,7 +218,7 @@
              regiones: null,
              usuarios: null,
              encuestados: null,
-             usuariosE: null
+             usuariosE: null,
 
          }),
          validations:{
@@ -231,6 +232,7 @@
          },
 
          created() {
+
 
              const auth = {
                  headers: {'Authorization':'Bearer ' + localStorage.getItem('authtoken')}
@@ -284,6 +286,15 @@
                  this.error = true;
              });
 
+
+             setInterval(function(){
+                 var hours = 1;
+                 var now = new Date().getTime();
+                 var lstime = localStorage.getItem('time');
+                 if(now-lstime > hours*60*60*1000){
+                     localStorage.clear();
+                 } }, 5*60*1000);
+
          },
 
          methods: {
@@ -322,12 +333,21 @@
                  this.$http.post('http://localhost:8092/usuarios/login',JSON.stringify(this.loginjson),config).then((response) => {
                      localStorage.setItem('authtoken',response.body.Authorization);
                      localStorage.setItem('name',response.body.nombre);
-                     //localStorage.setItem("rol",parseInt(response.body.rol));
+                     localStorage.setItem('role',response.body.rol);
+                     localStorage.setItem('time', new Date().getTime());
                      console.log("Se hizo el login",response);
+
+
                  }, (response) =>{
                      console.log("No se logro el login",response)
                  });
              },
+
+             servicioLogout(){
+                 localStorage.clear();
+             }
+
+
 
          },
          ready: function() {
