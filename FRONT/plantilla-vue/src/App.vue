@@ -63,7 +63,7 @@
      <md-app md-waterfall md-mode="overlap">
          <md-app-toolbar class="md-accent md-large">
              <div class="md-toolbar-row">
-                 <md-button v-if="this.role < 2" class="md-icon-button" @click="menuVisible = !menuVisible">
+                 <md-button v-if="this.role === 0 || this.role === 1" class="md-icon-button" @click="menuVisible = !menuVisible">
                      <md-icon>menu</md-icon>
                  </md-button>
                  <div style="float: right">
@@ -85,7 +85,7 @@
 
 
 
-         <md-app-drawer :md-active.sync="menuVisible" md-persistent="full" v-if="this.role < 2">
+         <md-app-drawer :md-active.sync="menuVisible" md-persistent="full" v-if="this.role === 0 || this.role === 1">
              <md-toolbar class="md-transparent" md-elevation="0">
                  <img width="150" height="80" src="https://images.vexels.com/media/users/3/145779/isolated/preview/53f7a1777bd2d2c3f8628d745268c5a3-ilustraci-n-del-loro-by-vexels.png">
              </md-toolbar>
