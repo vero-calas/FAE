@@ -40,6 +40,7 @@ public class UsuarioService extends AbstractoService {
     @ResponseBody
     public ResponseEntity create(@RequestBody Usuario resource){
         if(usuarioRepository.findByCorreo(resource.getCorreo())==null){
+            resource.setActivo(false);
             return new ResponseEntity<>(usuarioRepository.save(resource),HttpStatus.CREATED);
         }else{
             return new ResponseEntity<>("Correo ya existe.",HttpStatus.BAD_REQUEST);

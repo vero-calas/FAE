@@ -37,6 +37,9 @@ public class EncuestadoService extends AbstractoService{
     @RequestMapping(method = RequestMethod.POST, value = "/graphics")
     @ResponseBody
     public ResponseEntity graphics(@RequestBody Filtro filtro){
+        if(!isAuthorized(1))
+            return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
+
         //Fechas para arreglar
         System.out.println();
         System.out.println(filtro.getFechaInicial());
@@ -66,6 +69,9 @@ public class EncuestadoService extends AbstractoService{
     @RequestMapping(method = RequestMethod.POST, value = "/graphicsSD")
     @ResponseBody
     public ResponseEntity graphicsWithSD(@RequestBody Filtro filtro){
+        if(!isAuthorized(1))
+            return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
+
         //Fechas para arreglar
         System.out.println();
         System.out.println(filtro.getFechaInicial());
