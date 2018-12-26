@@ -6,6 +6,8 @@ import com.mongodb.mongodb.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,9 @@ public class UsuarioService extends AbstractoService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
     //Get All Usuarios
     @GetMapping(value = "/all")
     public ResponseEntity getAllUsuario() {
@@ -41,6 +46,8 @@ public class UsuarioService extends AbstractoService {
     public ResponseEntity create(@RequestBody Usuario resource){
         if(usuarioRepository.findByCorreo(resource.getCorreo())==null){
             resource.setActivo(false);
+            String encryptPass = bCryptPasswordEncoder.encode(resource.getContrasena());
+            resource.setContrasena(encryptPass);
             return new ResponseEntity<>(usuarioRepository.save(resource),HttpStatus.CREATED);
         }else{
             return new ResponseEntity<>("Correo ya existe.",HttpStatus.BAD_REQUEST);
@@ -106,7 +113,8 @@ public class UsuarioService extends AbstractoService {
     public ResponseEntity login(@RequestBody Usuario user){
         Usuario realUser = usuarioRepository.findByCorreo(user.getCorreo());
         if(realUser != null) {
-            if(realUser.getContrasena().equals(user.getContrasena())){
+           // if(realUser.getContrasena().equals(user.getContrasena())){
+            if(bCryptPasswordEncoder.matches(user.getContrasena(),realUser.getContrasena())){
                 if(realUser.getActivo()){
                     Map<String,String> listaCosas = new HashMap<String, String>();
                     listaCosas.put(HEADER_STRING,TOKEN_PREFIX+tokenize(realUser));
