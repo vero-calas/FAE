@@ -86,41 +86,41 @@
                                 </md-card-content>
                             </md-card>
                         </div>
-                    <div>
-                        <md-card>
-                            <md-card-header>
-                                <div class="md-title"> ¿Quiénes somos? </div>
-                            </md-card-header>
-                            <md-card-content>
-                                e-ematur es un servicio de medición online de percepciones pionero en el área del marketing turístico.  Es un servicio innovador que permite la detección temprana, prevención, diagnóstico y tratamiento de un débil posicionamiento de imagen logrado por un destino turístico.
-                            </md-card-content>
-                        </md-card>
-                    </div>
+                        <div>
+                            <md-card>
+                                <md-card-header>
+                                    <div class="md-title"> ¿Quiénes somos? </div>
+                                </md-card-header>
+                                <md-card-content>
+                                    e-ematur es un servicio de medición online de percepciones pionero en el área del marketing turístico.  Es un servicio innovador que permite la detección temprana, prevención, diagnóstico y tratamiento de un débil posicionamiento de imagen logrado por un destino turístico.
+                                </md-card-content>
+                            </md-card>
+                        </div>
 
                     </div>
                 </div>
             </md-tab>
 
             <md-tab id="tab-pages" md-label="¿Quiénes Somos?" to="/components/tabs/pages">
-            <div>
-                <md-card-content style="float: left; width: 50%">
-                    <img  class="img-responsive" src="https://d1ljaggyrdca1l.cloudfront.net/wp-content/uploads/2017/04/Guanaco-in-Torres-del-Paine-National-Park-Chile-1600x900.jpg">
-                </md-card-content>
-
                 <div>
-                    <md-card class="card">
-                        <md-card-header>
-                            <div class="md-title">Sobre la empresa: </div>
-                        </md-card-header>
-                    <md-card-content>
-                    <label>e-ematur pretende ser el proveedor líder a nivel mundial de soluciones tecnológicas de marketing para mejorar la percepción de los destinos turísticos. A través de un modelo de suscripción predecible y asequible, nuestros clientes podrán adquirir y aplicar las mejores estrategias de marketing para posicionar, consolidar y/o recordar la imagen de un destino turístico a nivel internacional, nacional o local. Servicios tecnológicos que serán complementados con asesorías y capacitaciones especializadas dictadas por expertos, en el tratamiento de la imagen de los destinos turísticos.</label>
-                     </md-card-content>
-                    </md-card>
+                    <md-card-content style="float: left; width: 50%">
+                        <img  class="img-responsive" src="https://d1ljaggyrdca1l.cloudfront.net/wp-content/uploads/2017/04/Guanaco-in-Torres-del-Paine-National-Park-Chile-1600x900.jpg">
+                    </md-card-content>
+
+                    <div>
+                        <md-card class="card">
+                            <md-card-header>
+                                <div class="md-title">Sobre la empresa: </div>
+                            </md-card-header>
+                            <md-card-content>
+                                <label>e-ematur pretende ser el proveedor líder a nivel mundial de soluciones tecnológicas de marketing para mejorar la percepción de los destinos turísticos. A través de un modelo de suscripción predecible y asequible, nuestros clientes podrán adquirir y aplicar las mejores estrategias de marketing para posicionar, consolidar y/o recordar la imagen de un destino turístico a nivel internacional, nacional o local. Servicios tecnológicos que serán complementados con asesorías y capacitaciones especializadas dictadas por expertos, en el tratamiento de la imagen de los destinos turísticos.</label>
+                            </md-card-content>
+                        </md-card>
+                    </div>
                 </div>
-            </div>
 
 
-             </md-tab>
+            </md-tab>
 
             <md-tab id="tab-posts" md-label="Contacto" to="/components/tabs/posts">
 
@@ -167,7 +167,7 @@
 
                             <!--                          SEGUNDA ETAPA DE ENCUESTA                                        -->
                             <!--                          **************************                                       -->
-                            <md-step id="0"  :md-label="Bienvenido">
+                            <md-step id="0">
                                 <div>
                                     <img width="150" height="80" src="https://images.vexels.com/media/users/3/145779/isolated/preview/53f7a1777bd2d2c3f8628d745268c5a3-ilustraci-n-del-loro-by-vexels.png">
                                     <label>Bienvenido a la encuesta sobre el turismo en Chile</label>
@@ -218,50 +218,52 @@
 
                             <!--                          SEGUNDA ETAPA DE ENCUESTA                                        -->
                             <!--                          **************************                                       -->
-                            <md-step id=0  :md-label="Bienvenido">
+                            <md-step id="0">
                                 <div>
-                                <img width="150" height="80" src="https://images.vexels.com/media/users/3/145779/isolated/preview/53f7a1777bd2d2c3f8628d745268c5a3-ilustraci-n-del-loro-by-vexels.png">
-                                <label>Bienvenido a la encuesta sobre el turismo en Chile</label>
+                                    <img width="150" height="80" src="https://images.vexels.com/media/users/3/145779/isolated/preview/53f7a1777bd2d2c3f8628d745268c5a3-ilustraci-n-del-loro-by-vexels.png">
+                                    <label>Bienvenido a la encuesta sobre el turismo en Chile</label>
                                 </div>
                             </md-step>
-                            <md-step >
-                                <br>
-                                <label> Por favor, responda según su opinión </label>
-                                <br>
-                                  <hr>
-                                    <label> Pregunta 1 </label>
-                                <div>
-                                    <md-card>
-                                        <md-radio></md-radio><md-icon class="md-size-3x" style="color: #08e166">
-                                        sentiment_very_satisfied
-                                    </md-icon>
-                                        <label>Satisfecho</label>
-                                    </md-card>
-                                    <md-card>
-                                        <md-radio></md-radio><md-icon class="md-size-3x" style="color: #fbe246">
-                                        sentiment_satisfied
-                                    </md-icon>
-                                        <label>Indiferente</label>
-                                    </md-card>
-                                    <md-card>
-                                        <md-radio></md-radio><md-icon class="md-size-3x" style="color: #fb2514">
-                                        sentiment_very_dissatisfied
-                                    </md-icon>
-                                        <label>Insatisfecho</label>
-                                    </md-card>
+                            <md-step v-model="array" v-if="i!==20" :key="i" :value="i" v-for="(categoria,i) in datos" :id="datos[i].id">
+                                <h1>{{datos[i].nombre}}</h1><br>
+                                <label>{{datos[i].descripcion}}</label>
+                                <br><label> Por favor, responda según su opinión</label>
+                                <hr>
+                                <div v-model="array2" v-if="j!==20" :key="j" :value="j" v-for="(preguntas,j) in categoria.preguntas">
+                                    <hr>
+                                    <label> {{ preguntas.pregunta }} </label>
+                                    <div>
+                                        <md-icon class="md-size-2x" style="color: #08e166">
+                                            sentiment_very_satisfied
+                                        </md-icon>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <md-icon class="md-size-2x" style="color: #fbe246">
+                                            sentiment_satisfied
+                                        </md-icon>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <md-icon class="md-size-2x" style="color: #fb2514">
+                                            sentiment_very_dissatisfied
+                                        </md-icon><br>
+                                        <md-radio v-model="form2[i].respuesta[j]" v-if="k!==14" :key="k" :value="k" v-for="(escala,k) in preguntas.escala">
+                                            <label v-if="preguntas.escala !== null">
+                                                {{preguntas.escala[k]}}
+                                            </label>
+                                        </md-radio>
+                                        <md-radio v-model="form2[i].respuesta[j]" v-if="k!==14" :key="k" :value="k" v-for="(escala,k) in preguntas.opciones">
+                                            <label v-if="preguntas.opciones !== null">
+                                                {{preguntas.opciones[k]}}
+                                            </label>
+                                        </md-radio>
+                                    </div>
                                 </div>
-
                             </md-step>
 
-                            <md-step>
-                                Lorem Ipsum
-                            </md-step>
-                            <md-step>
-                                Lorem Ipsum
-                            </md-step>
-                            <md-step>
-                                Lorem Ipsum
-                            </md-step>
 
                         </md-steppers>
                     </div>
@@ -284,31 +286,25 @@
             array:[],
             array2:null,
             cantidadCategoria: null
-
         }),
-
         created() {
-        this.cantidad();
         },
         mounted(){
+            this.cantidad();
         },
-
         methods:{
             cantidad(){
-             this.cantidadCategoria = this.datos.length
-                console.log("largo", this.cantidadCategoria)
-            for (let i=0; i<this.cantidadCategoria; i++){
-                let json ={
-                    respuesta: []
+                console.log("la data que llega es", this.datos);
+                this.cantidadCategoria = (this._props.datos).length;
+                for (let i=0; i<this.cantidadCategoria; i++){
+                    let json ={
+                        respuesta: []
+                    }
+                    this.form2.push(json)
                 }
-                this.form2.push(json)
             }
-            }
-
-
         }
     }
-
 </script>
 
 
