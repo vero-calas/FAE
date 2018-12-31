@@ -55,22 +55,43 @@ public class UsuarioService extends AbstractoService {
     }
 
     //Editar la información de un usuario
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/update/{parametro}/{id}", method = RequestMethod.PUT)
     @ResponseStatus
     @ResponseBody
-    public ResponseEntity update(@PathVariable("id") String id, @RequestBody Usuario usuario){
+    public ResponseEntity update(@PathVariable("id") String id, @PathVariable("parametro") Integer parametro,@RequestBody Usuario usuario){
         if(!isAuthorized(1) && !isAuthorized(2)){
             return new ResponseEntity<>("No está autorizado",HttpStatus.UNAUTHORIZED);
         }else{
             if(usuarioRepository.findById(id).isPresent()){
-                Usuario usuario1 = usuarioRepository.findById(id).get();
-                usuario1.setActivo(usuario.getActivo());
-                usuario1.setContrasena(usuario.getContrasena());
-                usuario1.setCorreo(usuario.getCorreo());
-                usuario1.setNombre(usuario.getNombre());
-                usuario1.setRol(usuario.getRol());
-                usuario1.setTelefono(usuario.getTelefono());
-                usuarioRepository.save(usuario1);
+                Usuario usuario1;
+                switch(parametro){
+                    case 0:  //nombre
+                        usuario1 = usuarioRepository.findById(id).get();
+                        usuario1.setNombre(usuario.getNombre());
+                        usuarioRepository.save(usuario1);
+                        break;
+                    case 1:  //password
+                        usuario1 = usuarioRepository.findById(id).get();
+                        String[] pass = usuario.getContrasena().split(" ");
+                        if(bCryptPasswordEncoder.matches(pass[0],usuario1.getContrasena())){
+                            String encryptPass = bCryptPasswordEncoder.encode(pass[1]);
+                            usuario1.setContrasena(encryptPass);
+                            usuarioRepository.save(usuario1);
+                        }else{
+                            return new ResponseEntity<>("Contraseña Actual Incorrecta", HttpStatus.BAD_REQUEST);
+                        }
+                        break;
+                    case 2:  //activo
+                        usuario1 = usuarioRepository.findById(id).get();
+                        usuario1.setActivo(usuario.getActivo());
+                        usuarioRepository.save(usuario1);
+                        break;
+                    case 3:  //telefono
+                        usuario1 = usuarioRepository.findById(id).get();
+                        usuario1.setTelefono(usuario.getTelefono());
+                        usuarioRepository.save(usuario1);
+                        break;
+                }
                 return new ResponseEntity<>(usuarioRepository.findAll(),HttpStatus.OK);
             }else{
                 return new ResponseEntity<>("ID Usuario no existe",HttpStatus.BAD_REQUEST);

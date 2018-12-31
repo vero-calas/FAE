@@ -17,10 +17,14 @@ public abstract class AbstractoService {
     }
 
     protected boolean isAuthorized(int rol){
-        if(webRequest.getHeader(HEADER_STRING).equals("Bearer null")) {
+        if(webRequest.getHeader(HEADER_STRING) == null){
             return false;
         }else{
-            return JwtConfig.isAuthorized(webRequest.getHeader(HEADER_STRING), rol);
+            if(webRequest.getHeader(HEADER_STRING).equals("Bearer null")) {
+                return false;
+            }else{
+                return JwtConfig.isAuthorized(webRequest.getHeader(HEADER_STRING), rol);
+            }
         }
     }
 
