@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:8081"})
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/categories")
 public class CategoriaService extends AbstractoService{
@@ -183,6 +183,26 @@ public class CategoriaService extends AbstractoService{
             }
         }
     }
+
+
+    //Actualiza el nombre de la empresa con la que se debe reemplazar a "Chile"
+    @RequestMapping(value="/updateEmpresa/{nombreempresa}", method = RequestMethod.PUT)
+    @ResponseStatus
+    @ResponseBody
+    public ResponseEntity updateEmpresa(@PathVariable("nombreempresa") String nombreEmpresa){
+        if(!isAuthorized(1)){
+            return new ResponseEntity<>("No está autorizado.",HttpStatus.UNAUTHORIZED);
+        }else{
+            List<Categoria> categorias = categoriaRepository.findAll();
+            for(int i = 0; i < categorias.size(); i++){
+                System.out.println(nombreEmpresa);
+                categorias.get(i).setEmpresa(nombreEmpresa);
+                categoriaRepository.save(categorias.get(i));
+            }
+            return new ResponseEntity<>("Nombre Empresa agregado exitosamente",HttpStatus.OK);
+        }
+    }
+
 
     private int findMax(int size, List<Categoria> listaCategoria, List<Pregunta> listaPreguntas, int esPregunta /*Para saber si es pregunta o categoria*/){
         String id;

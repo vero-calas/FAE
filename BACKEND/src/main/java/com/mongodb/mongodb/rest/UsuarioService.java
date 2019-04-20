@@ -18,7 +18,7 @@ import java.util.Map;
 
 import static com.mongodb.mongodb.config.JwtConfig.*;
 
-@CrossOrigin(origins = {"http://localhost:8081"})
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioService extends AbstractoService {

@@ -9,7 +9,6 @@ import java.util.List;
 public class Categoria {
 
     @Id
-
     public String ID;
 
     @Field("nombre")
@@ -21,13 +20,17 @@ public class Categoria {
     @Field("preguntas")
     public List<Pregunta> preguntas;
 
+    @Field("empresa")
+    public String empresa;
+
     public Categoria(){}
 
-    public Categoria(String id, String nombre, String descripcion, List<Pregunta> preguntas) {
+    public Categoria(String id, String nombre, String descripcion, List<Pregunta> preguntas, String empresa) {
         this.ID = ID;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.preguntas = preguntas;
+        this.empresa = empresa;
     }
 
     public String getID() {
@@ -59,4 +62,8 @@ public class Categoria {
     public void setPreguntas(List<Pregunta> preguntas) {
         this.preguntas = preguntas;
     }
+
+    public String getEmpresa() { return empresa; }
+
+    public void setEmpresa(String empresa) { this.empresa = empresa; }
 }
