@@ -78,7 +78,7 @@ public class EncuestadoService extends AbstractoService{
         System.out.println();
 
         //Procedimiento
-        Map<String,Map<String,Integer>> jsonResultados = new HashMap<String,Map<String, Integer>>();
+        List<Map<String,String>> jsonResultados = new ArrayList<>();
 
         switch (filtro.getVariableSD()){
             case "nivel de estudios":
@@ -184,26 +184,28 @@ public class EncuestadoService extends AbstractoService{
         return new ResponseEntity<>(jsonResultados,HttpStatus.OK);
     }
 
-    private Map<String, Map<String, Integer>> calculoSumaTotal(List<List<Encuestado>> listaCompleta, List<String> opciones, String categoriaID){
-        Map<String,Map<String,Integer>> jsonResultados = new HashMap<String,Map<String, Integer>>();
+    private List<Map<String,String>> calculoSumaTotal(List<List<Encuestado>> listaCompleta, List<String> opciones, String categoriaID){
+       List<Map<String,String>> jsonResultados = new ArrayList<>();
         List<Integer> sumaResultado;
         for(int i = 0; i < listaCompleta.size(); i++){
-            Map<String, Integer> partialRes = new HashMap<String, Integer>();
+            Map<String, String> partialRes = new HashMap<String, String>();
             sumaResultado = sumaEncuestas(listaCompleta.get(i),categoriaID);
             if(sumaResultado != null){
                 Integer aprobacion = sumaResultado.get(4)+sumaResultado.get(5)+sumaResultado.get(6);
                 Integer rechazo = sumaResultado.get(0)+sumaResultado.get(1)+sumaResultado.get(2);
-                partialRes.put("Aprobados",aprobacion);
-                partialRes.put("Rechazados",rechazo);
-                partialRes.put("Neutro",sumaResultado.get(3));
-                partialRes.put("Total Preguntas",aprobacion+rechazo+sumaResultado.get(3));
-                jsonResultados.put(opciones.get(i),partialRes);
+                partialRes.put("Nombre",opciones.get(i));
+                partialRes.put("Aprobados",Integer.toString(aprobacion));
+                partialRes.put("Rechazados",Integer.toString(rechazo));
+                partialRes.put("Neutro",Integer.toString(sumaResultado.get(3)));
+                partialRes.put("Total Preguntas",Integer.toString(aprobacion+rechazo+sumaResultado.get(3)));
+                jsonResultados.add(partialRes);
             }else{
-                partialRes.put("Aprobados",0);
-                partialRes.put("Rechazados",0);
-                partialRes.put("Neutro",0);
-                partialRes.put("Total Preguntas",0);
-                jsonResultados.put(opciones.get(i),partialRes);
+                partialRes.put("Nombre",opciones.get(i));
+                partialRes.put("Aprobados","0");
+                partialRes.put("Rechazados","0");
+                partialRes.put("Neutro","0");
+                partialRes.put("Total Preguntas","0");
+                jsonResultados.add(partialRes);
             }
         }
         return jsonResultados;
