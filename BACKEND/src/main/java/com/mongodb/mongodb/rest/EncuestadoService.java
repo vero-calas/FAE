@@ -222,8 +222,10 @@ public class EncuestadoService extends AbstractoService{
                         List<Integer> res = lista.get(i).getResultados().get(j).getRespuesta();
                         for(int k = 0; k < res.size(); k++){
                             Integer indice = res.get(k);
-                            Integer suma = sumaResultado.get(indice-1)+1;
-                            sumaResultado.set(indice-1,suma);
+                            if(indice > 0){
+                                Integer suma = sumaResultado.get(indice-1)+1;
+                                sumaResultado.set(indice-1,suma);
+                            }
                         }
                         j = lista.get(i).getResultados().size();
                     }
